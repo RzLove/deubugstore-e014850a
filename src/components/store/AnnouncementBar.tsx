@@ -1,4 +1,5 @@
 import { Phone, ArrowRight } from "lucide-react";
+import { DISCORD_URL } from "@/lib/constants";
 
 export function AnnouncementBar() {
   return (
@@ -8,9 +9,14 @@ export function AnnouncementBar() {
           <Phone className="h-4 w-4" />
           Deseja solicitar algum jogo que não encontrou?
         </div>
-        <button className="inline-flex h-9 items-center gap-1.5 rounded-full bg-background px-4 text-xs font-bold tracking-wide text-foreground transition hover:bg-card">
+        <a
+          href={DISCORD_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex h-9 items-center gap-1.5 rounded-full bg-background px-4 text-xs font-bold tracking-wide text-foreground transition hover:bg-card"
+        >
           CLIQUE AQUI <ArrowRight className="h-3.5 w-3.5" />
-        </button>
+        </a>
       </div>
     </div>
   );
