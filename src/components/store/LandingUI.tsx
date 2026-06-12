@@ -20,6 +20,7 @@ import { SearchAutocomplete } from "@/components/store/SearchAutocomplete";
 import { TikTokIcon } from "@/components/store/SocialIcons";
 import logo from "@/assets/deu-bug-logo.png.asset.json";
 import mascot from "@/assets/deu-bug-mascote-blend.png.asset.json";
+import { DISCORD_URL } from "@/lib/constants";
 
 /* ---------------- HEADER ---------------- */
 export function Header() {
