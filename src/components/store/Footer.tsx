@@ -1,22 +1,31 @@
 import { BadgeCheck, MessagesSquare, Instagram, Youtube } from "lucide-react";
+import logo from "@/assets/deu-bug-logo.png.asset.json";
 
 export function Footer() {
   return (
     <footer className="mt-24 border-t border-white/5 bg-[#050507]">
       <div className="mx-auto grid max-w-[1280px] gap-10 px-4 py-16 grid-cols-2 lg:grid-cols-4 sm:px-6">
         <div className="space-y-6 col-span-2 lg:col-span-1">
-          <div className="flex items-center gap-3 group">
-            <div className="relative h-12 w-12 flex items-center justify-center">
-              <div className="absolute inset-0 bg-primary/20 blur-lg rounded-full"></div>
-              <svg viewBox="0 0 100 100" className="relative w-10 h-10 drop-shadow-[0_0_8px_rgba(123,46,255,0.8)]">
-                <path d="M50 20 L80 40 L80 70 L50 90 L20 70 L20 40 Z" fill="none" stroke="#7B2EFF" strokeWidth="4" />
-                <circle cx="35" cy="45" r="4" fill="#39FF14" />
-                <circle cx="65" cy="45" r="4" fill="#39FF14" />
-              </svg>
+          <div className="group flex items-center gap-4">
+            <div className="relative grid h-16 w-16 shrink-0 place-items-center overflow-hidden rounded-2xl border border-primary/50 bg-black shadow-[0_0_18px_rgba(123,46,255,0.45)]">
+              <img
+                src={logo.url}
+                alt="Deu Bug Store"
+                width={128}
+                height={128}
+                className="h-full w-full object-contain"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
-            <span className="font-display text-xl font-black uppercase tracking-tighter text-white">
-              Deu Bug <span className="text-primary italic">Store</span>
-            </span>
+            <div className="min-w-0">
+              <span className="font-display text-xl font-black uppercase tracking-tighter text-white">
+                Deu Bug <span className="text-primary italic">Store</span>
+              </span>
+              <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.25em] text-neon-green/80">
+                Glitch nos preços, não na entrega.
+              </p>
+            </div>
           </div>
           <p className="max-w-xs text-sm text-white/40 leading-relaxed font-medium">
             Sua interface definitiva para keys digitais. <br />
