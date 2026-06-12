@@ -62,7 +62,7 @@ export function Banner() {
           Não encontrou algum jogo? <span className="text-neon-cyan italic">Nós conseguimos para você!</span>
         </span>
         <button className="flex items-center gap-2 text-primary hover:text-primary-glow text-xs font-black uppercase tracking-widest transition-all group">
-          CLIQUE AQUI <span className="group-hover:translate-x-1 transition-transform">-></span>
+          CLIQUE AQUI <span className="group-hover:translate-x-1 transition-transform">{"->"}</span>
         </button>
       </div>
     </div>
@@ -126,7 +126,7 @@ export function Hero() {
               <span className="relative z-10">VER TODOS OS JOGOS</span>
               <Gamepad2 className="h-6 w-6 relative z-10 group-hover:rotate-12 transition-transform" />
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-lg"></div>
-              <span className="ml-2 group-hover:translate-x-1 transition-transform">-></span>
+              <span className="ml-2 group-hover:translate-x-1 transition-transform">{"->"}</span>
             </button>
           </div>
 
