@@ -34,7 +34,8 @@ export function FeaturedSection() {
             {games.map((game) => (
               <div 
                 key={game.id} 
-                className="group bg-[#0c0c0e] border border-white/5 rounded-2xl overflow-hidden hover:border-primary/50 transition-all hover:shadow-[0_0_40px_rgba(123,46,255,0.1)] hover:-translate-y-2"
+                className="group bg-[#0c0c0e] border border-white/5 rounded-2xl overflow-hidden hover:border-primary/50 transition-all hover:shadow-[0_0_40px_rgba(123,46,255,0.1)] hover:-translate-y-2 cursor-pointer"
+                onClick={() => window.location.href = `/game/${game.id}`}
               >
                 <div className="relative aspect-[3/4] overflow-hidden">
                   <img 
@@ -61,13 +62,20 @@ export function FeaturedSection() {
                     {game.name}
                   </h3>
                   
-                  <div className="flex items-end justify-between pt-2">
+                  <div className="flex flex-col gap-3">
                      <div className="space-y-1">
                         <div className="text-[10px] text-white/30 line-through font-bold tracking-wider">{game.oldPrice}</div>
-                        <div className="text-xl font-black text-white group-hover:text-neon-green transition-colors">{game.price}</div>
+                        <div className="text-xl font-black text-[#d9f99d] group-hover:text-neon-green transition-colors">{game.price}</div>
                      </div>
-                     <button className="h-10 w-10 flex items-center justify-center bg-white/5 border border-white/10 rounded-xl text-white hover:bg-primary hover:border-primary hover:shadow-[0_0_20px_rgba(123,46,255,0.6)] transition-all active:scale-90 group/btn">
-                        <ShoppingCart className="h-4 w-4 group-hover/btn:scale-110 transition-transform" />
+                     <button 
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          // Simulação de clique no botão de compra
+                          window.location.href = `/game/${game.id}`;
+                        }}
+                        className="h-10 w-full flex items-center justify-center gap-2 bg-primary text-[10px] font-black uppercase tracking-widest text-white rounded-xl border border-primary/20 hover:bg-primary-glow hover:shadow-[0_0_20px_rgba(123,46,255,0.6)] transition-all active:scale-95"
+                     >
+                        <ShoppingCart className="h-4 w-4" /> COMPRAR AGORA
                      </button>
                   </div>
                 </div>
