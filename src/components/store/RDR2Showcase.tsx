@@ -22,7 +22,7 @@ export function RDR2Showcase() {
             
             {/* The Image */}
             <img 
-              src="https://drive.google.com/uc?export=view&id=1-jyC-sB4Jty704So0jkUqM6WLOLSJbhO" 
+              src="https://media-rockstargames-com.akamaized.net/mvg/artworks/RDR2/RDR2_artwork_01_1920x1080.jpg" 
               onError={(e) => {
                 e.currentTarget.src = "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=1200";
               }}
