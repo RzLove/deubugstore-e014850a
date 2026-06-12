@@ -17,21 +17,25 @@ export function Header() {
       <div className="mx-auto flex h-20 max-w-[1280px] items-center justify-between gap-6 px-4 sm:px-6 relative z-10">
         {/* Logo Section */}
         <a href="/" className="flex items-center gap-3 group shrink-0">
-          <div className="relative h-12 w-auto flex items-center">
+          <div className="relative h-14 w-auto flex items-center">
+            {/* Logo image with explicit dimensions and higher priority */}
             <img 
               src="https://drive.google.com/uc?export=view&id=1-jyC-sB4Jty704So0jkUqM6WLOLSJbhO" 
               alt="Deu Bug Store Logo"
-              className="h-full w-auto object-contain drop-shadow-[0_0_8px_rgba(123,46,255,0.6)]"
+              className="h-full w-auto object-contain drop-shadow-[0_0_12px_rgba(123,46,255,0.6)] relative z-20 min-w-[120px]"
+              loading="eager"
               onError={(e) => {
+                console.error("Logo failed to load");
                 e.currentTarget.style.display = 'none';
                 e.currentTarget.nextElementSibling?.classList.remove('hidden');
               }}
             />
-            <div className="hidden flex items-center gap-3">
+            {/* Styled Fallback that appears only if the image fails */}
+            <div className="hidden flex items-center gap-3 animate-in fade-in duration-500">
               <div className="relative h-12 w-12 flex items-center justify-center">
                 <div className="absolute inset-0 bg-primary/20 blur-lg rounded-full group-hover:bg-primary/40 transition-colors"></div>
                 <svg viewBox="0 0 100 100" className="relative w-10 h-10 drop-shadow-[0_0_8px_rgba(123,46,255,0.8)]">
-                  <path d="M50 20 L80 40 L80 70 L50 90 L20 70 L20 40 Z" fill="none" stroke="#7B2EFF" strokeWidth="4" className="glitch-effect" />
+                  <path d="M50 20 L80 40 L80 70 L50 90 L20 70 L20 40 Z" fill="none" stroke="#7B2EFF" strokeWidth="4" />
                   <circle cx="35" cy="45" r="4" fill="#39FF14" />
                   <circle cx="65" cy="45" r="4" fill="#39FF14" />
                 </svg>
@@ -40,7 +44,7 @@ export function Header() {
                 <span className="font-display text-lg font-black uppercase tracking-tighter text-white">
                   DEU BUG <span className="text-primary italic">AQUI</span>
                 </span>
-                <span className="text-[10px] font-black text-neon-green/80 uppercase tracking-widest glitch-effect">Store System</span>
+                <span className="text-[10px] font-black text-neon-green/80 uppercase tracking-widest">Store System</span>
               </div>
             </div>
           </div>
