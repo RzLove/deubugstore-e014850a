@@ -129,7 +129,7 @@ const raw: RawGame[] = [
     name: "Resident Evil Requiem (CONTA OFFLINE)",
     appId: 3241660,
     origNumber: 300,
-    newNumber: 15.59,
+    newNumber: 20,
     trailer: "M7yEzlF7dPo",
     trailerVideo: trailerResidentAsset.url,
     categories: ["popular", "terror"],
