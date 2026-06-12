@@ -15,6 +15,10 @@ import {
   Star, 
   ArrowLeft,
   ChevronRight,
+  Calendar,
+  Headphones,
+  Info,
+  KeyRound,
 } from "lucide-react";
 
 export const Route = createFileRoute("/game/$id")({
