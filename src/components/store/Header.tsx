@@ -5,14 +5,27 @@ export function Header({ cartCount = 0 }: { cartCount?: number }) {
     <header className="sticky top-0 z-40 w-full border-b border-border/60 bg-background/80 backdrop-blur-xl">
       <div className="mx-auto flex h-20 max-w-[1280px] items-center gap-6 px-4 sm:px-6">
         <a href="/" className="flex shrink-0 items-center gap-3">
-          <div className="relative grid h-11 w-11 place-items-center rounded-full bg-gradient-to-br from-primary to-primary-glow text-white font-display font-extrabold glow-primary">
-            DB
-          </div>
-          <div className="hidden items-center gap-1.5 sm:flex">
-            <span className="font-display text-lg font-extrabold tracking-tight">
-              Deu Bug Store
-            </span>
-            <BadgeCheck className="h-4 w-4 fill-primary text-background" />
+          <div className="relative h-12 w-auto overflow-hidden">
+            <img 
+              src="https://drive.google.com/uc?export=view&id=1-jyC-sB4Jty704So0jkUqM6WLOLSJbhO" 
+              alt="Deu Bug Store"
+              className="h-full w-auto object-contain"
+              onError={(e) => {
+                // Fallback if image fails to load
+                e.currentTarget.src = "/placeholder.svg";
+                e.currentTarget.style.display = "none";
+                e.currentTarget.parentElement?.classList.add("hidden");
+              }}
+            />
+            {/* Fallback SVG/Logo when the external image is not loaded */}
+            <div className="flex items-center gap-3 group shrink-0 logo-fallback">
+               <div className="relative h-10 w-10 flex items-center justify-center bg-primary/20 rounded-lg">
+                  <span className="text-white font-bold">DB</span>
+               </div>
+               <span className="font-display text-lg font-extrabold tracking-tight hidden sm:block">
+                  Deu Bug Store
+               </span>
+            </div>
           </div>
         </a>
 

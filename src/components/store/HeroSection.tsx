@@ -12,13 +12,17 @@ export function HeroSection() {
   return (
     <section className="relative mx-auto max-w-[1280px] px-4 pt-8 sm:px-6">
       {/* Hero banner */}
-      <div className="relative overflow-hidden rounded-2xl border border-border glow-primary-lg">
+      <div className="relative overflow-hidden rounded-2xl border border-border glow-primary-lg bg-black/40">
         <img
-          src={heroBanner}
+          src="https://drive.google.com/uc?export=view&id=1-jyC-sB4Jty704So0jkUqM6WLOLSJbhO"
           alt="Deu Bug Store — os melhores jogos Steam"
           width={1920}
           height={720}
-          className="h-[260px] w-full object-cover sm:h-[360px] md:h-[440px]"
+          className="h-[260px] w-full object-contain sm:h-[360px] md:h-[440px] opacity-90 transition-opacity hover:opacity-100"
+          onError={(e) => {
+            e.currentTarget.src = heroBanner;
+            e.currentTarget.className = "h-[260px] w-full object-cover sm:h-[360px] md:h-[440px]";
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/30 to-transparent" />
         <div className="absolute inset-0 flex flex-col justify-between p-6 sm:p-10">
