@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Header, Banner, Hero, Benefits } from "@/components/store/LandingUI";
 import { FeaturedSection } from "@/components/store/FeaturedSection";
-import { RDR2Showcase } from "@/components/store/RDR2Showcase";
 import { GameGrid } from "@/components/store/GameGrid";
 import { Footer } from "@/components/store/Footer";
 
@@ -36,7 +35,6 @@ function Index() {
         <Hero />
         <Benefits />
         <FeaturedSection />
-        <RDR2Showcase />
         <GameGrid />
       </main>
 
