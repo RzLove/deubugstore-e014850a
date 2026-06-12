@@ -52,6 +52,10 @@ export interface Game {
   /** YouTube video ID used in the popular games trailer player */
   trailer?: string;
   categories: GameCategory[];
+  /** Quantidade em estoque exibida nos cards */
+  stock: number;
+  /** Se presente, marca o produto como bundle/combo e descreve os jogos inclusos */
+  bundle?: BundleItem[];
 }
 
 const steamHeader = (appId: number) =>
