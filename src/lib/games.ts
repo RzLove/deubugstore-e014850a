@@ -774,10 +774,11 @@ const raw: RawGame[] = [
   },
   {
     id: 22,
-    name: "Detroit Become Human",
+    name: "Detroit: Become Human",
     appId: 1222140,
     origNumber: 199,
-    newNumber: 11.99,
+    newNumber: 15.0,
+    stock: 18,
     trailer: "Ka4yhoZSXgU",
     categories: ["acao"],
     short:
