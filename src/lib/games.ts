@@ -78,6 +78,8 @@ interface RawGame {
   id: number;
   name: string;
   appId: number;
+  /** Sobrescreve a URL de capa quando definido (caso o appId não exista na Steam) */
+  coverUrl?: string;
   origNumber: number;
   newNumber: number;
   trailer?: string;
@@ -88,6 +90,8 @@ interface RawGame {
   rating: string;
   minReq: SysReq;
   recReq: SysReq;
+  stock?: number;
+  bundle?: BundleItem[];
 }
 
 const toBRL = (n: number) =>
