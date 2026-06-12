@@ -51,6 +51,10 @@ export interface Game {
   delivery: string;
   /** YouTube video ID used in the popular games trailer player */
   trailer?: string;
+  /** URL of a self-hosted mp4 trailer (takes precedence over `trailer`) */
+  trailerVideo?: string;
+  /** URL of a Google Drive /preview embed (iframe). Used when neither trailerVideo nor a working YouTube id exists */
+  trailerIframe?: string;
   categories: GameCategory[];
   /** Quantidade em estoque exibida nos cards */
   stock: number;
