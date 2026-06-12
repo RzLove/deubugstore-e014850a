@@ -229,12 +229,17 @@ export function PopularGames() {
             ) : trailerKind === "video" ? (
               <video
                 key={fadeKey}
-                ref={videoRef}
+                ref={attachVideo}
                 src={current.trailerVideo}
+                poster={current.cover}
                 autoPlay
-                muted={muted}
+                muted
                 loop
                 playsInline
+                preload="metadata"
+                // @ts-expect-error legacy iOS attribute
+                webkit-playsinline="true"
+                onPlay={() => setAutoplayBlocked(false)}
                 onError={() => setTrailerFailed(true)}
                 className="absolute inset-0 h-full w-full object-cover animate-in fade-in duration-500"
               />
@@ -243,7 +248,7 @@ export function PopularGames() {
                 key={fadeKey}
                 src={driveSrc!}
                 title={`${current.name} trailer`}
-                allow="autoplay; fullscreen"
+                allow="autoplay; fullscreen; encrypted-media"
                 allowFullScreen
                 onError={() => setTrailerFailed(true)}
                 className="absolute inset-0 h-full w-full border-0 animate-in fade-in duration-500"
@@ -259,6 +264,45 @@ export function PopularGames() {
                 className="absolute inset-0 h-[calc(100%+120px)] w-[calc(100%+1px)] -top-[60px] animate-in fade-in duration-500"
               />
             )}
+
+            {/* Autoplay-blocked overlay (mp4 video) */}
+            {autoplayBlocked && trailerKind === "video" && !trailerFailed && (
+              <button
+                onClick={handleManualPlay}
+                aria-label="Reproduzir trailer"
+                className="absolute inset-0 z-20 grid place-items-center bg-black/40 backdrop-blur-sm"
+              >
+                <img
+                  src={current.cover}
+                  alt=""
+                  aria-hidden
+                  className="absolute inset-0 h-full w-full object-cover opacity-60"
+                />
+                <span className="relative grid h-20 w-20 place-items-center rounded-full bg-primary text-white shadow-[0_0_40px_rgba(124,58,237,0.9)] transition hover:scale-110">
+                  <Play className="h-9 w-9 translate-x-0.5 fill-current" />
+                </span>
+              </button>
+            )}
+
+            {/* Mobile tap-to-play overlay for iframes (Drive often blocks autoplay) */}
+            {!iframeOverlayDismissed &&
+              (trailerKind === "iframe-drive" || trailerKind === "iframe-yt") && (
+                <button
+                  onClick={() => setIframeOverlayDismissed(true)}
+                  aria-label="Reproduzir trailer"
+                  className="absolute inset-0 z-20 grid place-items-center bg-black/30 backdrop-blur-[2px] sm:hidden"
+                >
+                  <img
+                    src={current.cover}
+                    alt=""
+                    aria-hidden
+                    className="absolute inset-0 h-full w-full object-cover opacity-70"
+                  />
+                  <span className="relative grid h-20 w-20 place-items-center rounded-full bg-primary text-white shadow-[0_0_40px_rgba(124,58,237,0.9)]">
+                    <Play className="h-9 w-9 translate-x-0.5 fill-current" />
+                  </span>
+                </button>
+              )}
 
             {/* Top-right controls */}
             <div className="absolute right-3 top-3 z-20 flex gap-2">
