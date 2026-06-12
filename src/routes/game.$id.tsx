@@ -133,6 +133,9 @@ function GameDetailPage() {
                       <li><span className="text-white font-semibold">Armazenamento:</span> {req.storage}</li>
                       {req.notes && <li className="pt-2 italic text-[11px] text-primary-glow/80">{req.notes}</li>}
                     </ul>
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* Bundle — O que está incluído */}
@@ -155,11 +158,37 @@ function GameDetailPage() {
                     </div>
                   ))}
                 </div>
+
+                {/* Requisitos por jogo do combo */}
+                <div className="mt-8 space-y-6">
+                  {game.bundle.map((item) => (
+                    <div key={`${item.name}-reqs`}>
+                      <h3 className="text-xs font-black uppercase tracking-widest text-neon-green mb-3">
+                        Requisitos — {item.name}
+                      </h3>
+                      <div className="grid gap-4 sm:grid-cols-2">
+                        {[
+                          { label: "Mínimos", req: item.minReq },
+                          { label: "Recomendados", req: item.recReq },
+                        ].map(({ label, req }) => (
+                          <div key={label} className="rounded-xl border border-white/5 bg-white/[0.02] p-4">
+                            <div className="text-[10px] font-black uppercase tracking-widest text-primary-glow mb-2">{label}</div>
+                            <ul className="space-y-1 text-[11px] text-muted-foreground">
+                              <li><span className="text-white font-semibold">SO:</span> {req.os}</li>
+                              <li><span className="text-white font-semibold">CPU:</span> {req.cpu}</li>
+                              <li><span className="text-white font-semibold">RAM:</span> {req.ram}</li>
+                              <li><span className="text-white font-semibold">GPU:</span> {req.gpu}</li>
+                              <li><span className="text-white font-semibold">HD:</span> {req.storage}</li>
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             )}
-                ))}
-              </div>
-            </div>
+
 
             {/* Reviews Section */}
             <div className="relative bg-[#0A0A0C] border border-white/5 rounded-2xl p-6 sm:p-8 shadow-2xl overflow-hidden">
