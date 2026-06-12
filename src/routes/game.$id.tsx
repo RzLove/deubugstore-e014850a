@@ -5,6 +5,7 @@ import { Footer } from "@/components/store/Footer";
 import { games } from "@/lib/games";
 import { useState } from "react";
 import { PurchaseModal } from "@/components/store/PurchaseModal";
+import { TikTokIcon } from "@/components/store/SocialIcons";
 import { 
   BadgeCheck, 
   ShieldCheck, 
@@ -19,6 +20,7 @@ import {
   Headphones,
   Info,
   KeyRound,
+  Youtube,
 } from "lucide-react";
 
 export const Route = createFileRoute("/game/$id")({
@@ -325,6 +327,35 @@ function GameDetailPage() {
                 </div>
               </div>
 
+              {/* Social Proof / Redes */}
+              <div className="mt-4 rounded-2xl border border-white/5 bg-white/[0.02] p-5">
+                <p className="text-sm font-bold text-white mb-1">
+                  🎬 Veja a Deu Bug em ação
+                </p>
+                <p className="text-xs text-muted-foreground leading-relaxed mb-4">
+                  Confira nossos vídeos e avaliações no TikTok e YouTube
+                </p>
+                <div className="flex items-center gap-3">
+                  <a
+                    href="https://www.tiktok.com/@deu.bug.aqui"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="grid h-10 w-10 place-items-center rounded-lg border border-white/10 bg-white/5 text-white transition hover:border-cyan-400/60 hover:text-cyan-400 hover:shadow-[0_0_15px_-4px_rgba(34,211,238,0.5)]"
+                    aria-label="TikTok"
+                  >
+                    <TikTokIcon className="h-5 w-5" />
+                  </a>
+                  <a
+                    href="https://youtube.com/@deubugaqui"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="grid h-10 w-10 place-items-center rounded-lg border border-white/10 bg-white/5 text-white transition hover:border-red-500/60 hover:text-red-500 hover:shadow-[0_0_15px_-4px_rgba(239,68,68,0.5)]"
+                    aria-label="YouTube"
+                  >
+                    <Youtube className="h-5 w-5" />
+                  </a>
+                </div>
+              </div>
 
               {/* Delivery Info */}
               <div className="mt-6 border-t border-white/5 pt-6">
