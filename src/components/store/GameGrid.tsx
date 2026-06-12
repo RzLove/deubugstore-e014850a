@@ -1,4 +1,6 @@
 import { ShoppingCart } from "lucide-react";
+import { useState } from "react";
+import { PurchaseModal } from "./PurchaseModal";
 import crimson from "@/assets/cat-popular.jpg";
 import crusader from "@/assets/cat-rpg.jpg";
 import cyberpunk from "@/assets/cat-shooter.jpg";
@@ -58,6 +60,8 @@ const games = [
 ];
 
 export function GameGrid() {
+  const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
+
   return (
     <section className="mx-auto mt-24 max-w-[1280px] px-4 sm:px-6">
       <div className="flex items-center justify-center gap-4 mb-8">
@@ -68,9 +72,8 @@ export function GameGrid() {
 
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {games.map((game) => (
-          <a
+          <div
             key={game.id}
-            href={`/game/${game.id}`}
             className="group relative flex flex-col overflow-hidden rounded-xl bg-[#0f111a] border border-white/5 transition-all duration-300 hover:-translate-y-2 hover:bg-[#1a1d2e] hover:shadow-2xl hover:shadow-primary/20"
           >
             {/* Header Image Area */}
@@ -113,14 +116,23 @@ export function GameGrid() {
                   </span>
                 </div>
                 
-                <button className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-primary-foreground transition-all duration-300 group-hover:bg-primary-glow group-hover:scale-110">
+                <button 
+                  onClick={() => setSelectedProduct(game.name)}
+                  className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-primary-foreground transition-all duration-300 group-hover:bg-primary-glow group-hover:scale-110"
+                >
                   <ShoppingCart className="h-5 w-5" />
                 </button>
               </div>
             </div>
-          </a>
+          </div>
         ))}
       </div>
+
+      <PurchaseModal 
+        isOpen={!!selectedProduct} 
+        onOpenChange={(open) => !open && setSelectedProduct(null)} 
+        productName={selectedProduct || ""}
+      />
     </section>
   );
 }
