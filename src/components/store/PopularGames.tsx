@@ -1,5 +1,4 @@
-import { useRef, useState } from "react";
-import {
+import { useEffect, useRef, useState } from "react";
   Flame,
   ChevronLeft,
   ChevronRight,
