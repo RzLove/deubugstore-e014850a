@@ -1,3 +1,5 @@
+import trailerResidentAsset from "@/assets/trailer-resident.mp4.asset.json";
+
 export type GameCategory =
   | "popular"
   | "acao"
@@ -51,6 +53,10 @@ export interface Game {
   delivery: string;
   /** YouTube video ID used in the popular games trailer player */
   trailer?: string;
+  /** URL of a self-hosted mp4 trailer (takes precedence over `trailer`) */
+  trailerVideo?: string;
+  /** URL of a Google Drive /preview embed (iframe). Used when neither trailerVideo nor a working YouTube id exists */
+  trailerIframe?: string;
   categories: GameCategory[];
   /** Quantidade em estoque exibida nos cards */
   stock: number;
@@ -83,6 +89,8 @@ interface RawGame {
   origNumber: number;
   newNumber: number;
   trailer?: string;
+  trailerVideo?: string;
+  trailerIframe?: string;
   categories: GameCategory[];
   short: string;
   about: string;
@@ -123,6 +131,7 @@ const raw: RawGame[] = [
     origNumber: 300,
     newNumber: 15.59,
     trailer: "M7yEzlF7dPo",
+    trailerVideo: trailerResidentAsset.url,
     categories: ["popular", "terror"],
     short:
       "O novo capítulo de Resident Evil chega com terror psicológico de tirar o fôlego e uma atmosfera sombria como nunca antes.",
@@ -1267,6 +1276,8 @@ export const games: Game[] = raw.map((g) => {
     recReq: g.recReq,
     delivery: defaultDelivery,
     trailer: g.trailer,
+    trailerVideo: g.trailerVideo,
+    trailerIframe: g.trailerIframe,
     categories: g.categories,
     stock: g.stock ?? defaultStock(g.id),
     bundle: g.bundle,

@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Flame,
   ChevronLeft,
@@ -44,11 +44,40 @@ export function PopularGames() {
     }
   };
 
-  const trailerSrc = current.trailer
-    ? `https://www.youtube.com/embed/${current.trailer}?autoplay=1&mute=${
-        muted ? 1 : 0
-      }&loop=1&playlist=${current.trailer}&controls=0&modestbranding=1&playsinline=1&rel=0`
-    : null;
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [trailerFailed, setTrailerFailed] = useState(false);
+
+  // Reset error state and sync mp4 audio when game or mute changes
+  useEffect(() => {
+    setTrailerFailed(false);
+  }, [selected]);
+  useEffect(() => {
+    if (videoRef.current) videoRef.current.muted = muted;
+  }, [muted, selected]);
+
+  const trailerKind: "video" | "iframe-drive" | "iframe-yt" | "none" =
+    current.trailerVideo
+      ? "video"
+      : current.trailerIframe
+      ? "iframe-drive"
+      : current.trailer
+      ? "iframe-yt"
+      : "none";
+
+  const ytSrc =
+    trailerKind === "iframe-yt"
+      ? `https://www.youtube.com/embed/${current.trailer}?autoplay=1&mute=${
+          muted ? 1 : 0
+        }&loop=1&playlist=${current.trailer}&controls=0&modestbranding=1&playsinline=1&rel=0`
+      : null;
+
+  const driveSrc =
+    trailerKind === "iframe-drive"
+      ? `${current.trailerIframe}?autoplay=1`
+      : null;
+
+  // Drive iframe cannot be controlled — hide mute button for it
+  const canControlAudio = trailerKind === "video" || trailerKind === "iframe-yt";
 
   return (
     <section className="mx-auto mt-20 max-w-[1280px] px-4 sm:px-6">
@@ -157,21 +186,44 @@ export function PopularGames() {
             ref={playerRef}
             className="relative aspect-video overflow-hidden rounded-2xl border border-white/10 bg-black shadow-[0_0_60px_-20px_rgba(124,58,237,0.7)]"
           >
-            {trailerSrc ? (
-              <iframe
-                key={fadeKey}
-                src={trailerSrc}
-                title={`${current.name} trailer`}
-                allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
-                allowFullScreen
-                className="absolute inset-0 h-[calc(100%+120px)] w-[calc(100%+1px)] -top-[60px] animate-in fade-in duration-500"
-              />
-            ) : (
+            {trailerFailed || trailerKind === "none" ? (
               <img
                 key={fadeKey}
                 src={current.cover}
                 alt={current.name}
                 className="absolute inset-0 h-full w-full object-cover animate-in fade-in duration-500"
+              />
+            ) : trailerKind === "video" ? (
+              <video
+                key={fadeKey}
+                ref={videoRef}
+                src={current.trailerVideo}
+                autoPlay
+                muted={muted}
+                loop
+                playsInline
+                onError={() => setTrailerFailed(true)}
+                className="absolute inset-0 h-full w-full object-cover animate-in fade-in duration-500"
+              />
+            ) : trailerKind === "iframe-drive" ? (
+              <iframe
+                key={fadeKey}
+                src={driveSrc!}
+                title={`${current.name} trailer`}
+                allow="autoplay; fullscreen"
+                allowFullScreen
+                onError={() => setTrailerFailed(true)}
+                className="absolute inset-0 h-full w-full border-0 animate-in fade-in duration-500"
+              />
+            ) : (
+              <iframe
+                key={fadeKey}
+                src={ytSrc!}
+                title={`${current.name} trailer`}
+                allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+                allowFullScreen
+                onError={() => setTrailerFailed(true)}
+                className="absolute inset-0 h-[calc(100%+120px)] w-[calc(100%+1px)] -top-[60px] animate-in fade-in duration-500"
               />
             )}
 
@@ -184,16 +236,18 @@ export function PopularGames() {
               >
                 <Maximize2 className="h-4 w-4" />
               </button>
-              <button
-                onClick={() => {
-                  setMuted((m) => !m);
-                  setFadeKey((k) => k + 1);
-                }}
-                aria-label={muted ? "Ativar som" : "Silenciar"}
-                className="grid h-9 w-9 place-items-center rounded-lg bg-primary text-white transition hover:bg-primary/90"
-              >
-                {muted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
-              </button>
+              {canControlAudio && (
+                <button
+                  onClick={() => {
+                    setMuted((m) => !m);
+                    if (trailerKind === "iframe-yt") setFadeKey((k) => k + 1);
+                  }}
+                  aria-label={muted ? "Ativar som" : "Silenciar"}
+                  className="grid h-9 w-9 place-items-center rounded-lg bg-primary text-white transition hover:bg-primary/90"
+                >
+                  {muted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+                </button>
+              )}
             </div>
 
             {/* Bottom gradient + info */}
