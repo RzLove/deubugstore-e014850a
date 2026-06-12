@@ -1276,6 +1276,8 @@ export const games: Game[] = raw.map((g) => {
     recReq: g.recReq,
     delivery: defaultDelivery,
     trailer: g.trailer,
+    trailerVideo: g.trailerVideo,
+    trailerIframe: g.trailerIframe,
     categories: g.categories,
     stock: g.stock ?? defaultStock(g.id),
     bundle: g.bundle,
