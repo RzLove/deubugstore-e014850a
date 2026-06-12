@@ -1,3 +1,5 @@
+import trailerResidentAsset from "@/assets/trailer-resident.mp4.asset.json";
+
 export type GameCategory =
   | "popular"
   | "acao"
