@@ -1,25 +1,13 @@
 import { useState } from "react";
 import { Flame, ChevronLeft, ChevronRight, Maximize2, VolumeX, ShoppingCart, ArrowRight, MessagesSquare } from "lucide-react";
 import { PurchaseModal } from "./PurchaseModal";
-import popular from "@/assets/cat-popular.jpg";
-import action from "@/assets/cat-action.jpg";
-import rpg from "@/assets/cat-rpg.jpg";
-import horror from "@/assets/cat-horror.jpg";
-import fight from "@/assets/cat-fight.jpg";
-import shooter from "@/assets/cat-shooter.jpg";
-
-const games = [
-  { id: 1, name: "Red Dawn Outlaw", price: "R$ 14,99", cover: popular },
-  { id: 2, name: "Shadow Strike", price: "R$ 19,99", cover: action },
-  { id: 3, name: "Eldrith Sword", price: "R$ 22,99", cover: rpg },
-  { id: 4, name: "Phantom Whisper", price: "R$ 12,99", cover: horror },
-  { id: 5, name: "Iron Fist Arena", price: "R$ 16,99", cover: fight },
-  { id: 6, name: "Operator Zero", price: "R$ 24,99", cover: shooter },
-];
+import { games } from "@/lib/games";
+import { useNavigate } from "@tanstack/react-router";
 
 export function PopularGames() {
   const [selected, setSelected] = useState(0);
   const [isPurchaseModalOpen, setIsPurchaseModalOpen] = useState(false);
+  const navigate = useNavigate();
   const current = games[selected];
 
   return (
@@ -98,7 +86,10 @@ export function PopularGames() {
           </div>
 
           {/* "Player" */}
-          <div className="relative overflow-hidden rounded-2xl border border-border glow-primary-lg">
+          <div 
+            onClick={() => navigate({ to: "/game/$id", params: { id: current.id.toString() } })}
+            className="relative overflow-hidden rounded-2xl border border-border glow-primary-lg cursor-pointer"
+          >
             <img
               key={current.id}
               src={current.cover}
@@ -120,11 +111,14 @@ export function PopularGames() {
             <div className="absolute bottom-0 left-0 right-0 flex flex-wrap items-end justify-between gap-3 p-5">
               <div>
                 <div className="font-display text-xl font-extrabold">{current.name}</div>
-                <div className="mt-1 font-display text-2xl font-extrabold">{current.price}</div>
+                <div className="mt-1 font-display text-2xl font-extrabold text-primary-glow">{current.discountedPrice}</div>
               </div>
               <div className="flex gap-2">
                 <button 
-                  onClick={() => setIsPurchaseModalOpen(true)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsPurchaseModalOpen(true);
+                  }}
                   className="inline-flex h-10 items-center gap-2 rounded-lg bg-primary px-4 text-sm font-bold text-primary-foreground glow-primary hover:bg-primary-glow"
                 >
                   <ShoppingCart className="h-4 w-4" /> Comprar agora
@@ -146,3 +140,4 @@ export function PopularGames() {
     </section>
   );
 }
+
