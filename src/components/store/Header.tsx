@@ -1,4 +1,5 @@
-import { Search, ShoppingCart, User, BadgeCheck } from "lucide-react";
+import { ShoppingCart, User, BadgeCheck } from "lucide-react";
+import { SearchAutocomplete } from "@/components/store/SearchAutocomplete";
 import logo from "@/assets/deu-bug-logo.png.asset.json";
 
 export function Header({ cartCount = 0 }: { cartCount?: number }) {
