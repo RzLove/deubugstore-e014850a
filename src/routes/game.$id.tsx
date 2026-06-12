@@ -1,4 +1,5 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { motion } from "framer-motion";
 import { Header } from "@/components/store/Header";
 import { Footer } from "@/components/store/Footer";
 import { games } from "@/lib/games";
@@ -42,7 +43,16 @@ function GameDetailPage() {
   }
 
   return (
-    <div className="relative min-h-screen bg-[#06070a]">
+    <div className="relative min-h-screen bg-[#020203] text-white selection:bg-primary overflow-x-hidden">
+      {/* Glitch Background (Sync with Store Aesthetics) */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.03]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(139,92,246,0.05),transparent_70%)]"></div>
+        
+        {/* Animated Scanline */}
+        <div className="absolute top-0 left-0 w-full h-[1px] bg-primary/20 shadow-[0_0_15px_rgba(139,92,246,0.5)] animate-scanline"></div>
+      </div>
+
       <Header cartCount={0} />
       
       <main className="mx-auto max-w-[1280px] px-4 py-8 sm:px-6">
@@ -72,7 +82,10 @@ function GameDetailPage() {
             </div>
 
             {/* Description Section */}
-            <div className="surface-card p-6 sm:p-8">
+            <div className="relative bg-[#0A0A0C] border border-white/5 rounded-2xl p-6 sm:p-8 shadow-2xl">
+              {/* Corner Bug Decoration */}
+              <div className="absolute -top-2 -right-2 px-2 py-0.5 bg-primary text-[8px] font-black uppercase tracking-widest rounded skew-x-12 opacity-50">DEU BUG // SECURE</div>
+
               <h2 className="flex items-center gap-2 font-display text-2xl font-bold text-white mb-6">
                 <Info className="h-5 w-5 text-primary-glow" />
                 Sobre o jogo
@@ -94,7 +107,8 @@ function GameDetailPage() {
             </div>
 
             {/* Reviews Section */}
-            <div className="surface-card p-6 sm:p-8">
+            <div className="relative bg-[#0A0A0C] border border-white/5 rounded-2xl p-6 sm:p-8 shadow-2xl overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
                <h2 className="flex items-center gap-2 font-display text-2xl font-bold text-white mb-6">
                 <Star className="h-5 w-5 text-yellow-500" />
                 Avaliações
@@ -122,13 +136,15 @@ function GameDetailPage() {
 
           {/* Right Column — Pricing & Checkout */}
           <div className="space-y-6">
-            <div className="sticky top-24 surface-card overflow-hidden p-6 sm:p-8 border-primary/20 shadow-primary/10 shadow-2xl">
+            <div className="sticky top-24 bg-[#0A0A0C] border border-primary/20 rounded-2xl overflow-hidden p-6 sm:p-8 shadow-2xl shadow-primary/10">
+              {/* Premium Glow Header */}
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-neon-cyan to-primary bg-[length:200%_auto] animate-[gradient_4s_linear_infinite]"></div>
               <div className="flex items-center gap-2 mb-4">
                 <span className="h-2 w-2 rounded-full bg-red-500 animate-pulse" />
                 <span className="text-[10px] font-black uppercase tracking-[0.2em] text-red-500">Oferta por tempo limitado</span>
               </div>
               
-              <h1 className="font-display text-3xl font-black text-white sm:text-4xl leading-tight">
+              <h1 className="font-display text-3xl font-black text-white sm:text-4xl leading-tight uppercase italic tracking-tighter">
                 {game.name}
               </h1>
               
@@ -161,7 +177,7 @@ function GameDetailPage() {
               </div>
 
               {/* Conversion Triggers */}
-              <div className="mt-8 space-y-4 rounded-2xl bg-white/[0.03] p-5">
+              <div className="mt-8 space-y-4 rounded-2xl bg-white/[0.02] border border-white/5 p-5">
                 <div className="flex items-center gap-3">
                   <div className="grid h-10 w-10 place-items-center rounded-lg bg-green-500/10 text-green-500">
                     <ShieldCheck className="h-5 w-5" />

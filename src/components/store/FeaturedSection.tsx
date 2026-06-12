@@ -1,12 +1,17 @@
 import { ShoppingCart, ChevronLeft, ChevronRight } from "lucide-react";
 
-const games = [
-  { id: 1, name: "Call of Duty: Black Ops 6", price: "R$ 199,90", oldPrice: "R$ 349,90", discount: "-42%", tag: "Lançamento", cover: "https://shared.cloudflare.steamstatic.com/store_apps/2933620/header.jpg" },
-  { id: 2, name: "Red Dead Redemption 2", price: "R$ 89,90", oldPrice: "R$ 299,00", discount: "-70%", tag: "MAIS VENDIDO", cover: "https://shared.cloudflare.steamstatic.com/store_apps/1174180/header.jpg" },
-  { id: 3, name: "EA Sports FC 24", price: "R$ 49,90", oldPrice: "R$ 359,00", discount: "-86%", tag: "PROMOÇÃO", cover: "https://shared.cloudflare.steamstatic.com/store_apps/2195250/header.jpg" },
-  { id: 4, name: "GTA V", price: "R$ 34,90", oldPrice: "R$ 149,00", discount: "-76%", tag: "CLÁSSICO", cover: "https://shared.cloudflare.steamstatic.com/store_apps/271590/header.jpg" },
-  { id: 5, name: "Elden Ring", price: "R$ 139,90", oldPrice: "R$ 249,00", discount: "-44%", tag: "MAIS VENDIDO", cover: "https://shared.cloudflare.steamstatic.com/store_apps/1245620/header.jpg" },
-];
+import { games as allGames } from "@/lib/games";
+
+const featuredGameIds = [1, 2, 3, 4, 5];
+const games = allGames.filter(g => featuredGameIds.includes(Number(g.id))).map(g => ({
+  id: g.id,
+  name: g.name,
+  price: g.discountedPrice,
+  oldPrice: g.originalPrice,
+  discount: g.discount,
+  tag: Number(g.id) === 1 ? "Lançamento" : Number(g.id) === 2 || Number(g.id) === 5 ? "MAIS VENDIDO" : Number(g.id) === 3 ? "PROMOÇÃO" : "CLÁSSICO",
+  cover: g.cover
+}));
 
 export function FeaturedSection() {
   return (
@@ -36,6 +41,7 @@ export function FeaturedSection() {
                 key={game.id} 
                 className="group bg-[#0c0c0e] border border-white/5 rounded-2xl overflow-hidden hover:border-primary/50 transition-all hover:shadow-[0_0_40px_rgba(123,46,255,0.1)] hover:-translate-y-2 cursor-pointer"
                 onClick={() => window.location.href = `/game/${game.id}`}
+
               >
                 <div className="relative aspect-[3/4] overflow-hidden">
                   <img 
