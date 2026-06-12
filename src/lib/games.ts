@@ -1,4 +1,8 @@
 import trailerResidentAsset from "@/assets/trailer-resident.mp4.asset.json";
+import banner007Asset from "@/assets/banner-007-first-light.jpg.asset.json";
+import bannerResidentAsset from "@/assets/banner-resident-evil-requiem.jpg.asset.json";
+import bannerCrimsonOfflineAsset from "@/assets/banner-crimson-desert-offline.jpg.asset.json";
+import bannerCrimsonDeluxeAsset from "@/assets/banner-crimson-desert-deluxe.jpg.asset.json";
 
 export type GameCategory =
   | "popular"
@@ -128,7 +132,7 @@ const raw: RawGame[] = [
     id: 31,
     name: "007 First Light [DELUXE] + Lies of P: Overture",
     appId: 3527290,
-    coverUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/3527290/header.jpg",
+    coverUrl: banner007Asset.url,
     origNumber: 350,
     newNumber: 25,
     stock: 22,
@@ -204,6 +208,7 @@ const raw: RawGame[] = [
     id: 1,
     name: "Resident Evil Requiem (CONTA OFFLINE)",
     appId: 3241660,
+    coverUrl: bannerResidentAsset.url,
     origNumber: 300,
     newNumber: 20,
     trailer: "M7yEzlF7dPo",
@@ -271,6 +276,7 @@ const raw: RawGame[] = [
     id: 3,
     name: "Crimson Desert (CONTA OFFLINE)",
     appId: 1601580,
+    coverUrl: bannerCrimsonOfflineAsset.url,
     origNumber: 350,
     newNumber: 17.99,
     trailer: "1bDS3eNcCwc",
@@ -1143,7 +1149,7 @@ const raw: RawGame[] = [
     id: 32,
     name: "Crimson Desert [DELUXE EDITION]",
     appId: 2407030,
-    coverUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/2407030/header.jpg",
+    coverUrl: bannerCrimsonDeluxeAsset.url,
     origNumber: 400,
     newNumber: 20,
     stock: 14,
