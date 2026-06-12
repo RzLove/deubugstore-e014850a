@@ -10,6 +10,8 @@ export interface Game {
   minRequirements: string;
   recommendedRequirements: string;
   delivery: string;
+  /** YouTube video ID used in the popular games trailer player */
+  trailer?: string;
 }
 
 import popular from "@/assets/cat-popular.jpg";
