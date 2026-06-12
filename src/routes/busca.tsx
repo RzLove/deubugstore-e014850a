@@ -6,6 +6,7 @@ import { Footer } from "@/components/store/Footer";
 import { searchGames } from "@/lib/games";
 import logo from "@/assets/deu-bug-logo.png.asset.json";
 import { Search } from "lucide-react";
+import { DISCORD_URL } from "@/lib/constants";
 
 const searchSchema = z.object({
   q: fallback(z.string(), "").default(""),

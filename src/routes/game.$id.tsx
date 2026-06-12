@@ -6,6 +6,7 @@ import { games } from "@/lib/games";
 import { useState } from "react";
 import { PurchaseModal } from "@/components/store/PurchaseModal";
 import { TikTokIcon } from "@/components/store/SocialIcons";
+import { DISCORD_URL } from "@/lib/constants";
 import { 
   BadgeCheck, 
   ShieldCheck, 
