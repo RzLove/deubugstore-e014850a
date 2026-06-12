@@ -17,20 +17,32 @@ export function Header() {
       <div className="mx-auto flex h-20 max-w-[1280px] items-center justify-between gap-6 px-4 sm:px-6 relative z-10">
         {/* Logo Section */}
         <a href="/" className="flex items-center gap-3 group shrink-0">
-          <div className="relative h-12 w-12 flex items-center justify-center">
-            <div className="absolute inset-0 bg-primary/20 blur-lg rounded-full group-hover:bg-primary/40 transition-colors"></div>
-            <svg viewBox="0 0 100 100" className="relative w-10 h-10 drop-shadow-[0_0_8px_rgba(123,46,255,0.8)]">
-              <path d="M50 20 L80 40 L80 70 L50 90 L20 70 L20 40 Z" fill="none" stroke="#7B2EFF" strokeWidth="4" className="glitch-effect" />
-              <circle cx="35" cy="45" r="4" fill="#39FF14" />
-              <circle cx="65" cy="45" r="4" fill="#39FF14" />
-              <path d="M40 30 L40 20 M60 30 L60 20 M30 50 L20 50 M70 50 L80 50" stroke="#7B2EFF" strokeWidth="2" />
-            </svg>
-          </div>
-          <div className="flex flex-col leading-none">
-            <span className="font-display text-lg font-black uppercase tracking-tighter text-white">
-              DEU BUG <span className="text-primary italic">AQUI</span>
-            </span>
-            <span className="text-[10px] font-black text-neon-green/80 uppercase tracking-widest glitch-effect">Store System</span>
+          <div className="relative h-12 w-auto flex items-center">
+            <img 
+              src="https://drive.google.com/uc?export=view&id=1-jyC-sB4Jty704So0jkUqM6WLOLSJbhO" 
+              alt="Deu Bug Store Logo"
+              className="h-full w-auto object-contain drop-shadow-[0_0_8px_rgba(123,46,255,0.6)]"
+              onError={(e) => {
+                e.currentTarget.style.display = 'none';
+                e.currentTarget.nextElementSibling?.classList.remove('hidden');
+              }}
+            />
+            <div className="hidden flex items-center gap-3">
+              <div className="relative h-12 w-12 flex items-center justify-center">
+                <div className="absolute inset-0 bg-primary/20 blur-lg rounded-full group-hover:bg-primary/40 transition-colors"></div>
+                <svg viewBox="0 0 100 100" className="relative w-10 h-10 drop-shadow-[0_0_8px_rgba(123,46,255,0.8)]">
+                  <path d="M50 20 L80 40 L80 70 L50 90 L20 70 L20 40 Z" fill="none" stroke="#7B2EFF" strokeWidth="4" className="glitch-effect" />
+                  <circle cx="35" cy="45" r="4" fill="#39FF14" />
+                  <circle cx="65" cy="45" r="4" fill="#39FF14" />
+                </svg>
+              </div>
+              <div className="flex flex-col leading-none">
+                <span className="font-display text-lg font-black uppercase tracking-tighter text-white">
+                  DEU BUG <span className="text-primary italic">AQUI</span>
+                </span>
+                <span className="text-[10px] font-black text-neon-green/80 uppercase tracking-widest glitch-effect">Store System</span>
+              </div>
+            </div>
           </div>
         </a>
 
@@ -184,31 +196,35 @@ export function Hero() {
 
           {/* Right Content - Mascot */}
           <div className="relative flex justify-center lg:justify-end order-1 lg:order-2">
-            <div className="relative w-full max-w-[480px] aspect-square">
-              {/* Error Box */}
+            <div className="relative w-full max-w-[480px] aspect-[16/9] flex items-center justify-center">
+              {/* Image Banner */}
+              <div className="relative z-10 w-full h-full flex items-center justify-center group overflow-hidden rounded-2xl border border-primary/20 bg-[#0c0c0e]/50 backdrop-blur-sm shadow-[0_0_50px_rgba(123,46,255,0.15)] transition-all hover:border-primary/40 hover:shadow-[0_0_60px_rgba(123,46,255,0.25)]">
+                <div className="absolute inset-0 bg-primary/5 blur-3xl rounded-full animate-pulse"></div>
+                <img 
+                  src="https://drive.google.com/uc?export=view&id=1-jyC-sB4Jty704So0jkUqM6WLOLSJbhO" 
+                  alt="Deu Bug Store Banner"
+                  className="relative z-10 w-full h-full object-contain p-4 transition-transform duration-700 group-hover:scale-105"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                    e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                  }}
+                />
+                
+                {/* Fallback Mascot SVG if image fails */}
+                <div className="hidden relative z-10 w-full h-full flex items-center justify-center">
+                   <svg viewBox="0 0 200 200" className="w-48 h-48 drop-shadow-[0_0_30px_rgba(123,46,255,0.3)]">
+                     <path d="M100 50 L140 90 L130 150 L70 150 L60 90 Z" fill="#0c0c0e" stroke="#7B2EFF" strokeWidth="3" />
+                     <path d="M100 50 L140 90 L100 110 L60 90 Z" fill="#151518" stroke="#7B2EFF" strokeWidth="2" />
+                     <path d="M80 150 L70 170 M120 150 L130 170" stroke="#39FF14" strokeWidth="4" strokeLinecap="round" />
+                     <circle cx="85" cy="85" r="5" fill="#39FF14" className="animate-pulse" />
+                     <circle cx="115" cy="85" r="5" fill="#39FF14" className="animate-pulse" />
+                   </svg>
+                </div>
+              </div>
+
+              {/* Error Box decoration */}
               <div className="absolute -top-6 -right-6 z-20 bg-black/80 border border-primary/50 backdrop-blur-md px-4 py-2 rounded font-mono text-xs text-primary shadow-[0_0_20px_rgba(123,46,255,0.2)] glitch-effect">
-                ERROR 404
-              </div>
-
-              {/* Deu Bug Text */}
-              <div className="absolute bottom-10 left-0 z-20 font-display text-3xl font-black italic uppercase tracking-tighter text-neon-green drop-shadow-[0_0_10px_rgba(57,255,20,0.5)] glitch-effect">
-                DEU BUG AQUI
-              </div>
-
-              {/* Mascot */}
-              <div className="relative z-10 w-full h-full flex items-center justify-center">
-                 <div className="absolute inset-0 bg-primary/10 blur-[80px] rounded-full animate-pulse"></div>
-                 <svg viewBox="0 0 200 200" className="w-full h-full drop-shadow-[0_0_30px_rgba(123,46,255,0.3)]">
-                   {/* Cyberpunk Bug Body */}
-                   <path d="M100 50 L140 90 L130 150 L70 150 L60 90 Z" fill="#0c0c0e" stroke="#7B2EFF" strokeWidth="3" />
-                   <path d="M100 50 L140 90 L100 110 L60 90 Z" fill="#151518" stroke="#7B2EFF" strokeWidth="2" />
-                   {/* Neon Details */}
-                   <path d="M80 150 L70 170 M120 150 L130 170" stroke="#39FF14" strokeWidth="4" strokeLinecap="round" />
-                   <circle cx="85" cy="85" r="5" fill="#39FF14" className="animate-pulse" />
-                   <circle cx="115" cy="85" r="5" fill="#39FF14" className="animate-pulse" />
-                   {/* Circuits */}
-                   <path d="M100 110 V140 M80 120 H120" stroke="#7B2EFF" strokeWidth="1" opacity="0.5" />
-                 </svg>
+                SYSTEM OK
               </div>
             </div>
           </div>
