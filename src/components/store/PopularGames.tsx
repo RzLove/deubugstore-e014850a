@@ -186,21 +186,44 @@ export function PopularGames() {
             ref={playerRef}
             className="relative aspect-video overflow-hidden rounded-2xl border border-white/10 bg-black shadow-[0_0_60px_-20px_rgba(124,58,237,0.7)]"
           >
-            {trailerSrc ? (
-              <iframe
-                key={fadeKey}
-                src={trailerSrc}
-                title={`${current.name} trailer`}
-                allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
-                allowFullScreen
-                className="absolute inset-0 h-[calc(100%+120px)] w-[calc(100%+1px)] -top-[60px] animate-in fade-in duration-500"
-              />
-            ) : (
+            {trailerFailed || trailerKind === "none" ? (
               <img
                 key={fadeKey}
                 src={current.cover}
                 alt={current.name}
                 className="absolute inset-0 h-full w-full object-cover animate-in fade-in duration-500"
+              />
+            ) : trailerKind === "video" ? (
+              <video
+                key={fadeKey}
+                ref={videoRef}
+                src={current.trailerVideo}
+                autoPlay
+                muted={muted}
+                loop
+                playsInline
+                onError={() => setTrailerFailed(true)}
+                className="absolute inset-0 h-full w-full object-cover animate-in fade-in duration-500"
+              />
+            ) : trailerKind === "iframe-drive" ? (
+              <iframe
+                key={fadeKey}
+                src={driveSrc!}
+                title={`${current.name} trailer`}
+                allow="autoplay; fullscreen"
+                allowFullScreen
+                onError={() => setTrailerFailed(true)}
+                className="absolute inset-0 h-full w-full border-0 animate-in fade-in duration-500"
+              />
+            ) : (
+              <iframe
+                key={fadeKey}
+                src={ytSrc!}
+                title={`${current.name} trailer`}
+                allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+                allowFullScreen
+                onError={() => setTrailerFailed(true)}
+                className="absolute inset-0 h-[calc(100%+120px)] w-[calc(100%+1px)] -top-[60px] animate-in fade-in duration-500"
               />
             )}
 
