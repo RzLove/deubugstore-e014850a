@@ -109,9 +109,15 @@ export function Banner() {
           Não encontrou algum jogo?{" "}
           <span className="text-neon-green">Nós conseguimos para você!</span>
         </p>
-        <button className="inline-flex h-9 items-center gap-1.5 rounded-full border border-white/80 bg-transparent px-4 text-xs font-black uppercase tracking-widest text-white transition hover:border-neon-green hover:text-neon-green">
+        <a
+          href={DISCORD_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Solicitar um jogo pelo nosso Discord"
+          className="inline-flex min-h-[44px] min-w-[44px] cursor-pointer items-center gap-1.5 whitespace-nowrap rounded-full border border-white/80 bg-transparent px-5 py-2 text-xs font-black uppercase tracking-widest text-white transition-all duration-200 ease-out hover:scale-105 hover:border-neon-green hover:text-neon-green hover:shadow-[0_0_18px_rgba(57,255,20,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-green/70"
+        >
           Clique aqui <ArrowRight className="h-3.5 w-3.5" />
-        </button>
+        </a>
       </div>
     </div>
   );
