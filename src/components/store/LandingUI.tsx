@@ -189,25 +189,88 @@ export function Hero() {
             </a>
           </div>
 
-          {/* RIGHT — mascot scene (frameless, blends with backdrop) */}
-          <div className="relative mx-auto flex aspect-square w-full max-w-[620px] items-center justify-center">
-            {/* diffuse purple + green glow behind mascot */}
-            <div className="pointer-events-none absolute inset-[6%] rounded-full bg-[radial-gradient(circle_at_50%_55%,rgba(139,92,246,0.55),transparent_60%)] blur-2xl" />
-            <div className="pointer-events-none absolute inset-[12%] rounded-full bg-[radial-gradient(circle_at_50%_70%,rgba(57,255,20,0.35),transparent_65%)] blur-2xl" />
+          {/* RIGHT — mascot scene */}
+          <div className="relative mx-auto flex aspect-square w-full max-w-[640px] items-center justify-center">
+            {/* glitchy backdrop scene — edges fade into page */}
+            <div
+              className="absolute inset-0 z-0"
+              style={{
+                background:
+                  "radial-gradient(ellipse 60% 55% at 50% 55%, rgba(139,92,246,0.55), rgba(57,255,20,0.18) 45%, transparent 75%)",
+                WebkitMaskImage:
+                  "radial-gradient(ellipse at center, black 45%, transparent 78%)",
+                maskImage:
+                  "radial-gradient(ellipse at center, black 45%, transparent 78%)",
+                filter: "blur(20px)",
+              }}
+            />
+            {/* broken monitor frame — clipped to a torn/jagged shape and faded */}
+            <div
+              className="absolute inset-[10%] z-[1] border-2 border-primary/60 bg-[#0a0518]/60 shadow-[inset_0_0_60px_rgba(139,92,246,0.45)]"
+              style={{
+                clipPath:
+                  "polygon(2% 6%, 96% 0%, 100% 18%, 98% 96%, 4% 100%, 0% 82%)",
+                WebkitMaskImage:
+                  "radial-gradient(ellipse at center, black 60%, transparent 95%)",
+                maskImage:
+                  "radial-gradient(ellipse at center, black 60%, transparent 95%)",
+              }}
+            />
+            <div
+              className="absolute inset-[10%] z-[1] border-2 border-neon-green/40"
+              style={{
+                transform: "translate(6px,4px)",
+                clipPath:
+                  "polygon(2% 6%, 96% 0%, 100% 18%, 98% 96%, 4% 100%, 0% 82%)",
+                WebkitMaskImage:
+                  "radial-gradient(ellipse at center, black 60%, transparent 95%)",
+                maskImage:
+                  "radial-gradient(ellipse at center, black 60%, transparent 95%)",
+              }}
+            />
 
-            {/* mascot — screen blend dissolves the dark square edges into the page */}
+            {/* glitch pixel bursts around the monitor */}
+            {[
+              "left-[4%] top-[18%] h-1.5 w-10 bg-neon-cyan",
+              "left-[8%] top-[40%] h-1 w-6 bg-primary",
+              "left-[2%] bottom-[24%] h-1 w-12 bg-neon-green",
+              "right-[4%] top-[24%] h-1.5 w-10 bg-neon-red",
+              "right-[6%] top-[52%] h-1 w-8 bg-neon-cyan",
+              "right-[2%] bottom-[18%] h-1.5 w-12 bg-neon-green",
+            ].map((c, i) => (
+              <span key={i} className={`absolute z-[2] opacity-70 ${c}`} />
+            ))}
+
+            {/* DEU BUG AQUI text */}
+            <div className="absolute right-[4%] top-[6%] z-20 text-right font-display font-black italic uppercase leading-[0.85] text-white drop-shadow-[0_0_18px_rgba(139,92,246,0.6)]">
+              <div className="text-3xl text-glitch sm:text-4xl">Deu</div>
+              <div className="text-5xl text-glitch glitch-skew sm:text-6xl">Bug</div>
+              <div className="text-3xl text-glitch sm:text-4xl">Aqui</div>
+            </div>
+
+            {/* ERROR 404 badge */}
+            <div className="absolute bottom-[20%] right-[4%] z-20 rounded-md border border-neon-green/70 bg-black/70 px-3 py-1 text-center font-display text-xs font-black uppercase tracking-widest text-neon-green shadow-[0_0_18px_-2px_rgba(57,255,20,0.7)]">
+              Error
+              <br />
+              404
+            </div>
+
+            {/* halo ring at base */}
+            <div className="absolute bottom-[6%] left-1/2 z-[3] h-[60px] w-[78%] -translate-x-1/2 rounded-[50%] bg-[radial-gradient(ellipse_at_center,rgba(57,255,20,0.6),transparent_70%)] blur-md" />
+            <div
+              className="absolute bottom-[8%] left-1/2 z-[3] h-[26px] w-[60%] -translate-x-1/2 rounded-[50%] border border-neon-green/70"
+              style={{ boxShadow: "0 0 30px rgba(57,255,20,0.7), inset 0 0 18px rgba(57,255,20,0.55)" }}
+            />
+
+            {/* mascot — anchored, no floating */}
             <img
-              src={mascot.url}
+              src={logo.url}
               alt="Mascote Deu Bug Store"
               loading="eager"
-              className="float-y glitch-skew relative z-10 h-full w-full object-contain"
+              className="relative z-10 h-[92%] w-[92%] object-contain"
               style={{
-                mixBlendMode: "screen",
-                WebkitMaskImage:
-                  "radial-gradient(ellipse at center, black 55%, transparent 80%)",
-                maskImage:
-                  "radial-gradient(ellipse at center, black 55%, transparent 80%)",
-                filter: "drop-shadow(0 0 40px rgba(57,255,20,0.35)) drop-shadow(0 0 60px rgba(139,92,246,0.35))",
+                filter:
+                  "drop-shadow(0 0 30px rgba(57,255,20,0.45)) drop-shadow(0 0 60px rgba(139,92,246,0.45))",
               }}
             />
           </div>
