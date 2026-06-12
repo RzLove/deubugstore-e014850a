@@ -237,8 +237,7 @@ export function PopularGames() {
                 loop
                 playsInline
                 preload="metadata"
-                // @ts-expect-error legacy iOS attribute
-                webkit-playsinline="true"
+                {...({ "webkit-playsinline": "true" } as Record<string, string>)}
                 onPlay={() => setAutoplayBlocked(false)}
                 onError={() => setTrailerFailed(true)}
                 className="absolute inset-0 h-full w-full object-cover animate-in fade-in duration-500"
