@@ -15,7 +15,6 @@ import {
   Star, 
   ArrowLeft,
   ChevronRight,
-  Info
 } from "lucide-react";
 
 export const Route = createFileRoute("/game/$id")({
