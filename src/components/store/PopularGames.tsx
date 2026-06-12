@@ -33,7 +33,7 @@ export function PopularGames() {
               Ver produtos <ArrowRight className="h-4 w-4" />
             </button>
             <button 
-              onClick={() => window.open("https://discord.gg/deubug", "_blank")}
+              onClick={() => window.open("https://discord.gg/yWTY2Y83Ha", "_blank")}
               className="inline-flex h-12 items-center gap-2 rounded-full border border-border bg-secondary/40 px-6 text-sm font-semibold transition hover:border-primary/60 hover:bg-secondary"
             >
               <MessagesSquare className="h-4 w-4" /> Discord
