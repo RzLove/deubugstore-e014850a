@@ -1,4 +1,5 @@
-import { BadgeCheck, MessagesSquare, Instagram, Youtube } from "lucide-react";
+import { BadgeCheck, MessagesSquare, Youtube } from "lucide-react";
+import { TikTokIcon } from "@/components/store/SocialIcons";
 import logo from "@/assets/deu-bug-logo.png.asset.json";
 
 export function Footer() {
@@ -32,15 +33,28 @@ export function Footer() {
             O sistema corrompido que entrega o <span className="text-neon-cyan italic">preço que você procura</span>.
           </p>
           <div className="flex items-center gap-3">
-            {[MessagesSquare, Instagram, Youtube].map((Icon, i) => (
-              <a 
-                key={i} 
-                href="#" 
-                className="h-10 w-10 flex items-center justify-center rounded-lg bg-white/5 border border-white/10 text-white/60 hover:text-primary hover:border-primary/50 transition-all hover:shadow-[0_0_15px_rgba(123,46,255,0.3)]"
-              >
-                <Icon className="h-5 w-5" />
-              </a>
-            ))}
+            <a
+              href="https://www.tiktok.com/@deu.bug.aqui"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white/60 transition-all hover:border-cyan-400/50 hover:text-cyan-400 hover:shadow-[0_0_15px_rgba(34,211,238,0.3)]"
+            >
+              <TikTokIcon className="h-5 w-5" />
+            </a>
+            <a
+              href="https://youtube.com/@deubugaqui"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white/60 transition-all hover:border-red-500/50 hover:text-red-500 hover:shadow-[0_0_15px_rgba(239,68,68,0.3)]"
+            >
+              <Youtube className="h-5 w-5" />
+            </a>
+            <a
+              href="#"
+              className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white/60 transition-all hover:border-primary/50 hover:text-primary hover:shadow-[0_0_15px_rgba(123,46,255,0.3)]"
+            >
+              <MessagesSquare className="h-5 w-5" />
+            </a>
           </div>
         </div>
 
