@@ -236,16 +236,18 @@ export function PopularGames() {
               >
                 <Maximize2 className="h-4 w-4" />
               </button>
-              <button
-                onClick={() => {
-                  setMuted((m) => !m);
-                  setFadeKey((k) => k + 1);
-                }}
-                aria-label={muted ? "Ativar som" : "Silenciar"}
-                className="grid h-9 w-9 place-items-center rounded-lg bg-primary text-white transition hover:bg-primary/90"
-              >
-                {muted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
-              </button>
+              {canControlAudio && (
+                <button
+                  onClick={() => {
+                    setMuted((m) => !m);
+                    if (trailerKind === "iframe-yt") setFadeKey((k) => k + 1);
+                  }}
+                  aria-label={muted ? "Ativar som" : "Silenciar"}
+                  className="grid h-9 w-9 place-items-center rounded-lg bg-primary text-white transition hover:bg-primary/90"
+                >
+                  {muted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+                </button>
+              )}
             </div>
 
             {/* Bottom gradient + info */}
