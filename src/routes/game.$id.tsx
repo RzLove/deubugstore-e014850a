@@ -5,6 +5,7 @@ import { Footer } from "@/components/store/Footer";
 import { games } from "@/lib/games";
 import { useState } from "react";
 import { PurchaseModal } from "@/components/store/PurchaseModal";
+import { TikTokIcon } from "@/components/store/SocialIcons";
 import { 
   BadgeCheck, 
   ShieldCheck, 
@@ -19,6 +20,7 @@ import {
   Headphones,
   Info,
   KeyRound,
+  Youtube,
 } from "lucide-react";
 
 export const Route = createFileRoute("/game/$id")({
