@@ -12,8 +12,8 @@ export function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/5 bg-[#050507]/90 backdrop-blur-xl">
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.02] pointer-events-none"></div>
+    <header className="sticky top-0 z-50 w-full border-b border-white/5 bg-[#020203]/80 backdrop-blur-xl transition-all duration-300">
+      <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none"></div>
       <div className="mx-auto flex h-20 max-w-[1280px] items-center justify-between gap-6 px-4 sm:px-6 relative z-10">
         {/* Logo Section */}
         <a href="/" className="flex items-center gap-3 group shrink-0">
@@ -140,35 +140,28 @@ export function Banner() {
 
 export function Hero() {
   return (
-    <section className="relative min-h-[85vh] flex items-center py-12 lg:py-20 overflow-hidden">
-      {/* Background Glitch Elements */}
+    <section className="relative min-h-[90vh] flex items-center py-20 overflow-hidden">
+      {/* Premium Background */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(123,46,255,0.08),transparent_70%)]"></div>
-        <div className="absolute top-1/4 left-1/4 w-96 h-1 bg-neon-cyan/20 glitch-effect" style={{ animationDelay: '0.1s' }}></div>
-        <div className="absolute top-1/2 right-1/4 w-64 h-2 bg-primary/20 glitch-effect" style={{ animationDelay: '0.5s' }}></div>
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_0%,rgba(139,92,246,0.15),transparent_70%)]"></div>
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.01]"></div>
       </div>
 
-      <div className="mx-auto max-w-[1280px] w-full px-4 sm:px-6 relative z-10">
-        {/* Navigation Arrows */}
-        <button className="absolute left-4 top-1/2 -translate-y-1/2 hidden xl:flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-black/40 backdrop-blur hover:border-primary/50 transition-all text-white/40 hover:text-white">
-          <ChevronLeft className="h-6 w-6" />
-        </button>
-        <button className="absolute right-4 top-1/2 -translate-y-1/2 hidden xl:flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-black/40 backdrop-blur hover:border-primary/50 transition-all text-white/40 hover:text-white">
-          <ChevronRight className="h-6 w-6" />
-        </button>
-
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left Content */}
-          <div className="space-y-10 order-2 lg:order-1">
-            <div className="space-y-6">
-              <h1 className="font-display text-4xl sm:text-5xl md:text-7xl font-black leading-[1.05] tracking-tighter uppercase">
-                OS MELHORES <span className="text-primary glitch-effect inline-block">JOGOS</span> <br />
-                COM O MELHOR <span className="text-neon-green glitch-effect inline-block">PREÇO!</span>
-              </h1>
-              <p className="text-lg sm:text-xl md:text-2xl font-bold text-white/40 italic">
-                Aqui o bug é só no <span className="text-neon-green/80 underline decoration-wavy underline-offset-8">preço</span>!
-              </p>
+      <div className="mx-auto max-w-[1280px] w-full px-6 relative z-10">
+        <div className="max-w-4xl space-y-12">
+          <div className="space-y-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">Distribuidora Autorizada</span>
             </div>
+            <h1 className="font-display text-5xl sm:text-7xl lg:text-8xl font-black leading-[0.95] tracking-tighter uppercase italic">
+              A Nova Era da <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-neon-cyan to-primary bg-[length:200%_auto] animate-[gradient_4s_linear_infinite]">Distribuição</span>
+            </h1>
+            <p className="text-xl sm:text-2xl font-medium text-white/50 max-w-2xl leading-relaxed">
+              Experiência premium em licenças digitais. Performance, segurança e o <span className="text-white underline decoration-primary underline-offset-8">melhor valor de mercado</span>.
+            </p>
+          </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               <div className="space-y-3 group">
