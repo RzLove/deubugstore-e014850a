@@ -13,9 +13,9 @@ const searchSchema = z.object({
 
 export const Route = createFileRoute("/busca")({
   validateSearch: zodValidator(searchSchema),
-  head: ({ match }) => ({
+  head: () => ({
     meta: [
-      { title: `Busca: ${match.search.q || ""} — Deu Bug Store` },
+      { title: "Busca — Deu Bug Store" },
       { name: "description", content: "Resultados da busca na Deu Bug Store." },
     ],
   }),
