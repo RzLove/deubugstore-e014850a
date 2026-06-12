@@ -81,7 +81,7 @@ export function Hero() {
         {/* Background image */}
         <img
           src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1920&q=80"
-          alt="Banner principal Stm Store"
+          alt="Banner principal Deu Bug Store"
           className="absolute inset-0 h-full w-full object-cover opacity-40"
         />
         {/* Glow overlays */}
@@ -94,7 +94,7 @@ export function Hero() {
           <div className="space-y-6">
             <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-bold uppercase tracking-widest text-white/80 backdrop-blur">
               <span className="h-2 w-2 animate-pulse rounded-full bg-primary shadow-[0_0_10px_rgba(139,92,246,0.9)]" />
-              Stm Store
+              Deu Bug Store
             </div>
 
             <h1 className="font-display text-4xl font-black uppercase leading-[0.95] tracking-tight text-white sm:text-5xl lg:text-6xl">
@@ -124,7 +124,7 @@ export function Hero() {
                 A loja mais confiável do Brasil
               </h2>
               <p className="mt-3 text-sm leading-relaxed text-white/70">
-                Na <span className="font-bold text-primary">Stm Store</span>{" "}
+                Na <span className="font-bold text-primary">Deu Bug Store</span>{" "}
                 você encontra os maiores títulos da Steam com entrega 100%
                 automática, suporte humano 24/7 e preços imbatíveis. Compre
                 com segurança e jogue em minutos — sem complicação, sem
