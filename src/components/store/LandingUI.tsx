@@ -1,12 +1,22 @@
-import { ShoppingCart, User, Search, Check, Shield, Zap, Gamepad2, ChevronLeft, ChevronRight } from "lucide-react";
+import { ShoppingCart, User, Search, Check, Shield, Zap, Gamepad2, ChevronLeft, ChevronRight, Menu, X } from "lucide-react";
+import { useState } from "react";
 
 export function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const navItems = [
+    { label: "Início", href: "/" },
+    { label: "Sobre", href: "#" },
+    { label: "Serviços", href: "#" },
+    { label: "Contato", href: "#" },
+  ];
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/5 bg-[#050507]/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 w-full border-b border-white/5 bg-[#050507]/90 backdrop-blur-xl">
       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.02] pointer-events-none"></div>
       <div className="mx-auto flex h-20 max-w-[1280px] items-center justify-between gap-6 px-4 sm:px-6 relative z-10">
         {/* Logo Section */}
-        <a href="/" className="flex items-center gap-3 group">
+        <a href="/" className="flex items-center gap-3 group shrink-0">
           <div className="relative h-12 w-12 flex items-center justify-center">
             <div className="absolute inset-0 bg-primary/20 blur-lg rounded-full group-hover:bg-primary/40 transition-colors"></div>
             <svg viewBox="0 0 100 100" className="relative w-10 h-10 drop-shadow-[0_0_8px_rgba(123,46,255,0.8)]">
@@ -16,38 +26,80 @@ export function Header() {
               <path d="M40 30 L40 20 M60 30 L60 20 M30 50 L20 50 M70 50 L80 50" stroke="#7B2EFF" strokeWidth="2" />
             </svg>
           </div>
-          <span className="font-display text-xl font-black uppercase tracking-tighter text-white">
-            DEU <span className="text-primary italic">BTORE</span>
-          </span>
+          <div className="flex flex-col leading-none">
+            <span className="font-display text-lg font-black uppercase tracking-tighter text-white">
+              DEU BUG <span className="text-primary italic">AQUI</span>
+            </span>
+            <span className="text-[10px] font-black text-neon-green/80 uppercase tracking-widest glitch-effect">Store System</span>
+          </div>
         </a>
 
-        {/* Search Bar */}
-        <div className="hidden md:flex relative flex-1 max-w-md mx-auto">
-          <div className="absolute inset-0 bg-primary/5 blur-md rounded-full"></div>
-          <div className="relative flex items-center w-full bg-[#111115]/80 border border-white/10 rounded-full px-4 py-2 hover:border-primary/50 transition-colors group">
-            <Search className="h-4 w-4 text-muted-foreground mr-3 group-hover:text-primary transition-colors" />
-            <input
-              type="text"
-              placeholder="O que você está procurando?"
-              className="bg-transparent border-none outline-none w-full text-sm text-white placeholder:text-white/20 focus:ring-0"
-            />
-          </div>
-        </div>
+        {/* Desktop Navigation */}
+        <nav className="hidden lg:flex items-center gap-8">
+          {navItems.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              className="text-sm font-black uppercase tracking-widest text-white/60 hover:text-white transition-all relative group overflow-hidden py-2"
+            >
+              <span className="relative z-10">{item.label}</span>
+              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-primary translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300"></span>
+              <span className="absolute inset-0 bg-primary/10 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300"></span>
+            </a>
+          ))}
+        </nav>
 
-        {/* Action Buttons */}
-        <div className="flex items-center gap-4">
-          <button className="flex items-center gap-2 px-4 py-2 rounded-full hover:bg-white/5 transition-colors group text-sm font-bold text-white/70">
-            <User className="h-4 w-4 group-hover:text-neon-green" />
-            <span className="hidden sm:inline">Entrar</span>
-          </button>
-          <button className="relative flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 hover:border-primary/50 transition-colors group text-sm font-bold">
-            <ShoppingCart className="h-4 w-4 text-white/70 group-hover:text-neon-cyan" />
-            <span className="hidden sm:inline text-white/70">Carrinho</span>
-            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-primary text-[10px] font-black text-white shadow-[0_0_8px_rgba(123,46,255,0.8)]">
-              0
-            </span>
+        {/* Action Buttons & Mobile Menu Toggle */}
+        <div className="flex items-center gap-2 sm:gap-4">
+          <div className="hidden sm:flex items-center gap-2">
+            <button className="flex items-center gap-2 px-4 py-2 rounded-full hover:bg-white/5 transition-colors group text-sm font-bold text-white/70">
+              <User className="h-4 w-4 group-hover:text-neon-green" />
+              <span className="hidden md:inline">Entrar</span>
+            </button>
+            <button className="relative flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 hover:border-primary/50 transition-colors group text-sm font-bold">
+              <ShoppingCart className="h-4 w-4 text-white/70 group-hover:text-neon-cyan" />
+              <span className="hidden md:inline text-white/70">Carrinho</span>
+              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-primary text-[10px] font-black text-white shadow-[0_0_8px_rgba(123,46,255,0.8)]">
+                0
+              </span>
+            </button>
+          </div>
+          
+          <button 
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="lg:hidden p-2 text-white/70 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+          >
+            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
+      </div>
+
+      {/* Mobile Menu */}
+      <div 
+        className={`lg:hidden absolute top-20 left-0 w-full bg-[#050507] border-b border-white/5 transition-all duration-300 overflow-hidden ${
+          isMenuOpen ? "max-h-screen opacity-100 py-6" : "max-h-0 opacity-0 py-0"
+        }`}
+      >
+        <nav className="flex flex-col px-4 gap-4">
+          {navItems.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              className="text-lg font-black uppercase tracking-widest text-white/60 hover:text-primary transition-colors py-2 border-l-2 border-transparent hover:border-primary pl-4"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {item.label}
+            </a>
+          ))}
+          <div className="flex flex-col gap-3 pt-6 border-t border-white/5 sm:hidden">
+            <button className="flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-white/5 text-white font-bold uppercase tracking-widest">
+              <User className="h-5 w-5 text-neon-green" /> Entrar
+            </button>
+            <button className="flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-primary text-white font-black uppercase tracking-widest shadow-[0_0_20px_rgba(123,46,255,0.3)]">
+              <ShoppingCart className="h-5 w-5" /> Carrinho (0)
+            </button>
+          </div>
+        </nav>
       </div>
     </header>
   );
