@@ -47,6 +47,13 @@ export function GameGrid() {
               <div className="absolute top-4 left-4 bg-white text-black px-2 py-1 text-[10px] font-black rounded-sm shadow-xl">
                 {game.discount} OFF
               </div>
+
+              {/* Combo Badge */}
+              {game.bundle && game.bundle.length > 0 && (
+                <div className="absolute top-4 right-4 bg-neon-green text-black px-2.5 py-1 text-[10px] font-black rounded-full shadow-[0_0_18px_rgba(168,255,51,0.45)] border border-neon-green/60 uppercase tracking-widest">
+                  🎁 COMBO 2 EM 1
+                </div>
+              )}
             </div>
 
             {/* Content Area */}
