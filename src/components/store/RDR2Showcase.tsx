@@ -23,6 +23,9 @@ export function RDR2Showcase() {
             {/* The Image */}
             <img 
               src="https://drive.google.com/uc?export=view&id=1-jyC-sB4Jty704So0jkUqM6WLOLSJbhO" 
+              onError={(e) => {
+                e.currentTarget.src = "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=1200";
+              }}
               alt="Red Dead Redemption 2 Showcase"
               className="w-full h-full object-cover object-center transition-transform duration-1000 group-hover:scale-105"
             />
