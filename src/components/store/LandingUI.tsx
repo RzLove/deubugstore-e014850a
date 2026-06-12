@@ -1,7 +1,6 @@
 import {
   ShoppingCart,
   User,
-  Search,
   BadgeCheck,
   Award,
   Tag,
@@ -16,6 +15,7 @@ import {
   ChevronRight,
   Headset,
 } from "lucide-react";
+import { SearchAutocomplete } from "@/components/store/SearchAutocomplete";
 import logo from "@/assets/deu-bug-logo.png.asset.json";
 import mascot from "@/assets/deu-bug-mascote-blend.png.asset.json";
 
