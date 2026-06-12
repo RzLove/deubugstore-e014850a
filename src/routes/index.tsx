@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import { Header, Banner } from "@/components/store/LandingUI";
 import { HeroBlock } from "@/components/store/HeroBlock";
 import { FeaturedSection } from "@/components/store/FeaturedSection";
@@ -20,6 +21,22 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  // Render random particles only on the client to avoid hydration mismatch
+  // that breaks event handlers (including the header search) on the home page.
+  const [particles, setParticles] = useState<
+    { left: number; delay: number; duration: number; opacity: number }[]
+  >([]);
+  useEffect(() => {
+    setParticles(
+      Array.from({ length: 20 }, () => ({
+        left: Math.random() * 100,
+        delay: Math.random() * 10,
+        duration: 10 + Math.random() * 20,
+        opacity: 0.1 + Math.random() * 0.5,
+      })),
+    );
+  }, []);
+
   return (
     <div className="relative min-h-screen bg-[#020203] text-white selection:bg-primary selection:text-white overflow-x-hidden">
       {/* Dynamic Visual Effects Background */}
@@ -27,18 +44,18 @@ function Index() {
         {/* Deep Background Noise/Texture */}
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.03] mix-blend-overlay"></div>
         
-        {/* Digital Snow/Particles Effect */}
+        {/* Digital Snow/Particles Effect (client-only) */}
         <div className="absolute inset-0 overflow-hidden">
-          {[...Array(20)].map((_, i) => (
+          {particles.map((p, i) => (
             <div 
               key={i}
               className="absolute w-[2px] h-[2px] bg-primary/40 rounded-full animate-fall shadow-[0_0_8px_rgba(139,92,246,0.6)]"
               style={{
-                left: `${Math.random() * 100}%`,
+                left: `${p.left}%`,
                 top: `-20px`,
-                animationDelay: `${Math.random() * 10}s`,
-                animationDuration: `${10 + Math.random() * 20}s`,
-                opacity: 0.1 + Math.random() * 0.5
+                animationDelay: `${p.delay}s`,
+                animationDuration: `${p.duration}s`,
+                opacity: p.opacity,
               }}
             />
           ))}
