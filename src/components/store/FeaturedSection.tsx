@@ -13,7 +13,7 @@ export function FeaturedSection() {
     <section className="py-20 px-4 relative">
       <div className="mx-auto max-w-[1280px] relative z-10">
         <div className="flex items-center justify-between mb-10">
-          <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tighter text-white">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase tracking-tighter text-white">
             DESTAQUES DA <span className="text-neon-green">SEMANA</span>
           </h2>
           <button className="text-xs font-black text-primary hover:text-primary-glow transition-colors uppercase tracking-[0.2em] flex items-center gap-2 group">
@@ -30,7 +30,7 @@ export function FeaturedSection() {
             <ChevronRight className="h-5 w-5" />
           </button>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6">
             {games.map((game) => (
               <div 
                 key={game.id} 
@@ -57,7 +57,7 @@ export function FeaturedSection() {
                   </div>
                 </div>
 
-                <div className="p-5 space-y-4">
+                <div className="p-3 sm:p-5 space-y-3 sm:space-y-4">
                   <h3 className="font-bold text-white line-clamp-1 group-hover:text-neon-cyan transition-colors text-sm uppercase tracking-tight">
                     {game.name}
                   </h3>

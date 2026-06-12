@@ -161,11 +161,11 @@ export function Hero() {
           {/* Left Content */}
           <div className="space-y-10 order-2 lg:order-1">
             <div className="space-y-6">
-              <h1 className="font-display text-5xl md:text-7xl font-black leading-[1.05] tracking-tighter uppercase">
+              <h1 className="font-display text-4xl sm:text-5xl md:text-7xl font-black leading-[1.05] tracking-tighter uppercase">
                 OS MELHORES <span className="text-primary glitch-effect inline-block">JOGOS</span> <br />
                 COM O MELHOR <span className="text-neon-green glitch-effect inline-block">PREÇO!</span>
               </h1>
-              <p className="text-xl md:text-2xl font-bold text-white/40 italic">
+              <p className="text-lg sm:text-xl md:text-2xl font-bold text-white/40 italic">
                 Aqui o bug é só no <span className="text-neon-green/80 underline decoration-wavy underline-offset-8">preço</span>!
               </p>
             </div>
@@ -191,7 +191,7 @@ export function Hero() {
               </div>
             </div>
 
-            <button className="group relative px-10 py-5 bg-primary text-white font-black text-lg uppercase tracking-[0.2em] rounded-lg shadow-[0_0_30px_rgba(123,46,255,0.4)] hover:shadow-[0_0_50px_rgba(123,46,255,0.6)] transition-all hover:-translate-y-1 flex items-center gap-3">
+            <button className="group relative w-full sm:w-auto px-10 py-5 bg-primary text-white font-black text-lg uppercase tracking-[0.2em] rounded-lg shadow-[0_0_30px_rgba(123,46,255,0.4)] hover:shadow-[0_0_50px_rgba(123,46,255,0.6)] transition-all hover:-translate-y-1 flex items-center justify-center gap-3">
               <span className="relative z-10">VER TODOS OS JOGOS</span>
               <Gamepad2 className="h-6 w-6 relative z-10 group-hover:rotate-12 transition-transform" />
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-lg"></div>
@@ -252,11 +252,11 @@ export function Benefits() {
   return (
     <section className="py-16 px-4">
       <div className="mx-auto max-w-[1280px]">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-5">
           {benefits.map((b, i) => (
             <div 
               key={i} 
-              className={`p-6 bg-[#0c0c0e] border ${b.color} rounded-2xl flex flex-col items-center text-center gap-4 hover:bg-white/5 transition-all cursor-default group hover:-translate-y-1 shadow-lg`}
+              className={`p-4 sm:p-6 bg-[#0c0c0e] border ${b.color} rounded-2xl flex flex-col items-center text-center gap-3 sm:gap-4 hover:bg-white/5 transition-all cursor-default group hover:-translate-y-1 shadow-lg last:col-span-2 lg:last:col-span-1`}
             >
               <div className={`p-3 rounded-xl bg-white/5 ${b.color.split(' ')[0]} group-hover:scale-110 transition-transform`}>
                 <b.icon className="h-6 w-6" />

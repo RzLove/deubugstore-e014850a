@@ -3,8 +3,8 @@ import { BadgeCheck, MessagesSquare, Instagram, Youtube } from "lucide-react";
 export function Footer() {
   return (
     <footer className="mt-24 border-t border-white/5 bg-[#050507]">
-      <div className="mx-auto grid max-w-[1280px] gap-12 px-4 py-16 sm:grid-cols-2 lg:grid-cols-4 sm:px-6">
-        <div className="space-y-6">
+      <div className="mx-auto grid max-w-[1280px] gap-10 px-4 py-16 grid-cols-2 lg:grid-cols-4 sm:px-6">
+        <div className="space-y-6 col-span-2 lg:col-span-1">
           <div className="flex items-center gap-3 group">
             <div className="relative h-12 w-12 flex items-center justify-center">
               <div className="absolute inset-0 bg-primary/20 blur-lg rounded-full"></div>
