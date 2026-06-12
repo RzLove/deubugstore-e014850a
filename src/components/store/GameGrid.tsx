@@ -62,7 +62,7 @@ export function GameGrid() {
                 <h3 className="line-clamp-1 font-display text-lg font-bold text-white group-hover:text-neon-cyan transition-colors uppercase tracking-tight">
                   {game.name}
                 </h3>
-                <div className="text-[10px] text-white/30 font-black tracking-widest uppercase">Ativação Instantânea</div>
+                <div className="text-[10px] text-white/30 font-black tracking-widest uppercase">Acesso por 30 dias</div>
               </div>
               
               <div className="mt-auto pt-4 flex items-end justify-between border-t border-white/5">

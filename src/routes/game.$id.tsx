@@ -15,6 +15,10 @@ import {
   Star, 
   ArrowLeft,
   ChevronRight,
+  Calendar,
+  Headphones,
+  Info,
+  KeyRound,
 } from "lucide-react";
 
 export const Route = createFileRoute("/game/$id")({
@@ -107,6 +111,27 @@ function GameDetailPage() {
                   {game.rating === "Livre" ? "Livre" : `${game.rating}+`}
                 </span>
               </div>
+
+              {/* Como funciona o acesso */}
+              <div className="mt-6 flex items-start gap-3 rounded-xl border border-primary/30 bg-primary/[0.06] p-4">
+                <div className="grid h-8 w-8 flex-shrink-0 place-items-center rounded-lg bg-primary/20 text-primary-glow">
+                  <Info className="h-4 w-4" />
+                </div>
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                  <span className="font-bold text-white">ℹ️ Como funciona o acesso:</span> ao comprar, você recebe acesso ao jogo válido por <span className="font-bold text-primary-glow">30 dias</span>, jogando diretamente na sua conta pessoal. Durante todo esse período, nossa equipe oferece suporte completo via Discord para qualquer dúvida ou problema.
+                </p>
+              </div>
+            </div>
+
+            {/* Sobre as Keys */}
+            <div className="relative bg-[#0A0A0C] border border-white/5 rounded-2xl p-6 sm:p-8 shadow-2xl">
+              <h2 className="flex items-center gap-2 font-display text-2xl font-bold text-white mb-4">
+                <KeyRound className="h-5 w-5 text-primary-glow" />
+                Sobre as Keys
+              </h2>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Você receberá um acesso e um programa da Deu Bug para ativar a licença diretamente na sua conta pessoal da Steam. <span className="font-bold text-white">Acesso e suporte válidos por 30 dias.</span>
+              </p>
             </div>
 
             {/* Requisitos */}
@@ -281,15 +306,25 @@ function GameDetailPage() {
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="grid h-10 w-10 place-items-center rounded-lg bg-blue-500/10 text-blue-400">
-                    <Monitor className="h-5 w-5" />
+                  <div className="grid h-10 w-10 place-items-center rounded-lg bg-primary/10 text-primary-glow">
+                    <Calendar className="h-5 w-5" />
                   </div>
                   <div>
-                    <div className="text-sm font-bold text-white">Ativação Permanente</div>
-                    <div className="text-xs text-muted-foreground">O jogo é seu para sempre</div>
+                    <div className="text-sm font-bold text-white">📅 Acesso por 30 dias</div>
+                    <div className="text-xs text-muted-foreground">Jogue à vontade durante todo o período</div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="grid h-10 w-10 place-items-center rounded-lg bg-primary/10 text-primary-glow">
+                    <Headphones className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-bold text-white">🎧 Suporte por 30 dias</div>
+                    <div className="text-xs text-muted-foreground">Atendimento completo durante todo o acesso</div>
                   </div>
                 </div>
               </div>
+
 
               {/* Delivery Info */}
               <div className="mt-6 border-t border-white/5 pt-6">
