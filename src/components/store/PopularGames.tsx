@@ -44,11 +44,40 @@ export function PopularGames() {
     }
   };
 
-  const trailerSrc = current.trailer
-    ? `https://www.youtube.com/embed/${current.trailer}?autoplay=1&mute=${
-        muted ? 1 : 0
-      }&loop=1&playlist=${current.trailer}&controls=0&modestbranding=1&playsinline=1&rel=0`
-    : null;
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [trailerFailed, setTrailerFailed] = useState(false);
+
+  // Reset error state and sync mp4 audio when game or mute changes
+  useEffect(() => {
+    setTrailerFailed(false);
+  }, [selected]);
+  useEffect(() => {
+    if (videoRef.current) videoRef.current.muted = muted;
+  }, [muted, selected]);
+
+  const trailerKind: "video" | "iframe-drive" | "iframe-yt" | "none" =
+    current.trailerVideo
+      ? "video"
+      : current.trailerIframe
+      ? "iframe-drive"
+      : current.trailer
+      ? "iframe-yt"
+      : "none";
+
+  const ytSrc =
+    trailerKind === "iframe-yt"
+      ? `https://www.youtube.com/embed/${current.trailer}?autoplay=1&mute=${
+          muted ? 1 : 0
+        }&loop=1&playlist=${current.trailer}&controls=0&modestbranding=1&playsinline=1&rel=0`
+      : null;
+
+  const driveSrc =
+    trailerKind === "iframe-drive"
+      ? `${current.trailerIframe}?autoplay=1`
+      : null;
+
+  // Drive iframe cannot be controlled — hide mute button for it
+  const canControlAudio = trailerKind === "video" || trailerKind === "iframe-yt";
 
   return (
     <section className="mx-auto mt-20 max-w-[1280px] px-4 sm:px-6">
