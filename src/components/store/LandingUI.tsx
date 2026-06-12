@@ -1,162 +1,139 @@
-import { ShoppingCart, User, Search, Check, Shield, Zap, Gamepad2, ChevronLeft, ChevronRight, Menu, X } from "lucide-react";
+import {
+  ShoppingCart,
+  User,
+  Search,
+  BadgeCheck,
+  Eye,
+  HelpCircle,
+  Star,
+  MessageSquare,
+  ArrowRight,
+  KeyRound,
+  UserCircle2,
+} from "lucide-react";
 import { useState } from "react";
 
+/* ---------------- HEADER ---------------- */
 export function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const navItems = [
-    { label: "Início", href: "/" },
-    { label: "Sobre", href: "#" },
-    { label: "Serviços", href: "#" },
-    { label: "Contato", href: "#" },
-  ];
-
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/5 bg-[#020203]/80 backdrop-blur-xl transition-all duration-300">
-      <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none"></div>
-      <div className="mx-auto flex h-20 max-w-[1280px] items-center justify-between gap-6 px-4 sm:px-6 relative z-10">
-        {/* Logo Section */}
-        <a href="/" className="flex items-center gap-3 group shrink-0">
-          <div className="relative h-14 w-auto flex items-center">
-            <img 
-              src="https://drive.google.com/uc?export=view&id=1-jyC-sB4Jty704So0jkUqM6WLOLSJbhO" 
-              alt="Deu Bug Store Logo"
-              className="h-full w-auto object-contain drop-shadow-[0_0_12px_rgba(123,46,255,0.6)] relative z-20 min-w-[120px]"
-              loading="eager"
-            />
+    <header className="sticky top-0 z-50 w-full border-b border-white/5 bg-black/90 backdrop-blur-xl">
+      <div className="mx-auto grid h-20 max-w-[1280px] grid-cols-[auto_1fr_auto] items-center gap-4 px-4 sm:gap-6 sm:px-6">
+        {/* Logo */}
+        <a href="/" className="flex shrink-0 items-center gap-2">
+          <div className="relative">
+            <span className="font-display text-2xl font-black tracking-tight text-white sm:text-3xl">
+              Stm<span className="text-primary"> Store</span>
+            </span>
           </div>
+          <BadgeCheck className="h-5 w-5 fill-primary text-white" />
         </a>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-8">
-          {navItems.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              className="text-sm font-bold uppercase tracking-widest text-white/50 hover:text-white transition-all relative group py-2"
-            >
-              <span className="relative z-10">{item.label}</span>
-              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
-            </a>
-          ))}
-        </nav>
+        {/* Search */}
+        <div className="relative mx-auto w-full max-w-xl">
+          <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-white/40" />
+          <input
+            type="search"
+            placeholder="O que você está procurando?"
+            className="h-11 w-full rounded-full border border-white/10 bg-white/[0.04] pl-11 pr-4 text-sm text-white placeholder:text-white/40 outline-none transition focus:border-primary/60 focus:bg-white/[0.06] focus:ring-2 focus:ring-primary/30"
+          />
+        </div>
 
-        {/* Action Buttons & Mobile Menu Toggle */}
-        <div className="flex items-center gap-2 sm:gap-4">
-          <div className="hidden sm:flex items-center gap-2">
-            <button className="flex items-center gap-2 px-4 py-2 rounded-full hover:bg-white/5 transition-colors group text-sm font-bold text-white/70">
-              <User className="h-4 w-4 group-hover:text-primary" />
-              <span className="hidden md:inline">Entrar</span>
-            </button>
-            <button className="relative flex items-center gap-2 px-6 py-2.5 rounded-full bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-all hover:scale-105 shadow-xl shadow-primary/20">
-              <ShoppingCart className="h-4 w-4" />
-              <span className="hidden md:inline">Carrinho</span>
-              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white text-[10px] font-black text-primary ml-1">
-                0
-              </span>
-            </button>
-          </div>
-          
-          <button 
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 text-white/70 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
-          >
-            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+        {/* Actions */}
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+          <button className="hidden h-11 items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 text-sm font-semibold text-white/80 transition hover:border-primary/50 hover:bg-white/[0.06] hover:text-white sm:inline-flex">
+            <User className="h-4 w-4" />
+            Entrar
+          </button>
+          <button className="inline-flex h-11 items-center gap-2 rounded-full bg-primary px-4 text-sm font-bold text-white shadow-[0_0_24px_-4px_rgba(139,92,246,0.7)] transition hover:bg-primary/90 hover:shadow-[0_0_32px_-2px_rgba(139,92,246,0.9)]">
+            <ShoppingCart className="h-4 w-4" />
+            <span className="hidden sm:inline">Carrinho</span>
+            <span className="grid h-6 min-w-6 place-items-center rounded-full bg-white px-1.5 text-xs font-black text-primary">
+              0
+            </span>
           </button>
         </div>
-      </div>
-
-      {/* Mobile Menu */}
-      <div 
-        className={`lg:hidden absolute top-20 left-0 w-full bg-[#020203] border-b border-white/5 transition-all duration-300 overflow-hidden ${
-          isMenuOpen ? "max-h-screen opacity-100 py-6" : "max-h-0 opacity-0 py-0"
-        }`}
-      >
-        <nav className="flex flex-col px-4 gap-4">
-          {navItems.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              className="text-lg font-bold uppercase tracking-widest text-white/60 hover:text-primary transition-colors py-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
       </div>
     </header>
   );
 }
 
+/* ---------------- ANNOUNCEMENT BANNER ---------------- */
 export function Banner() {
   return (
-    <div className="relative w-full bg-[#0A0A0C] border-y border-white/5 overflow-hidden py-3">
-      <div className="mx-auto flex max-w-[1280px] items-center justify-between gap-4 px-6 relative z-10">
-        <span className="text-[10px] sm:text-xs font-bold tracking-[0.2em] text-white/50 uppercase">
-          Distribuição Global <span className="text-neon-cyan mx-2">//</span> Licenças 100% Originais
-        </span>
-        <button className="flex items-center gap-2 text-primary hover:text-white text-[10px] font-black uppercase tracking-widest transition-all group">
-          SUPORTE PRIORITÁRIO <span className="group-hover:translate-x-1 transition-transform">{"->"}</span>
+    <div className="w-full bg-gradient-to-r from-primary via-[#a855f7] to-primary">
+      <div className="mx-auto flex max-w-[1280px] flex-col items-center justify-between gap-3 px-4 py-3 sm:flex-row sm:gap-6 sm:px-6">
+        <p className="text-center text-sm font-semibold text-white sm:text-left">
+          Deseja solicitar algum jogo que não encontrou?
+        </p>
+        <button className="inline-flex h-9 items-center gap-1.5 rounded-full bg-black px-4 text-xs font-black uppercase tracking-wider text-white transition hover:bg-white hover:text-primary">
+          Clique aqui <ArrowRight className="h-3.5 w-3.5" />
         </button>
       </div>
     </div>
   );
 }
 
+/* ---------------- HERO ---------------- */
 export function Hero() {
   return (
-    <section className="relative min-h-[85vh] flex items-center py-20 overflow-hidden">
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_0%,rgba(139,92,246,0.1),transparent_70%)]"></div>
-      </div>
+    <section className="relative mx-auto max-w-[1280px] px-4 pt-8 sm:px-6">
+      <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-[#1a0b2e] via-[#0d0518] to-[#1a0b2e] shadow-[0_0_60px_-10px_rgba(139,92,246,0.4)]">
+        {/* Background image */}
+        <img
+          src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1920&q=80"
+          alt="Banner principal Stm Store"
+          className="absolute inset-0 h-full w-full object-cover opacity-40"
+        />
+        {/* Glow overlays */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent" />
+        <div className="absolute -right-20 top-1/2 h-[420px] w-[420px] -translate-y-1/2 rounded-full bg-primary/40 blur-[120px]" />
+        <div className="absolute -left-20 -bottom-20 h-[300px] w-[300px] rounded-full bg-primary/20 blur-[100px]" />
 
-      <div className="mx-auto max-w-[1280px] w-full px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-20 items-center">
-          <div className="space-y-12">
-            <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">Marketplace Premium</span>
-              </div>
-              <h1 className="font-display text-5xl sm:text-7xl font-black leading-[0.95] tracking-tighter uppercase italic">
-                Sua Melhor <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-neon-cyan to-primary bg-[length:200%_auto] animate-[gradient_4s_linear_infinite]">Experiência</span> <br />
-                Digital
-              </h1>
-              <p className="text-xl font-medium text-white/50 max-w-lg leading-relaxed">
-                Distribuição oficial de licenças premium com entrega instantânea e suporte dedicado 24/7.
-              </p>
+        <div className="relative z-10 grid gap-8 p-6 sm:p-10 md:grid-cols-2 md:p-14 lg:p-16">
+          {/* LEFT */}
+          <div className="space-y-6">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-bold uppercase tracking-widest text-white/80 backdrop-blur">
+              <span className="h-2 w-2 animate-pulse rounded-full bg-primary shadow-[0_0_10px_rgba(139,92,246,0.9)]" />
+              Stm Store
             </div>
 
-            <div className="flex flex-wrap gap-10">
-              {[
-                { label: "Entrega Automática", icon: Zap, color: "text-neon-green" },
-                { label: "Checkout Seguro", icon: Shield, color: "text-neon-cyan" },
-                { label: "Suporte 24/7", icon: Check, color: "text-primary" }
-              ].map((item, i) => (
-                <div key={i} className="flex items-center gap-3">
-                  <div className={`p-2 rounded-lg bg-white/5 border border-white/10 ${item.color}`}>
-                    <item.icon className="h-4 w-4" />
-                  </div>
-                  <span className="text-[10px] font-black uppercase tracking-widest text-white/70">{item.label}</span>
-                </div>
-              ))}
-            </div>
+            <h1 className="font-display text-4xl font-black uppercase leading-[0.95] tracking-tight text-white sm:text-5xl lg:text-6xl">
+              Os melhores
+              <br /> jogos{" "}
+              <span className="bg-gradient-to-r from-primary via-[#c084fc] to-primary bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(139,92,246,0.6)]">
+                Steam
+              </span>
+            </h1>
 
-            <button className="group relative px-10 py-5 bg-white text-black font-black text-sm uppercase tracking-[0.2em] rounded-full hover:scale-105 transition-all shadow-2xl shadow-white/10">
-              Explorar Catálogo
-            </button>
+            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <span className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2.5 text-sm font-bold text-white shadow-[0_0_20px_-4px_rgba(139,92,246,0.8)] transition hover:shadow-[0_0_28px_-2px_rgba(139,92,246,1)]">
+                <KeyRound className="h-4 w-4" />
+                Receba e ative na hora
+              </span>
+              <span className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2.5 text-sm font-bold text-white shadow-[0_0_20px_-4px_rgba(139,92,246,0.8)] transition hover:shadow-[0_0_28px_-2px_rgba(139,92,246,1)]">
+                <UserCircle2 className="h-4 w-4" />
+                Jogo direto na sua conta pessoal
+              </span>
+            </div>
           </div>
 
-          <div className="relative hidden lg:block">
-            <div className="relative aspect-square max-w-[500px] mx-auto">
-               <div className="absolute inset-0 bg-primary/20 blur-[120px] rounded-full animate-pulse"></div>
-               <img 
-                 src="https://drive.google.com/uc?export=view&id=1-jyC-sB4Jty704So0jkUqM6WLOLSJbhO" 
-                 alt="Premium Distribution"
-                 className="relative z-10 w-full h-full object-contain drop-shadow-2xl scale-110"
-               />
+          {/* RIGHT — descriptive block */}
+          <div className="flex items-center">
+            <div className="w-full rounded-2xl border border-white/10 bg-black/40 p-6 backdrop-blur-md">
+              <h2 className="font-display text-xl font-black uppercase tracking-wide text-white">
+                A loja mais confiável do Brasil
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed text-white/70">
+                Na <span className="font-bold text-primary">Stm Store</span>{" "}
+                você encontra os maiores títulos da Steam com entrega 100%
+                automática, suporte humano 24/7 e preços imbatíveis. Compre
+                com segurança e jogue em minutos — sem complicação, sem
+                espera, sem bug no preço.
+              </p>
+              <div className="mt-4 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary">
+                <BadgeCheck className="h-4 w-4" />
+                Licenças 100% originais
+              </div>
             </div>
           </div>
         </div>
@@ -165,33 +142,70 @@ export function Hero() {
   );
 }
 
-export function Benefits() {
-  const benefits = [
-    { text: "Licenças Oficiais", icon: Shield, color: "text-primary" },
-    { text: "Preços Competitivos", icon: Zap, color: "text-neon-green" },
-    { text: "Ativação Imediata", icon: Zap, color: "text-neon-cyan" },
-    { text: "Parcelamento 12x", icon: Check, color: "text-primary" },
-    { text: "Catálogo Curado", icon: Gamepad2, color: "text-neon-green" }
-  ];
+/* ---------------- STATS + SUPPORT ---------------- */
+const stats = [
+  { value: "10.500+", label: "Vendas Realizadas", icon: Eye },
+  { value: "FAQs", label: "Central de dúvidas", icon: HelpCircle, link: "Acesse agora →" },
+  { value: "59.500+", label: "Acessos", icon: ShoppingCart },
+  { value: "4.9 ★", label: "Avaliações recebidas", icon: Star, stars: true },
+];
 
+const DiscordIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+    <path d="M20.317 4.369A19.79 19.79 0 0 0 16.558 3.2a.07.07 0 0 0-.073.035c-.21.375-.444.864-.608 1.249a18.27 18.27 0 0 0-5.487 0 12.51 12.51 0 0 0-.617-1.249.073.073 0 0 0-.073-.035 19.736 19.736 0 0 0-3.76 1.169.066.066 0 0 0-.03.027C2.533 8.046 1.78 11.61 2.144 15.13a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.073.073 0 0 0 .079-.026c.461-.63.873-1.295 1.226-1.994a.072.072 0 0 0-.04-.101 13.1 13.1 0 0 1-1.872-.892.073.073 0 0 1-.007-.121c.126-.094.252-.192.372-.291a.07.07 0 0 1 .073-.01c3.927 1.793 8.18 1.793 12.061 0a.07.07 0 0 1 .074.009c.12.099.246.198.373.292a.073.073 0 0 1-.006.121c-.598.349-1.22.645-1.873.891a.072.072 0 0 0-.038.102c.36.698.772 1.362 1.225 1.993a.072.072 0 0 0 .079.027 19.84 19.84 0 0 0 6.002-3.03.073.073 0 0 0 .031-.055c.5-4.066-.838-7.602-3.549-10.735a.058.058 0 0 0-.03-.027zM8.02 13.001c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.974 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z" />
+  </svg>
+);
+
+export function Benefits() {
   return (
-    <section className="py-20 px-6">
-      <div className="mx-auto max-w-[1280px]">
-        <div className="grid grid-cols-2 lg:grid-cols-5 gap-6">
-          {benefits.map((b, i) => (
-            <div 
-              key={i} 
-              className="p-8 bg-[#0A0A0C] border border-white/5 rounded-2xl flex flex-col items-center text-center gap-4 hover:border-white/10 transition-all group shadow-2xl"
+    <section className="mx-auto max-w-[1280px] px-4 pt-8 sm:px-6">
+      {/* Stats grid */}
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {stats.map((s) => {
+          const Icon = s.icon;
+          return (
+            <div
+              key={s.label}
+              className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#0a0a0c] p-5 transition hover:border-primary/50 hover:shadow-[0_0_30px_-8px_rgba(139,92,246,0.5)]"
             >
-              <div className={`p-4 rounded-xl bg-white/5 ${b.color} group-hover:scale-110 transition-transform`}>
-                <b.icon className="h-6 w-6" />
-              </div>
-              <div className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 group-hover:text-white transition-colors">
-                {b.text}
+              <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-primary/10 blur-2xl transition group-hover:bg-primary/30" />
+              <div className="relative flex items-start justify-between">
+                <div className="space-y-1.5">
+                  <div className="font-display text-2xl font-black text-white sm:text-3xl">
+                    {s.value}
+                  </div>
+                  <div className="text-xs font-medium text-white/60">{s.label}</div>
+                  <div className="h-0.5 w-10 rounded-full bg-gradient-to-r from-primary to-[#c084fc]" />
+                  {s.link && (
+                    <div className="pt-1 text-xs font-bold text-primary">{s.link}</div>
+                  )}
+                  {s.stars && (
+                    <div className="flex gap-0.5 pt-1">
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <Star key={i} className="h-3 w-3 fill-primary text-primary" />
+                      ))}
+                    </div>
+                  )}
+                </div>
+                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-primary/40 bg-primary/15 text-primary shadow-[0_0_20px_-6px_rgba(139,92,246,0.8)]">
+                  <Icon className="h-5 w-5" />
+                </div>
               </div>
             </div>
-          ))}
-        </div>
+          );
+        })}
+      </div>
+
+      {/* Support / Feedback */}
+      <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
+        <button className="group flex h-16 items-center justify-center gap-3 rounded-2xl border border-white/10 bg-[#0a0a0c] text-sm font-bold text-white/80 transition hover:border-primary/60 hover:bg-white/[0.04] hover:text-white hover:shadow-[0_0_30px_-8px_rgba(139,92,246,0.6)]">
+          <DiscordIcon className="h-5 w-5 text-primary transition group-hover:scale-110" />
+          Suporte Discord
+        </button>
+        <button className="group flex h-16 items-center justify-center gap-3 rounded-2xl border border-white/10 bg-[#0a0a0c] text-sm font-bold text-white/80 transition hover:border-primary/60 hover:bg-white/[0.04] hover:text-white hover:shadow-[0_0_30px_-8px_rgba(139,92,246,0.6)]">
+          <Star className="h-5 w-5 fill-primary text-primary transition group-hover:scale-110" />
+          Feedbacks
+        </button>
       </div>
     </section>
   );
