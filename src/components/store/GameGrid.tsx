@@ -1,66 +1,12 @@
 import { ShoppingCart } from "lucide-react";
 import { useState } from "react";
 import { PurchaseModal } from "./PurchaseModal";
-import crimson from "@/assets/cat-popular.jpg";
-import crusader from "@/assets/cat-rpg.jpg";
-import cyberpunk from "@/assets/cat-shooter.jpg";
-import ds2 from "@/assets/cat-fight.jpg";
-import ds3 from "@/assets/cat-action.jpg";
-import dsr from "@/assets/cat-horror.jpg";
-
-const games = [
-  {
-    id: 1,
-    name: "Crimson Desert",
-    discount: "-90%",
-    originalPrice: "R$ 349,99",
-    discountedPrice: "R$ 34,90",
-    cover: crimson,
-  },
-  {
-    id: 2,
-    name: "Crusader Kings III",
-    discount: "-92%",
-    originalPrice: "R$ 179,99",
-    discountedPrice: "R$ 14,90",
-    cover: crusader,
-  },
-  {
-    id: 3,
-    name: "Cyberpunk 2077",
-    discount: "-93%",
-    originalPrice: "R$ 299,89",
-    discountedPrice: "R$ 19,90",
-    cover: cyberpunk,
-  },
-  {
-    id: 4,
-    name: "Dark Souls II",
-    discount: "-90%",
-    originalPrice: "R$ 154,90",
-    discountedPrice: "R$ 14,90",
-    cover: ds2,
-  },
-  {
-    id: 5,
-    name: "Dark Souls III",
-    discount: "-95%",
-    originalPrice: "R$ 327,50",
-    discountedPrice: "R$ 17,90",
-    cover: ds3,
-  },
-  {
-    id: 6,
-    name: "Dark Souls Remastered",
-    discount: "-90%",
-    originalPrice: "R$ 154,90",
-    discountedPrice: "R$ 14,90",
-    cover: dsr,
-  },
-];
+import { games } from "@/lib/games";
+import { useNavigate } from "@tanstack/react-router";
 
 export function GameGrid() {
   const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   return (
     <section className="mx-auto mt-24 max-w-[1280px] px-4 sm:px-6">
@@ -74,7 +20,8 @@ export function GameGrid() {
         {games.map((game) => (
           <div
             key={game.id}
-            className="group relative flex flex-col overflow-hidden rounded-xl bg-[#0f111a] border border-white/5 transition-all duration-300 hover:-translate-y-2 hover:bg-[#1a1d2e] hover:shadow-2xl hover:shadow-primary/20"
+            onClick={() => navigate({ to: "/game/$id", params: { id: game.id.toString() } })}
+            className="group relative flex flex-col overflow-hidden rounded-xl bg-[#0f111a] border border-white/5 transition-all duration-300 hover:-translate-y-2 hover:bg-[#1a1d2e] hover:shadow-2xl hover:shadow-primary/20 cursor-pointer"
           >
             {/* Header Image Area */}
             <div className="relative aspect-[16/9] w-full overflow-hidden">
@@ -117,7 +64,10 @@ export function GameGrid() {
                 </div>
                 
                 <button 
-                  onClick={() => setSelectedProduct(game.name)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedProduct(game.name);
+                  }}
                   className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-primary-foreground transition-all duration-300 group-hover:bg-primary-glow group-hover:scale-110"
                 >
                   <ShoppingCart className="h-5 w-5" />
@@ -136,3 +86,4 @@ export function GameGrid() {
     </section>
   );
 }
+
