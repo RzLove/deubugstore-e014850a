@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Header, Banner, Hero, Benefits } from "@/components/store/LandingUI";
+import { Header, Banner } from "@/components/store/LandingUI";
+import { HeroBlock } from "@/components/store/HeroBlock";
 import { FeaturedSection } from "@/components/store/FeaturedSection";
 import { PopularGames } from "@/components/store/PopularGames";
 import { GameGrid } from "@/components/store/GameGrid";
@@ -61,8 +62,7 @@ function Index() {
       <Banner />
       
       <main className="relative z-10">
-        <Hero />
-        <Benefits />
+        <HeroBlock />
         <PopularGames />
         <FeaturedSection />
         <div id="catalogo">
