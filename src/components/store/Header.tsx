@@ -30,6 +30,26 @@ export function Header({ cartCount = 0 }: { cartCount?: number }) {
         <SearchAutocomplete className="mx-auto flex-1 max-w-xl" />
 
         <div className="flex items-center gap-2 sm:gap-3">
+          <div className="hidden sm:flex items-center gap-2 mr-1">
+            <a
+              href="https://www.tiktok.com/@deu.bug.aqui"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="grid h-9 w-9 place-items-center rounded-lg border border-white/10 bg-white/5 text-white/60 transition hover:border-cyan-400/50 hover:text-cyan-400"
+              aria-label="TikTok"
+            >
+              <TikTokIcon className="h-[18px] w-[18px]" />
+            </a>
+            <a
+              href="https://youtube.com/@deubugaqui"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="grid h-9 w-9 place-items-center rounded-lg border border-white/10 bg-white/5 text-white/60 transition hover:border-red-500/50 hover:text-red-500"
+              aria-label="YouTube"
+            >
+              <Youtube className="h-[18px] w-[18px]" />
+            </a>
+          </div>
           <button className="hidden h-11 items-center gap-2 rounded-full border border-border bg-secondary/40 px-4 text-sm font-semibold text-foreground transition hover:border-primary/60 hover:bg-secondary sm:inline-flex">
             <User className="h-4 w-4" />
             Entrar
