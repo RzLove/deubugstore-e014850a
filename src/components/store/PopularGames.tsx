@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Flame, ChevronLeft, ChevronRight, Maximize2, VolumeX, ShoppingCart, ArrowRight, MessagesSquare } from "lucide-react";
+import { PurchaseModal } from "./PurchaseModal";
 import popular from "@/assets/cat-popular.jpg";
 import action from "@/assets/cat-action.jpg";
 import rpg from "@/assets/cat-rpg.jpg";
@@ -18,6 +19,7 @@ const games = [
 
 export function PopularGames() {
   const [selected, setSelected] = useState(0);
+  const [isPurchaseModalOpen, setIsPurchaseModalOpen] = useState(false);
   const current = games[selected];
 
   return (
@@ -42,7 +44,10 @@ export function PopularGames() {
             <button className="inline-flex h-12 items-center gap-2 rounded-full bg-primary px-6 text-sm font-bold text-primary-foreground glow-primary transition hover:bg-primary-glow">
               Ver produtos <ArrowRight className="h-4 w-4" />
             </button>
-            <button className="inline-flex h-12 items-center gap-2 rounded-full border border-border bg-secondary/40 px-6 text-sm font-semibold transition hover:border-primary/60 hover:bg-secondary">
+            <button 
+              onClick={() => window.open("https://discord.gg/deubug", "_blank")}
+              className="inline-flex h-12 items-center gap-2 rounded-full border border-border bg-secondary/40 px-6 text-sm font-semibold transition hover:border-primary/60 hover:bg-secondary"
+            >
               <MessagesSquare className="h-4 w-4" /> Discord
             </button>
           </div>
@@ -118,7 +123,10 @@ export function PopularGames() {
                 <div className="mt-1 font-display text-2xl font-extrabold">{current.price}</div>
               </div>
               <div className="flex gap-2">
-                <button className="inline-flex h-10 items-center gap-2 rounded-lg bg-primary px-4 text-sm font-bold text-primary-foreground glow-primary hover:bg-primary-glow">
+                <button 
+                  onClick={() => setIsPurchaseModalOpen(true)}
+                  className="inline-flex h-10 items-center gap-2 rounded-lg bg-primary px-4 text-sm font-bold text-primary-foreground glow-primary hover:bg-primary-glow"
+                >
                   <ShoppingCart className="h-4 w-4" /> Comprar agora
                 </button>
                 <button className="inline-flex h-10 items-center rounded-lg border border-border bg-background/70 px-4 text-sm font-semibold backdrop-blur hover:border-primary/60">
@@ -129,6 +137,12 @@ export function PopularGames() {
           </div>
         </div>
       </div>
+
+      <PurchaseModal 
+        isOpen={isPurchaseModalOpen} 
+        onOpenChange={setIsPurchaseModalOpen} 
+        productName={current.name}
+      />
     </section>
   );
 }
