@@ -71,8 +71,11 @@
   clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
 }
 
+html {
+  background-color: #050508;
+}
 body {
-  background-color: var(--color-background);
+  background-color: transparent;
   color: var(--color-foreground);
   font-family: var(--font-sans);
 }

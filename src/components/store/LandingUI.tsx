@@ -17,6 +17,7 @@ import {
   Headset,
 } from "lucide-react";
 import logo from "@/assets/deu-bug-logo.png.asset.json";
+import mascot from "@/assets/deu-bug-mascote-blend.png.asset.json";
 
 /* ---------------- HEADER ---------------- */
 export function Header() {
