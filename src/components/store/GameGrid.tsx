@@ -73,6 +73,16 @@ export function GameGrid() {
                   <span className="font-display text-2xl font-black text-[#A8FF33] leading-none drop-shadow-[0_0_8px_rgba(168,255,51,0.2)]">
                     {game.discountedPrice}
                   </span>
+                  <span className="mt-1 text-[9px] font-bold uppercase tracking-widest text-white/40">À vista no Pix</span>
+                  {game.stock < 10 ? (
+                    <span className="mt-1 text-[10px] font-black uppercase tracking-wider text-orange-400">
+                      Últimas {game.stock} unidades!
+                    </span>
+                  ) : (
+                    <span className="mt-1 text-[10px] font-semibold text-white/40">
+                      ({game.stock} em estoque)
+                    </span>
+                  )}
                 </div>
                 
                 <button 
