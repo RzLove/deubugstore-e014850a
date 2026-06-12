@@ -285,15 +285,25 @@ function GameDetailPage() {
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="grid h-10 w-10 place-items-center rounded-lg bg-blue-500/10 text-blue-400">
-                    <Monitor className="h-5 w-5" />
+                  <div className="grid h-10 w-10 place-items-center rounded-lg bg-primary/10 text-primary-glow">
+                    <Calendar className="h-5 w-5" />
                   </div>
                   <div>
-                    <div className="text-sm font-bold text-white">Ativação Permanente</div>
-                    <div className="text-xs text-muted-foreground">O jogo é seu para sempre</div>
+                    <div className="text-sm font-bold text-white">📅 Acesso por 30 dias</div>
+                    <div className="text-xs text-muted-foreground">Jogue à vontade durante todo o período</div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="grid h-10 w-10 place-items-center rounded-lg bg-primary/10 text-primary-glow">
+                    <Headphones className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-bold text-white">🎧 Suporte por 30 dias</div>
+                    <div className="text-xs text-muted-foreground">Atendimento completo durante todo o acesso</div>
                   </div>
                 </div>
               </div>
+
 
               {/* Delivery Info */}
               <div className="mt-6 border-t border-white/5 pt-6">
