@@ -1,4 +1,5 @@
-import { Search, ShoppingCart, User, BadgeCheck } from "lucide-react";
+import { ShoppingCart, User, BadgeCheck } from "lucide-react";
+import { SearchAutocomplete } from "@/components/store/SearchAutocomplete";
 import logo from "@/assets/deu-bug-logo.png.asset.json";
 
 export function Header({ cartCount = 0 }: { cartCount?: number }) {
@@ -25,14 +26,7 @@ export function Header({ cartCount = 0 }: { cartCount?: number }) {
           </div>
         </a>
 
-        <div className="relative mx-auto flex-1 max-w-xl">
-          <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-          <input
-            type="search"
-            placeholder="O que você está procurando?"
-            className="h-12 w-full rounded-full border border-border bg-secondary/60 pl-11 pr-4 text-sm text-foreground placeholder:text-muted-foreground/80 outline-none transition focus:border-primary focus:ring-2 focus:ring-ring"
-          />
-        </div>
+        <SearchAutocomplete className="mx-auto flex-1 max-w-xl" />
 
         <div className="flex items-center gap-2 sm:gap-3">
           <button className="hidden h-11 items-center gap-2 rounded-full border border-border bg-secondary/40 px-4 text-sm font-semibold text-foreground transition hover:border-primary/60 hover:bg-secondary sm:inline-flex">

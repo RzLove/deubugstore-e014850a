@@ -45,7 +45,7 @@ export function GameGrid() {
 
               {/* Discount Badge */}
               <div className="absolute top-4 left-4 bg-white text-black px-2 py-1 text-[10px] font-black rounded-sm shadow-xl">
-                {game.discount}
+                {game.discount} OFF
               </div>
             </div>
 

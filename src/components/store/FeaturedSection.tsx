@@ -53,7 +53,7 @@ export function FeaturedSection() {
                   
                   <div className="absolute top-3 left-3 flex flex-col gap-2">
                      <span className="bg-primary text-white text-[10px] font-black px-2 py-1 rounded shadow-[0_0_15px_rgba(123,46,255,0.4)] glitch-effect">
-                       {game.discount}
+                       {game.discount} OFF
                      </span>
                      {game.tag && (
                        <span className="bg-black/80 backdrop-blur text-neon-green text-[9px] font-black px-2 py-0.5 rounded border border-neon-green/30 uppercase tracking-widest">

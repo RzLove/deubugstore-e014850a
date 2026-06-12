@@ -15,7 +15,6 @@ import {
   Star, 
   ArrowLeft,
   ChevronRight,
-  Info
 } from "lucide-react";
 
 export const Route = createFileRoute("/game/$id")({
@@ -81,28 +80,61 @@ function GameDetailPage() {
               </div>
             </div>
 
-            {/* Description Section */}
+            {/* Sobre o Jogo */}
             <div className="relative bg-[#0A0A0C] border border-white/5 rounded-2xl p-6 sm:p-8 shadow-2xl">
-              {/* Corner Bug Decoration */}
               <div className="absolute -top-2 -right-2 px-2 py-0.5 bg-primary text-[8px] font-black uppercase tracking-widest rounded skew-x-12 opacity-50">DEU BUG // SECURE</div>
 
               <h2 className="flex items-center gap-2 font-display text-2xl font-bold text-white mb-6">
-                <Info className="h-5 w-5 text-primary-glow" />
-                Sobre o jogo
+                <Gamepad2 className="h-5 w-5 text-primary-glow" />
+                Sobre o Jogo
               </h2>
-              <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
-                {game.description}
-              </p>
-              
-              <div className="mt-10 grid gap-6 sm:grid-cols-2">
-                <div className="rounded-xl border border-white/5 bg-white/[0.02] p-5">
-                  <h3 className="text-xs font-black uppercase tracking-widest text-primary-glow mb-4">Requisitos Mínimos</h3>
-                  <p className="text-xs text-muted-foreground leading-loose">{game.minRequirements}</p>
-                </div>
-                <div className="rounded-xl border border-white/5 bg-white/[0.02] p-5">
-                  <h3 className="text-xs font-black uppercase tracking-widest text-primary-glow mb-4">Requisitos Recomendados</h3>
-                  <p className="text-xs text-muted-foreground leading-loose">{game.recommendedRequirements}</p>
-                </div>
+              <div className="space-y-4 text-sm sm:text-base text-muted-foreground leading-relaxed">
+                {game.about.split("\n\n").map((para, i) => (
+                  <p key={i}>{para}</p>
+                ))}
+              </div>
+
+              <div className="mt-6 flex flex-wrap gap-2">
+                {game.tags.map((t) => (
+                  <span
+                    key={t}
+                    className="rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-primary-glow"
+                  >
+                    {t}
+                  </span>
+                ))}
+                <span className="rounded-full border border-yellow-500/30 bg-yellow-500/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-yellow-400">
+                  {game.rating === "Livre" ? "Livre" : `${game.rating}+`}
+                </span>
+              </div>
+            </div>
+
+            {/* Requisitos */}
+            <div className="relative bg-[#0A0A0C] border border-white/5 rounded-2xl p-6 sm:p-8 shadow-2xl">
+              <h2 className="flex items-center gap-2 font-display text-2xl font-bold text-white mb-6">
+                <Monitor className="h-5 w-5 text-primary-glow" />
+                Requisitos do Sistema
+              </h2>
+              <div className="grid gap-6 sm:grid-cols-2">
+                {[
+                  { label: "Mínimos", req: game.minReq },
+                  { label: "Recomendados", req: game.recReq },
+                ].map(({ label, req }) => (
+                  <div key={label} className="rounded-xl border border-white/5 bg-white/[0.02] p-5">
+                    <h3 className="text-xs font-black uppercase tracking-widest text-primary-glow mb-4">
+                      {label}
+                    </h3>
+                    <ul className="space-y-2 text-xs text-muted-foreground">
+                      <li><span className="text-white font-semibold">SO:</span> {req.os}</li>
+                      <li><span className="text-white font-semibold">Processador:</span> {req.cpu}</li>
+                      <li><span className="text-white font-semibold">Memória:</span> {req.ram}</li>
+                      <li><span className="text-white font-semibold">Vídeo:</span> {req.gpu}</li>
+                      {req.directx && <li><span className="text-white font-semibold">DirectX:</span> {req.directx}</li>}
+                      <li><span className="text-white font-semibold">Armazenamento:</span> {req.storage}</li>
+                      {req.notes && <li className="pt-2 italic text-[11px] text-primary-glow/80">{req.notes}</li>}
+                    </ul>
+                  </div>
+                ))}
               </div>
             </div>
 
