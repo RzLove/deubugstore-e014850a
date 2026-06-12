@@ -1,4 +1,6 @@
 import { Gift, TrendingUp } from "lucide-react";
+import { useState } from "react";
+import { PurchaseModal } from "./PurchaseModal";
 import popular from "@/assets/cat-popular.jpg";
 import action from "@/assets/cat-action.jpg";
 import rpg from "@/assets/cat-rpg.jpg";
@@ -20,6 +22,8 @@ const products = [
 ];
 
 export function ProductGrid() {
+  const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
+
   return (
     <section className="mx-auto mt-24 max-w-[1280px] px-4 sm:px-6">
       <div className="flex items-center justify-center gap-4">
@@ -64,13 +68,22 @@ export function ProductGrid() {
                   <span className="-rotate-45 text-xs font-extrabold">P</span>
                 </div>
               </div>
-              <button className="mt-2 flex h-10 w-full items-center justify-center gap-2 rounded-lg bg-primary text-sm font-bold text-primary-foreground transition hover:bg-primary-glow hover:glow-primary">
+              <button 
+                onClick={() => setSelectedProduct(p.name)}
+                className="mt-2 flex h-10 w-full items-center justify-center gap-2 rounded-lg bg-primary text-sm font-bold text-primary-foreground transition hover:bg-primary-glow hover:glow-primary"
+              >
                 <Gift className="h-4 w-4" /> Comprar agora
               </button>
             </div>
           </article>
         ))}
       </div>
+
+      <PurchaseModal 
+        isOpen={!!selectedProduct} 
+        onOpenChange={(open) => !open && setSelectedProduct(null)} 
+        productName={selectedProduct || ""}
+      />
     </section>
   );
 }
