@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Eye, HelpCircle, ShoppingCart, Star, ArrowRight, Maximize2, X } from "lucide-react";
+import { DISCORD_URL } from "@/lib/constants";
 import banner from "@/assets/deu-bug-banner.png.asset.json";
 
 function useCountUp(target: number, active: boolean, duration = 1400) {
@@ -178,7 +179,7 @@ export function HeroBlock() {
       <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
         {[
           {
-            href: "https://discord.gg/",
+            href: DISCORD_URL,
             label: "Suporte Discord",
             external: true,
             delay: 550,

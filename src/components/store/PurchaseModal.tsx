@@ -6,6 +6,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { DISCORD_URL } from "@/lib/constants";
 
 interface PurchaseModalProps {
   isOpen: boolean;
@@ -15,7 +16,7 @@ interface PurchaseModalProps {
 
 export function PurchaseModal({ isOpen, onOpenChange, productName }: PurchaseModalProps) {
   const whatsappNumber = "5511999999999"; // Exemplo
-  const discordLink = "https://discord.gg/yWTY2Y83Ha";
+  const discordLink = DISCORD_URL;
   
   const handleWhatsapp = () => {
     const message = encodeURIComponent(`Olá! Tenho interesse em comprar: ${productName || "um jogo"}`);

@@ -1,5 +1,6 @@
 import { BadgeCheck, MessagesSquare, Youtube } from "lucide-react";
 import { TikTokIcon } from "@/components/store/SocialIcons";
+import { DISCORD_URL } from "@/lib/constants";
 import logo from "@/assets/deu-bug-logo.png.asset.json";
 
 export function Footer() {
@@ -50,7 +51,9 @@ export function Footer() {
               <Youtube className="h-5 w-5" />
             </a>
             <a
-              href="#"
+              href={DISCORD_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white/60 transition-all hover:border-primary/50 hover:text-primary hover:shadow-[0_0_15px_rgba(123,46,255,0.3)]"
             >
               <MessagesSquare className="h-5 w-5" />
