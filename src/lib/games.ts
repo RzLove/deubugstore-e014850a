@@ -4,7 +4,15 @@ export type GameCategory =
   | "rpg"
   | "terror"
   | "luta"
-  | "tiro";
+  | "tiro"
+  | "simulacao";
+
+export interface BundleItem {
+  name: string;
+  cover: string;
+  minReq: SysReq;
+  recReq: SysReq;
+}
 
 export interface SysReq {
   os: string;
