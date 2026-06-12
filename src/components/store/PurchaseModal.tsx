@@ -15,7 +15,7 @@ interface PurchaseModalProps {
 
 export function PurchaseModal({ isOpen, onOpenChange, productName }: PurchaseModalProps) {
   const whatsappNumber = "5511999999999"; // Exemplo
-  const discordLink = "https://discord.gg/deubug"; // Exemplo
+  const discordLink = "https://discord.gg/yWTY2Y83Ha";
   
   const handleWhatsapp = () => {
     const message = encodeURIComponent(`Olá! Tenho interesse em comprar: ${productName || "um jogo"}`);
