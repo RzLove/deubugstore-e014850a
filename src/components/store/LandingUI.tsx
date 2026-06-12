@@ -22,7 +22,7 @@ export function Header() {
         <a href="/" className="flex shrink-0 items-center gap-2">
           <div className="relative">
             <span className="font-display text-2xl font-black tracking-tight text-white sm:text-3xl">
-              Stm<span className="text-primary"> Store</span>
+              Deu Bug<span className="text-primary"> Store</span>
             </span>
           </div>
           <BadgeCheck className="h-5 w-5 fill-primary text-white" />
