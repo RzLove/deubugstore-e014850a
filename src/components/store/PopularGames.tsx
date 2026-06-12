@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   Flame,
   ChevronLeft,
@@ -9,6 +9,7 @@ import {
   ShoppingCart,
   ArrowRight,
   MessagesSquare,
+  Play,
 } from "lucide-react";
 import { PurchaseModal } from "./PurchaseModal";
 import { games } from "@/lib/games";
@@ -44,16 +45,48 @@ export function PopularGames() {
     }
   };
 
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
   const [trailerFailed, setTrailerFailed] = useState(false);
+  const [autoplayBlocked, setAutoplayBlocked] = useState(false);
+  const [iframeOverlayDismissed, setIframeOverlayDismissed] = useState(false);
 
-  // Reset error state and sync mp4 audio when game or mute changes
+  // Reset error / overlay state when game changes
   useEffect(() => {
     setTrailerFailed(false);
+    setAutoplayBlocked(false);
+    setIframeOverlayDismissed(false);
   }, [selected]);
+
   useEffect(() => {
     if (videoRef.current) videoRef.current.muted = muted;
   }, [muted, selected]);
+
+  // React-attached ref that forces a real `muted` HTML attribute and tries play()
+  const attachVideo = useCallback(
+    (el: HTMLVideoElement | null) => {
+      videoRef.current = el;
+      if (!el) return;
+      el.defaultMuted = true;
+      el.muted = true;
+      el.setAttribute("muted", "");
+      el.setAttribute("playsinline", "");
+      el.setAttribute("webkit-playsinline", "true");
+      const tryPlay = el.play();
+      if (tryPlay && typeof tryPlay.then === "function") {
+        tryPlay.catch(() => setAutoplayBlocked(true));
+      }
+    },
+    [],
+  );
+
+  const handleManualPlay = () => {
+    setAutoplayBlocked(false);
+    const v = videoRef.current;
+    if (v) {
+      v.muted = muted;
+      v.play().catch(() => setAutoplayBlocked(true));
+    }
+  };
 
   const trailerKind: "video" | "iframe-drive" | "iframe-yt" | "none" =
     current.trailerVideo
@@ -196,12 +229,16 @@ export function PopularGames() {
             ) : trailerKind === "video" ? (
               <video
                 key={fadeKey}
-                ref={videoRef}
+                ref={attachVideo}
                 src={current.trailerVideo}
+                poster={current.cover}
                 autoPlay
-                muted={muted}
+                muted
                 loop
                 playsInline
+                preload="metadata"
+                {...({ "webkit-playsinline": "true" } as Record<string, string>)}
+                onPlay={() => setAutoplayBlocked(false)}
                 onError={() => setTrailerFailed(true)}
                 className="absolute inset-0 h-full w-full object-cover animate-in fade-in duration-500"
               />
@@ -210,7 +247,7 @@ export function PopularGames() {
                 key={fadeKey}
                 src={driveSrc!}
                 title={`${current.name} trailer`}
-                allow="autoplay; fullscreen"
+                allow="autoplay; fullscreen; encrypted-media"
                 allowFullScreen
                 onError={() => setTrailerFailed(true)}
                 className="absolute inset-0 h-full w-full border-0 animate-in fade-in duration-500"
@@ -227,12 +264,51 @@ export function PopularGames() {
               />
             )}
 
+            {/* Autoplay-blocked overlay (mp4 video) */}
+            {autoplayBlocked && trailerKind === "video" && !trailerFailed && (
+              <button
+                onClick={handleManualPlay}
+                aria-label="Reproduzir trailer"
+                className="absolute inset-0 z-20 grid place-items-center bg-black/40 backdrop-blur-sm"
+              >
+                <img
+                  src={current.cover}
+                  alt=""
+                  aria-hidden
+                  className="absolute inset-0 h-full w-full object-cover opacity-60"
+                />
+                <span className="relative grid h-20 w-20 place-items-center rounded-full bg-primary text-white shadow-[0_0_40px_rgba(124,58,237,0.9)] transition hover:scale-110">
+                  <Play className="h-9 w-9 translate-x-0.5 fill-current" />
+                </span>
+              </button>
+            )}
+
+            {/* Mobile tap-to-play overlay for iframes (Drive often blocks autoplay) */}
+            {!iframeOverlayDismissed &&
+              (trailerKind === "iframe-drive" || trailerKind === "iframe-yt") && (
+                <button
+                  onClick={() => setIframeOverlayDismissed(true)}
+                  aria-label="Reproduzir trailer"
+                  className="absolute inset-0 z-20 grid place-items-center bg-black/30 backdrop-blur-[2px] sm:hidden"
+                >
+                  <img
+                    src={current.cover}
+                    alt=""
+                    aria-hidden
+                    className="absolute inset-0 h-full w-full object-cover opacity-70"
+                  />
+                  <span className="relative grid h-20 w-20 place-items-center rounded-full bg-primary text-white shadow-[0_0_40px_rgba(124,58,237,0.9)]">
+                    <Play className="h-9 w-9 translate-x-0.5 fill-current" />
+                  </span>
+                </button>
+              )}
+
             {/* Top-right controls */}
             <div className="absolute right-3 top-3 z-20 flex gap-2">
               <button
                 onClick={toggleFullscreen}
                 aria-label="Tela cheia"
-                className="grid h-9 w-9 place-items-center rounded-lg border border-white/10 bg-black/70 text-white backdrop-blur transition hover:border-primary/60"
+                className="grid h-11 w-11 place-items-center rounded-lg border border-white/10 bg-black/70 text-white backdrop-blur transition hover:border-primary/60 sm:h-9 sm:w-9"
               >
                 <Maximize2 className="h-4 w-4" />
               </button>
@@ -243,7 +319,7 @@ export function PopularGames() {
                     if (trailerKind === "iframe-yt") setFadeKey((k) => k + 1);
                   }}
                   aria-label={muted ? "Ativar som" : "Silenciar"}
-                  className="grid h-9 w-9 place-items-center rounded-lg bg-primary text-white transition hover:bg-primary/90"
+                  className="grid h-11 w-11 place-items-center rounded-lg bg-primary text-white transition hover:bg-primary/90 sm:h-9 sm:w-9"
                 >
                   {muted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
                 </button>
