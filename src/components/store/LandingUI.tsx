@@ -49,14 +49,7 @@ export function Header() {
         </a>
 
         {/* Search */}
-        <div className="relative mx-auto w-full max-w-xl">
-          <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-white/40" />
-          <input
-            type="search"
-            placeholder="O que você está procurando?"
-            className="h-11 w-full rounded-full border border-white/10 bg-white/[0.04] pl-11 pr-4 text-sm text-white placeholder:text-white/40 outline-none transition focus:border-primary/60 focus:bg-white/[0.06] focus:ring-2 focus:ring-primary/30"
-          />
-        </div>
+        <SearchAutocomplete className="mx-auto w-full max-w-xl" />
 
         {/* Actions */}
         <div className="flex shrink-0 items-center gap-2 sm:gap-3">
