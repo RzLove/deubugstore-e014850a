@@ -45,16 +45,48 @@ export function PopularGames() {
     }
   };
 
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
   const [trailerFailed, setTrailerFailed] = useState(false);
+  const [autoplayBlocked, setAutoplayBlocked] = useState(false);
+  const [iframeOverlayDismissed, setIframeOverlayDismissed] = useState(false);
 
-  // Reset error state and sync mp4 audio when game or mute changes
+  // Reset error / overlay state when game changes
   useEffect(() => {
     setTrailerFailed(false);
+    setAutoplayBlocked(false);
+    setIframeOverlayDismissed(false);
   }, [selected]);
+
   useEffect(() => {
     if (videoRef.current) videoRef.current.muted = muted;
   }, [muted, selected]);
+
+  // React-attached ref that forces a real `muted` HTML attribute and tries play()
+  const attachVideo = useCallback(
+    (el: HTMLVideoElement | null) => {
+      videoRef.current = el;
+      if (!el) return;
+      el.defaultMuted = true;
+      el.muted = true;
+      el.setAttribute("muted", "");
+      el.setAttribute("playsinline", "");
+      el.setAttribute("webkit-playsinline", "true");
+      const tryPlay = el.play();
+      if (tryPlay && typeof tryPlay.then === "function") {
+        tryPlay.catch(() => setAutoplayBlocked(true));
+      }
+    },
+    [],
+  );
+
+  const handleManualPlay = () => {
+    setAutoplayBlocked(false);
+    const v = videoRef.current;
+    if (v) {
+      v.muted = muted;
+      v.play().catch(() => setAutoplayBlocked(true));
+    }
+  };
 
   const trailerKind: "video" | "iframe-drive" | "iframe-yt" | "none" =
     current.trailerVideo
