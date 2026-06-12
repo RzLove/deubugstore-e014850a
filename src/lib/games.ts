@@ -131,6 +131,7 @@ const raw: RawGame[] = [
     origNumber: 300,
     newNumber: 15.59,
     trailer: "M7yEzlF7dPo",
+    trailerVideo: trailerResidentAsset.url,
     categories: ["popular", "terror"],
     short:
       "O novo capítulo de Resident Evil chega com terror psicológico de tirar o fôlego e uma atmosfera sombria como nunca antes.",
