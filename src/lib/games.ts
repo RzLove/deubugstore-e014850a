@@ -62,7 +62,7 @@ const steamHeader = (appId: number) =>
   `https://cdn.cloudflare.steamstatic.com/steam/apps/${appId}/header.jpg`;
 
 const defaultDelivery =
-  "Envio automático por e-mail em até 5 minutos após a confirmação do pagamento.";
+  "Envio automático por e-mail em até 5 minutos após a confirmação do pagamento. O acesso ao jogo é válido por 30 dias a partir da entrega, com suporte completo da nossa equipe durante todo o período.";
 
 const platformPC = "PC";
 
