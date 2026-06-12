@@ -21,6 +21,7 @@ export function Header() {
             {/* Logo image with explicit dimensions and higher priority */}
             <img 
               src="https://drive.google.com/uc?export=view&id=1-jyC-sB4Jty704So0jkUqM6WLOLSJbhO" 
+
               alt="Deu Bug Store Logo"
               className="h-full w-auto object-contain drop-shadow-[0_0_12px_rgba(123,46,255,0.6)] relative z-20 min-w-[120px]"
               loading="eager"
@@ -206,6 +207,7 @@ export function Hero() {
                 <div className="absolute inset-0 bg-primary/5 blur-3xl rounded-full animate-pulse"></div>
                 <img 
                   src="https://drive.google.com/uc?export=view&id=1-jyC-sB4Jty704So0jkUqM6WLOLSJbhO" 
+
                   alt="Deu Bug Store Banner"
                   className="relative z-10 w-full h-full object-contain p-4 transition-transform duration-700 group-hover:scale-105"
                   onError={(e) => {
