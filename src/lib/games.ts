@@ -87,6 +87,8 @@ interface RawGame {
   origNumber: number;
   newNumber: number;
   trailer?: string;
+  trailerVideo?: string;
+  trailerIframe?: string;
   categories: GameCategory[];
   short: string;
   about: string;
