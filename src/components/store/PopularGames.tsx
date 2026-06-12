@@ -123,8 +123,11 @@ export function PopularGames() {
                 >
                   <ShoppingCart className="h-4 w-4" /> Comprar agora
                 </button>
-                <button className="inline-flex h-10 items-center rounded-lg border border-border bg-background/70 px-4 text-sm font-semibold backdrop-blur hover:border-primary/60">
-                  Ver mais
+                <button 
+                  onClick={() => navigate({ to: "/game/$id", params: { id: current.id.toString() } })}
+                  className="inline-flex h-10 items-center rounded-lg border border-border bg-background/70 px-4 text-sm font-semibold backdrop-blur hover:border-primary/60"
+                >
+                  Ver Detalhes
                 </button>
               </div>
             </div>
