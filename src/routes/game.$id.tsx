@@ -123,31 +123,38 @@ function GameDetailPage() {
           {/* Right Column — Pricing & Checkout */}
           <div className="space-y-6">
             <div className="sticky top-24 surface-card overflow-hidden p-6 sm:p-8 border-primary/20 shadow-primary/10 shadow-2xl">
+              <div className="flex items-center gap-2 mb-4">
+                <span className="h-2 w-2 rounded-full bg-red-500 animate-pulse" />
+                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-red-500">Oferta por tempo limitado</span>
+              </div>
+              
               <h1 className="font-display text-3xl font-black text-white sm:text-4xl leading-tight">
                 {game.name}
               </h1>
               
               <div className="mt-6 flex items-center gap-4">
                 <div className="flex flex-col">
-                  <span className="text-xs font-bold text-muted-foreground line-through decoration-primary/50">
-                    {game.originalPrice}
-                  </span>
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-xs font-bold text-muted-foreground line-through decoration-primary/50">
+                      {game.originalPrice}
+                    </span>
+                    <span className="rounded bg-primary/10 border border-primary/20 px-2 py-0.5 text-[10px] font-black text-primary-glow">
+                      {game.discount} OFF
+                    </span>
+                  </div>
                   <div className="flex items-center gap-2">
                     <span className="font-display text-4xl font-black text-[#d9f99d]">
                       {game.discountedPrice}
                     </span>
-                    <span className="rounded bg-[#d9f99d] px-2 py-0.5 text-xs font-black text-black">
-                      {game.discount}
-                    </span>
                   </div>
-                  <span className="mt-1 text-xs font-semibold text-primary-glow">Pagamento via Pix</span>
+                  <span className="mt-1 text-xs font-semibold text-primary-glow">Pagamento via Pix (Entrega Imediata)</span>
                 </div>
               </div>
 
               <div className="mt-8 space-y-3">
                 <button 
                   onClick={() => setIsPurchaseModalOpen(true)}
-                  className="flex w-full h-14 items-center justify-center gap-3 rounded-xl bg-primary text-base font-black text-primary-foreground shadow-lg shadow-primary/30 transition-all hover:bg-primary-glow hover:scale-[1.02]"
+                  className="flex w-full h-14 items-center justify-center gap-3 rounded-xl bg-primary text-base font-black text-primary-foreground shadow-[0_0_30px_rgba(123,46,255,0.4)] transition-all hover:bg-primary-glow hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(123,46,255,0.6)]"
                 >
                   <Zap className="h-5 w-5" /> COMPRAR AGORA
                 </button>
