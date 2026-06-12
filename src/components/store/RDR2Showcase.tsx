@@ -42,14 +42,6 @@ export function RDR2Showcase() {
           <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-primary/10 blur-[80px] rounded-full" />
         </motion.div>
 
-        {/* Thematic Badge/Tag */}
-        <div className="mt-8 flex justify-center items-center gap-4">
-          <div className="h-px w-12 bg-gradient-to-r from-transparent to-[#b41e1e]/50" />
-          <span className="text-xs font-black uppercase tracking-[0.4em] text-[#b41e1e] drop-shadow-[0_0_8px_rgba(180,30,30,0.4)]">
-            OUTLAW FOR LIFE
-          </span>
-          <div className="h-px w-12 bg-gradient-to-l from-transparent to-[#b41e1e]/50" />
-        </div>
       </div>
     </section>
   );
