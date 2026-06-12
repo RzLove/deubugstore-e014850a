@@ -138,6 +138,58 @@ function GameDetailPage() {
               </div>
             </div>
 
+            {/* Bundle — O que está incluído */}
+            {game.bundle && game.bundle.length > 0 && (
+              <div className="relative bg-[#0A0A0C] border border-neon-green/30 rounded-2xl p-6 sm:p-8 shadow-2xl shadow-neon-green/5">
+                <div className="absolute -top-3 left-6 px-3 py-1 bg-neon-green text-black text-[10px] font-black uppercase tracking-widest rounded-full shadow-[0_0_18px_rgba(168,255,51,0.5)]">
+                  🎁 Combo 2 em 1
+                </div>
+                <h2 className="font-display text-2xl font-bold text-white mb-6 mt-2">
+                  O que está incluído
+                </h2>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {game.bundle.map((item) => (
+                    <div key={item.name} className="flex gap-4 rounded-xl border border-white/5 bg-white/[0.02] p-4">
+                      <img src={item.cover} alt={item.name} className="h-20 w-32 flex-shrink-0 rounded-lg object-cover border border-white/10" />
+                      <div className="flex flex-col justify-center">
+                        <div className="text-[10px] font-black uppercase tracking-widest text-neon-green">Incluso</div>
+                        <div className="text-sm font-bold text-white leading-tight mt-1">{item.name}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Requisitos por jogo do combo */}
+                <div className="mt-8 space-y-6">
+                  {game.bundle.map((item) => (
+                    <div key={`${item.name}-reqs`}>
+                      <h3 className="text-xs font-black uppercase tracking-widest text-neon-green mb-3">
+                        Requisitos — {item.name}
+                      </h3>
+                      <div className="grid gap-4 sm:grid-cols-2">
+                        {[
+                          { label: "Mínimos", req: item.minReq },
+                          { label: "Recomendados", req: item.recReq },
+                        ].map(({ label, req }) => (
+                          <div key={label} className="rounded-xl border border-white/5 bg-white/[0.02] p-4">
+                            <div className="text-[10px] font-black uppercase tracking-widest text-primary-glow mb-2">{label}</div>
+                            <ul className="space-y-1 text-[11px] text-muted-foreground">
+                              <li><span className="text-white font-semibold">SO:</span> {req.os}</li>
+                              <li><span className="text-white font-semibold">CPU:</span> {req.cpu}</li>
+                              <li><span className="text-white font-semibold">RAM:</span> {req.ram}</li>
+                              <li><span className="text-white font-semibold">GPU:</span> {req.gpu}</li>
+                              <li><span className="text-white font-semibold">HD:</span> {req.storage}</li>
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+
             {/* Reviews Section */}
             <div className="relative bg-[#0A0A0C] border border-white/5 rounded-2xl p-6 sm:p-8 shadow-2xl overflow-hidden">
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
