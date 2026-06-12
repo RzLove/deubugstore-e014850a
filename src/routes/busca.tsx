@@ -6,6 +6,7 @@ import { Footer } from "@/components/store/Footer";
 import { searchGames } from "@/lib/games";
 import logo from "@/assets/deu-bug-logo.png.asset.json";
 import { Search } from "lucide-react";
+import { DISCORD_URL } from "@/lib/constants";
 
 const searchSchema = z.object({
   q: fallback(z.string(), "").default(""),
@@ -52,7 +53,9 @@ function SearchPage() {
               Tente outros termos ou solicite o título para o nosso time.
             </p>
             <a
-              href="#solicitar-jogo"
+              href={DISCORD_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-2 inline-flex h-11 items-center gap-2 rounded-full bg-primary px-5 text-sm font-bold text-primary-foreground glow-primary"
             >
               Solicitar este jogo

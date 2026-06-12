@@ -14,6 +14,7 @@ import {
 import { PurchaseModal } from "./PurchaseModal";
 import { games } from "@/lib/games";
 import { useNavigate } from "@tanstack/react-router";
+import { DISCORD_URL } from "@/lib/constants";
 
 export function PopularGames() {
   const [selected, setSelected] = useState(0);
@@ -144,7 +145,7 @@ export function PopularGames() {
               Ver produtos <ArrowRight className="h-4 w-4" />
             </button>
             <button
-              onClick={() => window.open("https://discord.gg/yWTY2Y83Ha", "_blank")}
+              onClick={() => window.open(DISCORD_URL, "_blank", "noopener,noreferrer")}
               className="inline-flex h-12 items-center gap-2 rounded-[10px] border border-white/10 bg-[#0c0c10] px-6 text-sm font-semibold text-white transition hover:border-primary/60"
             >
               <MessagesSquare className="h-4 w-4" /> Discord

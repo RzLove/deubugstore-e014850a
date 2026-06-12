@@ -6,6 +6,7 @@ import { games } from "@/lib/games";
 import { useState } from "react";
 import { PurchaseModal } from "@/components/store/PurchaseModal";
 import { TikTokIcon } from "@/components/store/SocialIcons";
+import { DISCORD_URL } from "@/lib/constants";
 import { 
   BadgeCheck, 
   ShieldCheck, 
@@ -120,7 +121,7 @@ function GameDetailPage() {
                   <Info className="h-4 w-4" />
                 </div>
                 <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                  <span className="font-bold text-white">ℹ️ Como funciona o acesso:</span> ao comprar, você recebe acesso ao jogo válido por <span className="font-bold text-primary-glow">30 dias</span>, jogando diretamente na sua conta pessoal. Durante todo esse período, nossa equipe oferece suporte completo via Discord para qualquer dúvida ou problema.
+                  <span className="font-bold text-white">ℹ️ Como funciona o acesso:</span> ao comprar, você recebe acesso ao jogo válido por <span className="font-bold text-primary-glow">30 dias</span>, jogando diretamente na sua conta pessoal. Durante todo esse período, nossa equipe oferece suporte completo via <a href={DISCORD_URL} target="_blank" rel="noopener noreferrer" className="font-bold text-primary-glow underline-offset-2 hover:underline">Discord</a> para qualquer dúvida ou problema.
                 </p>
               </div>
             </div>
