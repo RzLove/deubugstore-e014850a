@@ -308,7 +308,7 @@ export function PopularGames() {
               <button
                 onClick={toggleFullscreen}
                 aria-label="Tela cheia"
-                className="grid h-9 w-9 place-items-center rounded-lg border border-white/10 bg-black/70 text-white backdrop-blur transition hover:border-primary/60"
+                className="grid h-11 w-11 place-items-center rounded-lg border border-white/10 bg-black/70 text-white backdrop-blur transition hover:border-primary/60 sm:h-9 sm:w-9"
               >
                 <Maximize2 className="h-4 w-4" />
               </button>
