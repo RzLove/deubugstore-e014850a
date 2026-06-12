@@ -26,7 +26,7 @@ export function GameGrid() {
           <div
             key={game.id}
             onClick={() => navigate({ to: "/game/$id", params: { id: game.id.toString() } })}
-            className="group relative flex flex-col overflow-hidden rounded-xl bg-[#2A2A4A]/40 backdrop-blur-sm border border-white/5 transition-all duration-500 hover:-translate-y-2 hover:bg-[#2A2A4A]/80 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] hover:border-primary/30 cursor-pointer"
+            className="group relative flex flex-col overflow-hidden rounded-2xl bg-[#0A0A0C] border border-white/5 transition-all duration-500 hover:-translate-y-2 hover:bg-[#0E0E12] hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)] hover:border-white/10 cursor-pointer shadow-2xl shadow-black/40"
           >
             {/* Header Image Area */}
             <div className="relative aspect-[16/9] w-full overflow-hidden">
@@ -44,7 +44,7 @@ export function GameGrid() {
               </div>
 
               {/* Discount Badge */}
-              <div className="absolute top-3 left-3 bg-neon-green text-black px-3 py-1 text-xs font-black rounded-sm shadow-[0_0_15px_rgba(57,255,20,0.4)] glitch-effect">
+              <div className="absolute top-4 left-4 bg-white text-black px-2 py-1 text-[10px] font-black rounded-sm shadow-xl">
                 {game.discount}
               </div>
             </div>

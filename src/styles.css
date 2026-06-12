@@ -4,15 +4,16 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Sora", "Space Grotesk", sans-serif;
+  --font-sans: "Inter", "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Clash Display", "Sora", sans-serif;
 
-  --color-background: #050507;
+  --color-background: #020203;
   --color-foreground: #ffffff;
-  --color-primary: #7B2EFF;
-  --color-neon-green: #39FF14;
-  --color-neon-cyan: #00E5FF;
-  --color-border: #333;
+  --color-primary: #8B5CF6;
+  --color-neon-green: #4ADE80;
+  --color-neon-cyan: #22D3EE;
+  --color-border: rgba(255, 255, 255, 0.06);
+  --color-surface: #0A0A0C;
 }
 
 @keyframes glitch {
