@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import { Header, Banner } from "@/components/store/LandingUI";
 import { HeroBlock } from "@/components/store/HeroBlock";
 import { FeaturedSection } from "@/components/store/FeaturedSection";
