@@ -5,6 +5,7 @@ import { HeroSection } from "@/components/store/HeroSection";
 import { PopularGames } from "@/components/store/PopularGames";
 import { Categories } from "@/components/store/Categories";
 import { ProductGrid } from "@/components/store/ProductGrid";
+import { GameGrid } from "@/components/store/GameGrid";
 import { SocialProofToast } from "@/components/store/SocialProofToast";
 import { Footer } from "@/components/store/Footer";
 
@@ -37,6 +38,7 @@ function Index() {
         <PopularGames />
         <Categories />
         <ProductGrid />
+        <GameGrid />
       </main>
       <Footer />
       <SocialProofToast />
