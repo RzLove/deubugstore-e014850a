@@ -1,4 +1,4 @@
-import { Gift, TrendingUp } from "lucide-react";
+import { ShoppingCart, TrendingUp } from "lucide-react";
 import { useState } from "react";
 import { PurchaseModal } from "./PurchaseModal";
 import { games } from "@/lib/games";
@@ -46,11 +46,13 @@ export function ProductGrid() {
               </div>
               <div className="flex items-end justify-between">
                 <div>
-                  <div className="font-display text-xl font-extrabold">{p.discountedPrice}</div>
-                  <div className="text-[11px] text-muted-foreground">À vista no Pix</div>
+                  <div className="font-display text-xl font-extrabold text-[#d9f99d]">{p.discountedPrice}</div>
+                  <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">À vista no Pix</div>
                 </div>
-                <div className="grid h-7 w-7 rotate-45 place-items-center rounded-md bg-[color:var(--pix)]/15 text-[color:var(--pix)]">
-                  <span className="-rotate-45 text-xs font-extrabold">P</span>
+                <div className="flex flex-col items-end gap-1">
+                  <div className="flex h-6 w-6 rotate-45 place-items-center rounded-md bg-[color:var(--pix)]/15 text-[color:var(--pix)]">
+                    <span className="-rotate-45 text-[10px] font-extrabold">P</span>
+                  </div>
                 </div>
               </div>
               <button 
@@ -58,9 +60,9 @@ export function ProductGrid() {
                   e.stopPropagation();
                   setSelectedProduct(p.name);
                 }}
-                className="mt-2 flex h-10 w-full items-center justify-center gap-2 rounded-lg bg-primary text-sm font-bold text-primary-foreground transition hover:bg-primary-glow hover:glow-primary"
+                className="mt-3 flex h-10 w-full items-center justify-center gap-2 rounded-lg bg-primary text-[10px] font-black uppercase tracking-widest text-primary-foreground transition-all hover:bg-primary-glow hover:shadow-[0_0_20px_rgba(123,46,255,0.4)]"
               >
-                <Gift className="h-4 w-4" /> Comprar agora
+                <ShoppingCart className="h-3.5 w-3.5" /> COMPRAR AGORA
               </button>
             </div>
           </article>

@@ -68,9 +68,9 @@ export function GameGrid() {
                     e.stopPropagation();
                     setSelectedProduct(game.name);
                   }}
-                  className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-primary-foreground transition-all duration-300 group-hover:bg-primary-glow group-hover:scale-110"
+                  className="flex h-10 px-4 items-center justify-center gap-2 rounded-lg bg-primary text-xs font-black text-primary-foreground transition-all duration-300 hover:bg-primary-glow hover:scale-105 shadow-[0_0_15px_rgba(123,46,255,0.3)]"
                 >
-                  <ShoppingCart className="h-5 w-5" />
+                  <ShoppingCart className="h-4 w-4" /> COMPRAR AGORA
                 </button>
               </div>
             </div>
