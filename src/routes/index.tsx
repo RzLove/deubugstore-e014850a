@@ -6,10 +6,10 @@ import { Footer } from "@/components/store/Footer";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Deu Bug Store — OS MELHORES JOGOS COM O MELHOR PREÇO!" },
+      { title: "DEU BTORE — OS MELHORES JOGOS COM O MELHOR PREÇO!" },
       {
         name: "description",
-        content: "Aqui o bug é só no preço! Entrega automática, compra 100% segura e suporte 24/7. Os melhores jogos digitais com descontos insanos.",
+        content: "DEU BTORE: Aqui o bug é só no preço! Entrega automática, compra 100% segura e suporte 24/7. Os melhores jogos digitais com o visual futurista e descontos insanos.",
       },
     ],
   }),
