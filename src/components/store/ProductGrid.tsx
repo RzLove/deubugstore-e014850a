@@ -1,4 +1,4 @@
-import { Gift, TrendingUp } from "lucide-react";
+import { ShoppingCart, TrendingUp } from "lucide-react";
 import { useState } from "react";
 import { PurchaseModal } from "./PurchaseModal";
 import { games } from "@/lib/games";
