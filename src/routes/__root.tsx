@@ -10,6 +10,7 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import logo from "../assets/deu-bug-logo.png.asset.json";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
@@ -77,16 +78,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Deu Bug Store — Keys digitais com preço quebrado" },
+      { name: "description", content: "Deu Bug Store: jogos digitais e keys de PC com entrega instantânea." },
+      { property: "og:title", content: "Deu Bug Store" },
+      { property: "og:description", content: "Keys digitais com preço quebrado. Entrega instantânea." },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: logo.url },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:image", content: logo.url },
     ],
     links: [
+      { rel: "icon", type: "image/png", href: logo.url },
+      { rel: "apple-touch-icon", href: logo.url },
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
