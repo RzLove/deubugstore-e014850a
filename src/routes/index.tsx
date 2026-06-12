@@ -63,9 +63,11 @@ function Index() {
       <main className="relative z-10">
         <Hero />
         <Benefits />
+        <PopularGames />
         <FeaturedSection />
-        <GameGrid />
-      </main>
+        <div id="catalogo">
+          <GameGrid />
+        </div>
 
       <Footer />
 
