@@ -68,8 +68,10 @@ function Index() {
         <div id="catalogo">
           <GameGrid />
         </div>
+      </main>
 
       <Footer />
+
 
       <style>{`
         @keyframes scanline {
