@@ -14,6 +14,7 @@ import {
 import { PurchaseModal } from "./PurchaseModal";
 import { games } from "@/lib/games";
 import { useNavigate } from "@tanstack/react-router";
+import { DISCORD_URL } from "@/lib/constants";
 
 export function PopularGames() {
   const [selected, setSelected] = useState(0);
