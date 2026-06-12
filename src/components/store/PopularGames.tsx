@@ -9,6 +9,7 @@ import {
   ShoppingCart,
   ArrowRight,
   MessagesSquare,
+  Play,
 } from "lucide-react";
 import { PurchaseModal } from "./PurchaseModal";
 import { games } from "@/lib/games";
