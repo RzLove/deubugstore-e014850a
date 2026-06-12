@@ -1053,9 +1053,196 @@ const raw: RawGame[] = [
       storage: "70 GB SSD",
     },
   },
+  // ===== Novos produtos =====
+  {
+    id: 31,
+    name: "007 First Light [DELUXE] + Lies of P: Overture",
+    appId: 3527290,
+    coverUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/3527290/header.jpg",
+    origNumber: 350,
+    newNumber: 25,
+    stock: 22,
+    categories: ["popular", "acao"],
+    short:
+      "Combo 2 em 1: 007 First Light (Edição Deluxe) + Lies of P: Overture. Pacote completo com dois lançamentos em uma única compra.",
+    about:
+      "Este pacote especial reúne dois grandes títulos em uma única compra. 007 First Light (Edição Deluxe) é a estreia do agente James Bond pela IO Interactive (criadores de Hitman), trazendo a origem inédita do agente 00 mais famoso do mundo em uma campanha cinematográfica recheada de gadgets, perseguições e infiltração — com bônus de skins, missões extras e trilha sonora oficial da Deluxe Edition.\n\nJá Lies of P: Overture é a expansão prequela do aclamado Soulslike da Neowiz/Round8 — você revisita Krat antes do colapso, com novas armas, chefes e habilidades.\n\nAo comprar, você recebe a chave de ambos os jogos para ativação imediata.",
+    tags: ["Combo 2 em 1", "Ação", "Aventura", "Soulslike"],
+    rating: "16",
+    minReq: {
+      os: "Windows 10/11 64-bit",
+      cpu: "Intel Core i5-8400 / AMD Ryzen 5 2600",
+      ram: "12 GB",
+      gpu: "GTX 1060 6GB / RX 580 8GB",
+      directx: "12",
+      storage: "120 GB SSD",
+      notes: "*Requisitos sujeitos a alteração até o lançamento",
+    },
+    recReq: {
+      os: "Windows 11 64-bit",
+      cpu: "Intel Core i7-10700K / AMD Ryzen 7 5800X",
+      ram: "16 GB",
+      gpu: "RTX 3070 / RX 6800",
+      directx: "12",
+      storage: "120 GB SSD",
+    },
+    bundle: [
+      {
+        name: "007 First Light (Deluxe Edition)",
+        cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/3527290/header.jpg",
+        minReq: {
+          os: "Windows 10 64-bit",
+          cpu: "Intel Core i5-8400 / AMD Ryzen 5 2600",
+          ram: "12 GB",
+          gpu: "GTX 1060 6GB / RX 580 8GB",
+          directx: "12",
+          storage: "70 GB SSD",
+          notes: "*Requisitos sujeitos a alteração até o lançamento",
+        },
+        recReq: {
+          os: "Windows 11 64-bit",
+          cpu: "Intel Core i7-10700 / AMD Ryzen 7 5700X",
+          ram: "16 GB",
+          gpu: "RTX 3070 / RX 6800",
+          directx: "12",
+          storage: "70 GB SSD",
+        },
+      },
+      {
+        name: "Lies of P: Overture",
+        cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/2841880/header.jpg",
+        minReq: {
+          os: "Windows 10 64-bit",
+          cpu: "Intel Core i3-9100 / AMD Ryzen 3 1200",
+          ram: "8 GB",
+          gpu: "GTX 960 4GB / RX 580 4GB",
+          directx: "12",
+          storage: "50 GB SSD",
+        },
+        recReq: {
+          os: "Windows 10/11 64-bit",
+          cpu: "Intel Core i5-9600 / AMD Ryzen 5 3600",
+          ram: "16 GB",
+          gpu: "GTX 1660 Super / RX 5600 XT",
+          directx: "12",
+          storage: "50 GB SSD",
+        },
+      },
+    ],
+  },
+  {
+    id: 32,
+    name: "Crimson Desert [DELUXE EDITION]",
+    appId: 2407030,
+    coverUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/2407030/header.jpg",
+    origNumber: 400,
+    newNumber: 20,
+    stock: 14,
+    categories: ["rpg", "acao"],
+    short:
+      "A Edição Deluxe do épico RPG de mundo aberto da Pearl Abyss, com bônus exclusivos, armaduras lendárias e trilha sonora oficial.",
+    about:
+      "Crimson Desert [Deluxe Edition] é a versão definitiva do aclamado RPG de ação da Pearl Abyss. Acompanhe Macduff, mercenário em meio à guerra civil de Pywel, em uma campanha cinematográfica com batalhas contra chefes colossais, magia, parkour e combate corpo a corpo brutal.\n\nA Edição Deluxe inclui: pacote de armadura lendária, montaria exclusiva, trilha sonora digital, artbook em PDF e DLC \"Reinos do Norte\" com missões extras.",
+    tags: ["RPG de Ação", "Mundo Aberto", "Edição Deluxe", "Modo História"],
+    rating: "16",
+    minReq: {
+      os: "Windows 10 64-bit",
+      cpu: "Intel Core i5-9400 / AMD Ryzen 5 2600",
+      ram: "16 GB",
+      gpu: "GTX 1060 6GB / RX 580 8GB",
+      directx: "12",
+      storage: "100 GB SSD",
+      notes: "*Requisitos estimados — sujeitos a alteração",
+    },
+    recReq: {
+      os: "Windows 11 64-bit",
+      cpu: "Intel Core i7-11700K / AMD Ryzen 7 5800X",
+      ram: "32 GB",
+      gpu: "RTX 3080 / RX 6800 XT",
+      directx: "12",
+      storage: "100 GB SSD",
+    },
+  },
+  {
+    id: 33,
+    name: "Euro Truck Simulator 2 + Fernbus Simulator",
+    appId: 227300,
+    coverUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/227300/header.jpg",
+    origNumber: 120,
+    newNumber: 10,
+    stock: 27,
+    categories: ["popular", "simulacao"],
+    short:
+      "Combo 2 em 1: rode pela Europa em caminhões realistas e dirija ônibus de passageiros pelas estradas alemãs.",
+    about:
+      "Pacote combo que reúne dois clássicos da simulação realista. Em Euro Truck Simulator 2 você pilota caminhões licenciados (Scania, Volvo, MAN, Mercedes-Benz, DAF, Iveco) entregando carga por mais de 70 cidades europeias, gerenciando sua própria transportadora.\n\nJá em Fernbus Simulator você assume o volante de ônibus rodoviários MAN e Setra, percorrendo as autobahns alemãs em rotas interurbanas com passageiros, paradas obrigatórias e clima dinâmico.\n\nVocê recebe a chave de ativação dos dois jogos.",
+    tags: ["Combo 2 em 1", "Simulação", "Direção", "Mundo Aberto"],
+    rating: "Livre",
+    minReq: {
+      os: "Windows 7/10 64-bit",
+      cpu: "Intel Core i3-3220 / AMD FX-4300",
+      ram: "4 GB",
+      gpu: "GeForce GTS 450 / Radeon HD 5750",
+      directx: "11",
+      storage: "30 GB",
+    },
+    recReq: {
+      os: "Windows 10 64-bit",
+      cpu: "Intel Core i5-6600K / AMD Ryzen 5 1600",
+      ram: "8 GB",
+      gpu: "GeForce GTX 760 / RX 470",
+      directx: "11",
+      storage: "30 GB SSD",
+    },
+    bundle: [
+      {
+        name: "Euro Truck Simulator 2",
+        cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/227300/header.jpg",
+        minReq: {
+          os: "Windows 7 64-bit",
+          cpu: "Dual core CPU 2.4 GHz",
+          ram: "4 GB",
+          gpu: "GeForce GTS 450 / Radeon HD 5750",
+          directx: "11",
+          storage: "15 GB",
+        },
+        recReq: {
+          os: "Windows 10 64-bit",
+          cpu: "Quad core CPU 3.0 GHz",
+          ram: "6 GB",
+          gpu: "GeForce GTX 760 / RX 470",
+          directx: "11",
+          storage: "15 GB SSD",
+        },
+      },
+      {
+        name: "Fernbus Simulator",
+        cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/304930/header.jpg",
+        minReq: {
+          os: "Windows 7/10 64-bit",
+          cpu: "Intel Core i5-2300 / AMD FX-6300",
+          ram: "4 GB",
+          gpu: "GeForce GTX 460 / Radeon HD 6850",
+          directx: "11",
+          storage: "15 GB",
+        },
+        recReq: {
+          os: "Windows 10 64-bit",
+          cpu: "Intel Core i5-6600 / AMD Ryzen 5 1600",
+          ram: "8 GB",
+          gpu: "GeForce GTX 970 / RX 470",
+          directx: "11",
+          storage: "15 GB SSD",
+        },
+      },
+    ],
+  },
 ];
 
 void lowEnd;
+
+// Estoque padrão determinístico para jogos sem campo explícito
+const defaultStock = (id: number) => 8 + ((id * 7) % 45);
 
 export const games: Game[] = raw.map((g) => {
   const newPrice = toBRL(g.newNumber);
@@ -1068,7 +1255,7 @@ export const games: Game[] = raw.map((g) => {
     originalPrice: oldPrice,
     discountedPrice: newPrice,
     discount,
-    cover: steamHeader(g.appId),
+    cover: g.coverUrl ?? steamHeader(g.appId),
     description: g.short,
     about: g.about,
     tags: g.tags,
@@ -1081,6 +1268,8 @@ export const games: Game[] = raw.map((g) => {
     delivery: defaultDelivery,
     trailer: g.trailer,
     categories: g.categories,
+    stock: g.stock ?? defaultStock(g.id),
+    bundle: g.bundle,
   };
 });
 
@@ -1095,6 +1284,7 @@ const categoryLabel: Record<GameCategory, string[]> = {
   terror: ["terror", "horror", "medo"],
   luta: ["luta", "fight", "fighting"],
   tiro: ["tiro", "shooter", "fps", "tps"],
+  simulacao: ["simulacao", "simulação", "simulator", "simulation"],
 };
 
 export function searchGames(query: string, limit = 30): Game[] {
