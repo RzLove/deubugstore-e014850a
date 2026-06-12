@@ -15,7 +15,7 @@ export function SiteBackdrop() {
 
       {/* Circuit board pattern (SVG, tiled) */}
       <svg
-        className="absolute inset-0 h-full w-full opacity-[0.18]"
+        className="absolute inset-0 h-full w-full opacity-[0.45]"
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
@@ -27,7 +27,7 @@ export function SiteBackdrop() {
           >
             <g
               fill="none"
-              stroke="#1A1A22"
+              stroke="#2A2638"
               strokeWidth="1"
             >
               <path d="M0 40 H80 V10 H160 V70 H220" />
