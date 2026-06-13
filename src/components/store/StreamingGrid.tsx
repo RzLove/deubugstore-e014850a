@@ -2,11 +2,13 @@ import { ShoppingCart, Zap } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { PurchaseModal } from "./PurchaseModal";
-import { streamingProducts, toBRL } from "@/lib/streaming";
+import { toBRL } from "@/lib/streaming";
+import { useCatalog } from "@/lib/use-catalog";
 
 export function StreamingGrid() {
   const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
   const navigate = useNavigate();
+  const { streaming } = useCatalog();
 
   return (
     <section
@@ -25,12 +27,11 @@ export function StreamingGrid() {
       </div>
 
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {streamingProducts.map((p) => {
-          const cheapest = p.variations.reduce((a, b) =>
-            a.price < b.price ? a : b,
-          );
-          const isSoldOut = p.variations.every((v) => v.stock === 0);
-          const discount = Math.round((1 - cheapest.price / p.originalPrice) * 100);
+        {streaming.map((p) => {
+          const activeVars = p.variations.length > 0 ? p.variations : [{ price: 0, stock: 0 } as any];
+          const cheapest = activeVars.reduce((a, b) => (a.price < b.price ? a : b));
+          const isSoldOut = p.isSoldOut;
+          const discount = Math.round((1 - cheapest.price / Math.max(p.originalPrice, 0.01)) * 100);
           return (
             <div
               key={p.id}
