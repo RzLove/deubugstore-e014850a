@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as BuscaRouteImport } from './routes/busca'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as StreamingIdRouteImport } from './routes/streaming.$id'
 import { Route as GameIdRouteImport } from './routes/game.$id'
 
 const BuscaRoute = BuscaRouteImport.update({
@@ -23,6 +24,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StreamingIdRoute = StreamingIdRouteImport.update({
+  id: '/streaming/$id',
+  path: '/streaming/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GameIdRoute = GameIdRouteImport.update({
   id: '/game/$id',
   path: '/game/$id',
@@ -33,30 +39,34 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/busca': typeof BuscaRoute
   '/game/$id': typeof GameIdRoute
+  '/streaming/$id': typeof StreamingIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/busca': typeof BuscaRoute
   '/game/$id': typeof GameIdRoute
+  '/streaming/$id': typeof StreamingIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/busca': typeof BuscaRoute
   '/game/$id': typeof GameIdRoute
+  '/streaming/$id': typeof StreamingIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/busca' | '/game/$id'
+  fullPaths: '/' | '/busca' | '/game/$id' | '/streaming/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/busca' | '/game/$id'
-  id: '__root__' | '/' | '/busca' | '/game/$id'
+  to: '/' | '/busca' | '/game/$id' | '/streaming/$id'
+  id: '__root__' | '/' | '/busca' | '/game/$id' | '/streaming/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BuscaRoute: typeof BuscaRoute
   GameIdRoute: typeof GameIdRoute
+  StreamingIdRoute: typeof StreamingIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -75,6 +85,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/streaming/$id': {
+      id: '/streaming/$id'
+      path: '/streaming/$id'
+      fullPath: '/streaming/$id'
+      preLoaderRoute: typeof StreamingIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/game/$id': {
       id: '/game/$id'
       path: '/game/$id'
@@ -89,6 +106,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BuscaRoute: BuscaRoute,
   GameIdRoute: GameIdRoute,
+  StreamingIdRoute: StreamingIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
