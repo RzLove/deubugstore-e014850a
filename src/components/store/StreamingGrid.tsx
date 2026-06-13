@@ -38,11 +38,14 @@ export function StreamingGrid() {
               }
               className="group relative flex flex-col overflow-hidden rounded-2xl bg-[#0A0A0C] border border-white/5 transition-all duration-500 hover:-translate-y-2 hover:bg-[#0E0E12] hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)] hover:border-white/10 cursor-pointer shadow-2xl shadow-black/40"
             >
-              <div className="relative aspect-[16/9] w-full overflow-hidden">
+              <div
+                className="relative aspect-[16/9] w-full overflow-hidden"
+                style={{ background: p.brand }}
+              >
                 <img
                   src={p.cover}
                   alt={p.name}
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute top-4 left-4 bg-white text-black px-2 py-1 text-[10px] font-black rounded-sm shadow-xl">
                   {discount}% OFF
