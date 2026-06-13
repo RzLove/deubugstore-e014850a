@@ -2,7 +2,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Header } from "@/components/store/Header";
 import { Footer } from "@/components/store/Footer";
-import { games } from "@/lib/games";
+import { useCatalog } from "@/lib/use-catalog";
 import { useState } from "react";
 import { PurchaseModal } from "@/components/store/PurchaseModal";
 import { TikTokIcon } from "@/components/store/SocialIcons";
@@ -31,10 +31,18 @@ export const Route = createFileRoute("/game/$id")({
 function GameDetailPage() {
   const { id } = Route.useParams();
   const navigate = useNavigate();
-  const game = games.find((g) => g.id.toString() === id);
+  const { findGame, isLoading } = useCatalog();
+  const game = findGame(id);
   const [isPurchaseModalOpen, setIsPurchaseModalOpen] = useState(false);
 
   if (!game) {
+    if (isLoading) {
+      return (
+        <div className="flex min-h-screen items-center justify-center bg-background text-white/60">
+          Carregando…
+        </div>
+      );
+    }
     return (
       <div className="flex min-h-screen flex-col items-center justify-center bg-background text-white">
         <h1 className="text-4xl font-bold">Jogo não encontrado</h1>

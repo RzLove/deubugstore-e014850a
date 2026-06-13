@@ -1,12 +1,13 @@
 import { ShoppingCart } from "lucide-react";
 import { useState } from "react";
 import { PurchaseModal } from "./PurchaseModal";
-import { games } from "@/lib/games";
+import { useCatalog } from "@/lib/use-catalog";
 import { useNavigate } from "@tanstack/react-router";
 
 export function GameGrid() {
   const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
   const navigate = useNavigate();
+  const { games } = useCatalog();
 
   return (
     <section className="mx-auto mt-24 max-w-[1280px] px-4 sm:px-6 relative z-10">
