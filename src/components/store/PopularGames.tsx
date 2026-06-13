@@ -114,7 +114,7 @@ export function PopularGames() {
   const canControlAudio = trailerKind === "video" || trailerKind === "iframe-yt";
 
   return (
-    <section className="mx-auto mt-20 max-w-[1280px] px-4 sm:px-6">
+    <section className="mx-auto mt-20 max-w-[1280px] overflow-hidden px-4 sm:px-6">
       <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:items-center">
         {/* Left — pitch */}
         <div className="flex min-w-0 flex-col justify-center">
