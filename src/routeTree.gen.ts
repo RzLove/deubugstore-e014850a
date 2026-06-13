@@ -10,13 +10,25 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as BuscaRouteImport } from './routes/busca'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as StreamingIdRouteImport } from './routes/streaming.$id'
 import { Route as GameIdRouteImport } from './routes/game.$id'
+import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 
 const BuscaRoute = BuscaRouteImport.update({
   id: '/busca',
   path: '/busca',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -34,36 +46,64 @@ const GameIdRoute = GameIdRouteImport.update({
   path: '/game/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/busca': typeof BuscaRoute
+  '/admin': typeof AuthenticatedAdminRoute
   '/game/$id': typeof GameIdRoute
   '/streaming/$id': typeof StreamingIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/busca': typeof BuscaRoute
+  '/admin': typeof AuthenticatedAdminRoute
   '/game/$id': typeof GameIdRoute
   '/streaming/$id': typeof StreamingIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/auth': typeof AuthRoute
   '/busca': typeof BuscaRoute
+  '/_authenticated/admin': typeof AuthenticatedAdminRoute
   '/game/$id': typeof GameIdRoute
   '/streaming/$id': typeof StreamingIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/busca' | '/game/$id' | '/streaming/$id'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/busca'
+    | '/admin'
+    | '/game/$id'
+    | '/streaming/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/busca' | '/game/$id' | '/streaming/$id'
-  id: '__root__' | '/' | '/busca' | '/game/$id' | '/streaming/$id'
+  to: '/' | '/auth' | '/busca' | '/admin' | '/game/$id' | '/streaming/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/auth'
+    | '/busca'
+    | '/_authenticated/admin'
+    | '/game/$id'
+    | '/streaming/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AuthRoute: typeof AuthRoute
   BuscaRoute: typeof BuscaRoute
   GameIdRoute: typeof GameIdRoute
   StreamingIdRoute: typeof StreamingIdRoute
@@ -76,6 +116,20 @@ declare module '@tanstack/react-router' {
       path: '/busca'
       fullPath: '/busca'
       preLoaderRoute: typeof BuscaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -99,11 +153,31 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GameIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/admin': {
+      id: '/_authenticated/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AuthenticatedAdminRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdminRoute: typeof AuthenticatedAdminRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdminRoute: AuthenticatedAdminRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AuthRoute: AuthRoute,
   BuscaRoute: BuscaRoute,
   GameIdRoute: GameIdRoute,
   StreamingIdRoute: StreamingIdRoute,
