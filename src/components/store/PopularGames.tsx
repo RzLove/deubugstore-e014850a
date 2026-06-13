@@ -114,10 +114,10 @@ export function PopularGames() {
   const canControlAudio = trailerKind === "video" || trailerKind === "iframe-yt";
 
   return (
-    <section className="mx-auto mt-20 max-w-[1280px] px-4 sm:px-6">
+    <section className="mx-auto mt-20 max-w-[1280px] overflow-hidden px-4 sm:px-6">
       <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:items-center">
         {/* Left — pitch */}
-        <div className="flex flex-col justify-center">
+        <div className="flex min-w-0 flex-col justify-center">
           <h2 className="font-display text-4xl font-extrabold leading-[1.05] sm:text-5xl">
             <span className="text-primary drop-shadow-[0_0_25px_rgba(124,58,237,0.6)]">
               Deu Bug Store
@@ -154,7 +154,7 @@ export function PopularGames() {
         </div>
 
         {/* Right — carousel + player */}
-        <div className="space-y-5">
+        <div className="min-w-0 space-y-5">
           {/* Header */}
           <div className="flex items-center gap-3">
             <div className="grid h-10 w-10 place-items-center rounded-full border border-primary/40 bg-black text-primary shadow-[0_0_20px_-4px_rgba(124,58,237,0.8)]">
@@ -329,27 +329,27 @@ export function PopularGames() {
 
             {/* Bottom gradient + info */}
             <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-2/3 bg-gradient-to-t from-black via-black/70 to-transparent" />
-            <div className="absolute inset-x-0 bottom-0 z-20 flex flex-wrap items-end justify-between gap-3 p-5">
-              <div>
-                <div className="font-display text-xl font-extrabold text-white">
+            <div className="absolute inset-x-0 bottom-0 z-20 flex flex-col gap-3 p-3 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-3 sm:p-5">
+              <div className="min-w-0 flex-1">
+                <div className="font-display text-sm font-extrabold leading-tight text-white line-clamp-2 sm:text-xl">
                   {current.name}
                 </div>
-                <div className="mt-1 font-display text-3xl font-extrabold text-white">
+                <div className="mt-1 font-display text-2xl font-extrabold text-white sm:text-3xl">
                   {current.discountedPrice}
                 </div>
               </div>
-              <div className="flex gap-2">
+              <div className="flex w-full gap-2 sm:w-auto">
                 <button
                   onClick={() => setIsPurchaseModalOpen(true)}
-                  className="inline-flex h-11 items-center gap-2 rounded-[10px] bg-primary px-4 text-sm font-bold text-white shadow-[0_0_24px_-4px_rgba(124,58,237,0.9)] transition hover:bg-primary/90"
+                  className="inline-flex h-11 flex-1 items-center justify-center gap-2 rounded-[10px] bg-primary px-3 text-xs font-bold text-white shadow-[0_0_24px_-4px_rgba(124,58,237,0.9)] transition hover:bg-primary/90 sm:flex-none sm:px-4 sm:text-sm"
                 >
-                  <ShoppingCart className="h-4 w-4" /> Comprar agora
+                  <ShoppingCart className="h-4 w-4" /> Comprar
                 </button>
                 <button
                   onClick={() =>
                     navigate({ to: "/game/$id", params: { id: current.id.toString() } })
                   }
-                  className="inline-flex h-11 items-center rounded-[10px] border border-white/15 bg-white/5 px-4 text-sm font-semibold text-white backdrop-blur transition hover:border-primary/60"
+                  className="inline-flex h-11 items-center justify-center rounded-[10px] border border-white/15 bg-white/5 px-4 text-xs font-semibold text-white backdrop-blur transition hover:border-primary/60 sm:text-sm"
                 >
                   Ver mais
                 </button>

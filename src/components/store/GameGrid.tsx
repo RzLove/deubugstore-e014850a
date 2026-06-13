@@ -10,8 +10,8 @@ export function GameGrid() {
 
   return (
     <section className="mx-auto mt-24 max-w-[1280px] px-4 sm:px-6 relative z-10">
-      <div className="flex items-center justify-between mb-10">
-        <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tighter text-white">
+      <div className="flex flex-col gap-3 mb-10 sm:flex-row sm:items-center">
+        <h2 className="text-2xl md:text-4xl font-black uppercase tracking-tight text-white">
           CATÁLOGO DE <span className="text-neon-green">JOGOS</span>
         </h2>
         <div className="h-px flex-1 mx-8 bg-gradient-to-r from-transparent via-white/10 to-transparent hidden md:block" />

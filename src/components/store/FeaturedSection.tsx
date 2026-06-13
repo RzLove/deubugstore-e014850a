@@ -17,11 +17,11 @@ export function FeaturedSection() {
   return (
     <section className="py-20 px-4 relative">
       <div className="mx-auto max-w-[1280px] relative z-10">
-        <div className="flex items-center justify-between mb-10">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase tracking-tighter text-white">
+        <div className="flex flex-col gap-3 mb-10 sm:flex-row sm:items-center sm:justify-between">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase tracking-tight text-white">
             DESTAQUES DA <span className="text-neon-green">SEMANA</span>
           </h2>
-          <button className="text-xs font-black text-primary hover:text-primary-glow transition-colors uppercase tracking-[0.2em] flex items-center gap-2 group">
+          <button className="text-xs font-black text-primary hover:text-primary-glow transition-colors uppercase tracking-[0.2em] flex items-center gap-2 group self-start sm:self-auto">
             VER TODOS <span className="group-hover:translate-x-1 transition-transform">{"->"}</span>
           </button>
         </div>
