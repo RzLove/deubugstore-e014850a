@@ -154,7 +154,7 @@ export function PopularGames() {
         </div>
 
         {/* Right — carousel + player */}
-        <div className="space-y-5">
+        <div className="min-w-0 space-y-5">
           {/* Header */}
           <div className="flex items-center gap-3">
             <div className="grid h-10 w-10 place-items-center rounded-full border border-primary/40 bg-black text-primary shadow-[0_0_20px_-4px_rgba(124,58,237,0.8)]">
