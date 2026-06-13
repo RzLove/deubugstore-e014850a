@@ -117,7 +117,7 @@ export function PopularGames() {
     <section className="mx-auto mt-20 max-w-[1280px] px-4 sm:px-6">
       <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:items-center">
         {/* Left — pitch */}
-        <div className="flex flex-col justify-center">
+        <div className="flex min-w-0 flex-col justify-center">
           <h2 className="font-display text-4xl font-extrabold leading-[1.05] sm:text-5xl">
             <span className="text-primary drop-shadow-[0_0_25px_rgba(124,58,237,0.6)]">
               Deu Bug Store
