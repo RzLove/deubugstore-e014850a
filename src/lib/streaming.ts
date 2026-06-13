@@ -57,9 +57,8 @@ const raw: RawStream[] = [
     cover: crunchyrollCover.url,
     originalPrice: 39.9,
     variations: [
-      { id: "anual", name: "Crunchyroll Anual", price: 11.0, stock: 4 },
-      { id: "mensal", name: "Crunchyroll Mensal", price: 8.5, stock: 6 },
-      { id: "tela30", name: "Crunchyroll Tela - 30d", price: 6.5, stock: 4 },
+      { id: "mensal", name: "Crunchyroll 1 mês", price: 15.0, stock: 10 },
+      { id: "anual", name: "Crunchyroll Anual", price: 30.0, stock: 6 },
     ],
   },
   {
@@ -69,8 +68,8 @@ const raw: RawStream[] = [
     cover: netflixCover.url,
     originalPrice: 55.9,
     variations: [
-      { id: "tela30", name: "Netflix Tela - 30d", price: 14.9, stock: 8 },
-      { id: "completa", name: "Netflix Conta Completa - 30d", price: 29.9, stock: 5 },
+      { id: "mensal", name: "Netflix conta de 1 a 3 meses", price: 18.0, stock: 8 },
+      { id: "vitalicio", name: "Netflix Vitalício", price: 30.0, stock: 4 },
     ],
   },
   {
@@ -80,8 +79,7 @@ const raw: RawStream[] = [
     cover: disneyCover.url,
     originalPrice: 33.9,
     variations: [
-      { id: "tela30", name: "Disney+ Tela - 30d", price: 9.9, stock: 7 },
-      { id: "anual", name: "Disney+ Anual", price: 49.9, stock: 4 },
+      { id: "mensal", name: "Disney+ 1 mês", price: 15.0, stock: 7 },
     ],
   },
   {
@@ -91,8 +89,8 @@ const raw: RawStream[] = [
     cover: hbomaxCover.url,
     originalPrice: 34.9,
     variations: [
-      { id: "tela30", name: "Max Tela - 30d", price: 11.9, stock: 6 },
-      { id: "completa", name: "Max Conta Completa - 30d", price: 24.9, stock: 3 },
+      { id: "mensal", name: "HBO Max 1 mês", price: 18.0, stock: 6 },
+      { id: "anual", name: "HBO Max Anual", price: 35.0, stock: 3 },
     ],
   },
   {
@@ -102,8 +100,8 @@ const raw: RawStream[] = [
     cover: primeCover.url,
     originalPrice: 19.9,
     variations: [
-      { id: "tela30", name: "Prime Video Tela - 30d", price: 8.9, stock: 9 },
-      { id: "completa", name: "Prime Video Completa - 30d", price: 16.9, stock: 5 },
+      { id: "mensal", name: "Prime Video 1 mês", price: 15.0, stock: 9 },
+      { id: "vitalicio", name: "Prime Video Premium Vitalício", price: 30.0, stock: 5 },
     ],
   },
   {
@@ -113,8 +111,9 @@ const raw: RawStream[] = [
     cover: spotifyCover.url,
     originalPrice: 21.9,
     variations: [
-      { id: "tela30", name: "Spotify Premium - 30d", price: 7.9, stock: 12 },
-      { id: "anual", name: "Spotify Premium Anual", price: 69.9, stock: 4 },
+      { id: "mensal", name: "Spotify Premium 1 mês", price: 10.0, stock: 12 },
+      { id: "tresmeses", name: "Spotify Premium 3 meses", price: 15.0, stock: 8 },
+      { id: "permanente", name: "Spotify Premium Permanente PC", price: 25.0, stock: 6 },
     ],
   },
   {
@@ -124,8 +123,7 @@ const raw: RawStream[] = [
     cover: youtubeCover.url,
     originalPrice: 24.9,
     variations: [
-      { id: "tela30", name: "YouTube Premium - 30d", price: 9.9, stock: 8 },
-      { id: "anual", name: "YouTube Premium Anual", price: 89.9, stock: 3 },
+      { id: "familia", name: "YouTube Premium Conta Família", price: 15.0, stock: 8 },
     ],
   },
   {
@@ -135,8 +133,8 @@ const raw: RawStream[] = [
     cover: paramountCover.url,
     originalPrice: 18.9,
     variations: [
-      { id: "tela30", name: "Paramount+ Tela - 30d", price: 7.5, stock: 6 },
-      { id: "completa", name: "Paramount+ Completa - 30d", price: 14.9, stock: 4 },
+      { id: "mensal", name: "Paramount+ 1 mês", price: 15.0, stock: 6 },
+      { id: "anual", name: "Paramount+ Anual", price: 35.0, stock: 4 },
     ],
   },
   {
@@ -146,8 +144,7 @@ const raw: RawStream[] = [
     cover: appletvCover.url,
     originalPrice: 21.9,
     variations: [
-      { id: "tela30", name: "Apple TV+ Tela - 30d", price: 9.9, stock: 5 },
-      { id: "completa", name: "Apple TV+ Completa - 30d", price: 17.9, stock: 3 },
+      { id: "esgotado", name: "Apple TV+ Tela - 30d", price: 0, stock: 0 },
     ],
   },
 ];
