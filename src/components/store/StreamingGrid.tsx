@@ -72,7 +72,7 @@ export function StreamingGrid() {
                     {p.name}
                   </h3>
                   <div className="text-[10px] text-white/30 font-black tracking-widest uppercase">
-                    {p.variations.length} varia{es {p.variations.length > 1 ? 'ções' : 'ção'} · A partir de
+                    {p.variations.length} varia{p.variations.length > 1 ? 'ções' : 'ção'} · A partir de
                   </div>
                 </div>
 
