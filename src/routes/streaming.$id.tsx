@@ -48,6 +48,8 @@ function StreamingDetailPage() {
     product.variations.find((v) => v.id === selectedVarId) ??
     product.variations[0];
 
+  const isSoldOut = product.variations.every((v) => v.stock === 0);
+
   return (
     <div className="relative min-h-screen bg-[#020203] text-white selection:bg-primary overflow-x-hidden">
       <div className="fixed inset-0 pointer-events-none z-0">
