@@ -72,11 +72,14 @@ function StreamingDetailPage() {
 
         <div className="grid gap-8 lg:grid-cols-[1fr_1.1fr_0.9fr]">
           {/* Cover */}
-          <div className="relative aspect-video lg:aspect-square overflow-hidden rounded-2xl border border-white/5 shadow-2xl">
+          <div
+            className="relative aspect-video lg:aspect-square overflow-hidden rounded-2xl border border-white/5 shadow-2xl"
+            style={{ background: product.brand }}
+          >
             <img
               src={product.cover}
               alt={product.name}
-              className="h-full w-full object-cover"
+              className="h-full w-full object-contain"
             />
           </div>
 
