@@ -3,7 +3,8 @@ import { useState } from "react";
 import { Header } from "@/components/store/Header";
 import { Footer } from "@/components/store/Footer";
 import { PurchaseModal } from "@/components/store/PurchaseModal";
-import { findStreaming, toBRL } from "@/lib/streaming";
+import { toBRL } from "@/lib/streaming";
+import { useCatalog } from "@/lib/use-catalog";
 import {
   ArrowLeft,
   ChevronRight,
@@ -23,6 +24,7 @@ export const Route = createFileRoute("/streaming/$id")({
 function StreamingDetailPage() {
   const { id } = Route.useParams();
   const navigate = useNavigate();
+  const { findStreaming, isLoading } = useCatalog();
   const product = findStreaming(id);
   const [selectedVarId, setSelectedVarId] = useState<string>(
     product?.variations[0]?.id ?? "",
@@ -31,6 +33,13 @@ function StreamingDetailPage() {
   const [purchaseOpen, setPurchaseOpen] = useState(false);
 
   if (!product) {
+    if (isLoading) {
+      return (
+        <div className="flex min-h-screen items-center justify-center bg-background text-white/60">
+          Carregando…
+        </div>
+      );
+    }
     return (
       <div className="flex min-h-screen flex-col items-center justify-center bg-background text-white">
         <h1 className="text-4xl font-bold">Produto não encontrado</h1>
@@ -48,7 +57,7 @@ function StreamingDetailPage() {
     product.variations.find((v) => v.id === selectedVarId) ??
     product.variations[0];
 
-  const isSoldOut = product.variations.every((v) => v.stock === 0);
+  const isSoldOut = (product as any).isSoldOut ?? product.variations.every((v) => v.stock === 0);
 
   return (
     <div className="relative min-h-screen bg-[#020203] text-white selection:bg-primary overflow-x-hidden">
