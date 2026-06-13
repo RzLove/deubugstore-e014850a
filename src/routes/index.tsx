@@ -7,6 +7,7 @@ import { PopularGames } from "@/components/store/PopularGames";
 import { GameGrid } from "@/components/store/GameGrid";
 import { SocialSection } from "@/components/store/SocialSection";
 import { Footer } from "@/components/store/Footer";
+import { WelcomeModal } from "@/components/store/WelcomeModal";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -91,6 +92,8 @@ function Index() {
       <SocialSection />
 
       <Footer />
+
+      <WelcomeModal />
 
 
       <style>{`
