@@ -1,6 +1,7 @@
-import { BadgeCheck, Youtube } from "lucide-react";
+import { BadgeCheck, Youtube, MessageCircle } from "lucide-react";
 import { SearchAutocomplete } from "@/components/store/SearchAutocomplete";
 import { TikTokIcon } from "@/components/store/SocialIcons";
+import { WHATSAPP_LINK } from "@/lib/constants";
 import logo from "@/assets/deu-bug-logo.png.asset.json";
 
 export function Header({ cartCount = 0 }: { cartCount?: number }) {
@@ -50,6 +51,19 @@ export function Header({ cartCount = 0 }: { cartCount?: number }) {
               <Youtube className="h-[18px] w-[18px]" />
             </a>
           </div>
+          </div>
+          {/* CTA WhatsApp — número configurado em src/lib/constants.ts */}
+          <a
+            href={WHATSAPP_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Fale no WhatsApp"
+            className="inline-flex h-10 items-center gap-2 rounded-lg bg-[#25D366] px-3 sm:px-4 text-xs sm:text-sm font-bold text-white shadow-[0_0_18px_rgba(37,211,102,0.35)] transition hover:bg-[#1FB855] hover:scale-[1.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366]/70"
+          >
+            <MessageCircle className="h-4 w-4" />
+            <span className="hidden sm:inline">Fale no WhatsApp</span>
+            <span className="sm:hidden">WhatsApp</span>
+          </a>
         </div>
       </div>
     </header>

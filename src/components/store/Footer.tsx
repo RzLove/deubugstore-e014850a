@@ -1,6 +1,6 @@
-import { BadgeCheck, MessagesSquare, Youtube } from "lucide-react";
+import { BadgeCheck, MessagesSquare, MessageCircle, Youtube } from "lucide-react";
 import { TikTokIcon } from "@/components/store/SocialIcons";
-import { DISCORD_URL } from "@/lib/constants";
+import { DISCORD_URL, WHATSAPP_LINK, WHATSAPP_PHONE_DISPLAY } from "@/lib/constants";
 import logo from "@/assets/deu-bug-logo.png.asset.json";
 
 export function Footer() {
