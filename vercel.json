@@ -4,7 +4,11 @@
   "framework": "vite",
   "installCommand": "bun install",
   "rewrites": [
-    { "source": "/((?!api/).*)", "destination": "/" }
+    {
+      "source": "/__l5e/:path*",
+      "destination": "https://project--f960a631-1767-4319-866b-2aaca2180ba8.lovable.app/__l5e/:path*"
+    },
+    { "source": "/((?!api/|__l5e/).*)", "destination": "/" }
   ],
   "headers": [
     {
