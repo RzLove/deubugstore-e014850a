@@ -6,7 +6,7 @@ import { useCatalog } from "@/lib/use-catalog";
 import { useState } from "react";
 import { PurchaseModal } from "@/components/store/PurchaseModal";
 import { TikTokIcon } from "@/components/store/SocialIcons";
-import { DISCORD_URL } from "@/lib/constants";
+import { DISCORD_URL, buildWhatsAppLink } from "@/lib/constants";
 import { 
   BadgeCheck, 
   ShieldCheck, 
@@ -22,6 +22,7 @@ import {
   Info,
   KeyRound,
   Youtube,
+  MessageCircle,
 } from "lucide-react";
 
 export const Route = createFileRoute("/game/$id")({
@@ -294,6 +295,16 @@ function GameDetailPage() {
                 >
                   <Zap className="h-5 w-5" /> COMPRAR AGORA
                 </button>
+                {/* CTA direto via WhatsApp com mensagem pré-preenchida (nome do produto) */}
+                <a
+                  href={buildWhatsAppLink(game.name)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Comprar ${game.name} pelo WhatsApp`}
+                  className="flex w-full h-14 items-center justify-center gap-3 rounded-xl bg-[#25D366] text-base font-black text-white shadow-[0_0_30px_rgba(37,211,102,0.45)] transition-all hover:bg-[#1FB855] hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(37,211,102,0.65)]"
+                >
+                  <MessageCircle className="h-5 w-5" /> COMPRAR PELO WHATSAPP
+                </a>
               </div>
 
               {/* Conversion Triggers */}

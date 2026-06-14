@@ -80,6 +80,40 @@ export function Footer() {
           </div>
         ))}
       </div>
+
+      {/* Seção de contato — WhatsApp como canal principal */}
+      <div className="border-t border-white/5 bg-[#070709]">
+        <div className="mx-auto flex max-w-[1280px] flex-col items-center gap-5 px-4 py-10 text-center sm:flex-row sm:justify-between sm:px-6 sm:text-left">
+          <div className="flex items-start gap-4">
+            <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-[#25D366]/15 text-[#25D366] shadow-[0_0_18px_rgba(37,211,102,0.25)]">
+              <MessageCircle className="h-6 w-6" />
+            </div>
+            <div>
+              <h4 className="font-display text-sm font-black uppercase tracking-[0.18em] text-white">
+                Atendimento rápido pelo WhatsApp
+              </h4>
+              <p className="mt-1 text-sm text-white/60">
+                Fale com a gente: <span className="font-bold text-white">{WHATSAPP_PHONE_DISPLAY}</span>
+              </p>
+              <p className="mt-0.5 text-[11px] text-white/40">
+                Atendimento todos os dias — respondemos o mais rápido possível.
+              </p>
+            </div>
+          </div>
+          <a
+            href={WHATSAPP_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Chamar no WhatsApp"
+            className="inline-flex h-12 items-center gap-2 rounded-xl bg-[#25D366] px-6 text-sm font-bold text-white shadow-[0_0_22px_rgba(37,211,102,0.45)] transition hover:bg-[#1FB855] hover:scale-[1.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366]/70"
+          >
+            <MessageCircle className="h-5 w-5" />
+            Chamar no WhatsApp
+          </a>
+        </div>
+      </div>
+
+      
       
       <div className="border-t border-white/5">
         <div className="mx-auto flex max-w-[1280px] flex-col items-center justify-between gap-4 px-4 py-8 text-[10px] font-black uppercase tracking-widest text-white/20 sm:flex-row sm:px-6">
