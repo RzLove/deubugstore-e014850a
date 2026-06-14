@@ -20,7 +20,7 @@ export function ProductGrid() {
         {games.map((p) => (
           <article
             key={p.id}
-            onClick={() => navigate({ to: "/game/$id", params: { id: p.id.toString() } })}
+            onClick={() => navigate({ to: "/game/$id", params: { id: p.slug } })}
             className="group surface-card overflow-hidden p-0 transition hover:-translate-y-1 hover:border-primary/60 hover:glow-primary cursor-pointer"
           >
             <div className="relative aspect-[3/4] overflow-hidden">

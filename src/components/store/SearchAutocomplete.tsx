@@ -69,7 +69,7 @@ export function SearchAutocomplete({ className = "" }: Props) {
   const goGame = (g: Game) => {
     setOpen(false);
     setQuery("");
-    navigate({ to: "/game/$id", params: { id: g.id.toString() } });
+    navigate({ to: "/game/$id", params: { id: g.slug } });
   };
 
   const onKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (e) => {

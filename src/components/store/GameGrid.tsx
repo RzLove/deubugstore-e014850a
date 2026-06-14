@@ -26,7 +26,7 @@ export function GameGrid() {
         {games.map((game) => (
           <div
             key={game.id}
-            onClick={() => navigate({ to: "/game/$id", params: { id: game.id.toString() } })}
+            onClick={() => navigate({ to: "/game/$id", params: { id: game.slug } })}
             className="group relative flex flex-col overflow-hidden rounded-2xl bg-[#0A0A0C] border border-white/5 transition-all duration-500 hover:-translate-y-2 hover:bg-[#0E0E12] hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)] hover:border-white/10 cursor-pointer shadow-2xl shadow-black/40"
           >
             {/* Header Image Area */}

@@ -347,7 +347,7 @@ export function PopularGames() {
                 </button>
                 <button
                   onClick={() =>
-                    navigate({ to: "/game/$id", params: { id: current.id.toString() } })
+                    navigate({ to: "/game/$id", params: { id: current.slug } })
                   }
                   className="inline-flex h-11 items-center justify-center rounded-[10px] border border-white/15 bg-white/5 px-4 text-xs font-semibold text-white backdrop-blur transition hover:border-primary/60 sm:text-sm"
                 >
