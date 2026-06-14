@@ -50,8 +50,9 @@ export function Header({ cartCount = 0 }: { cartCount?: number }) {
               <Youtube className="h-[18px] w-[18px]" />
             </a>
           </div>
-
+        </div>
       </div>
     </header>
+
   );
 }
