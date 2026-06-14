@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import logo from "../assets/deu-bug-logo.png.asset.json";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteBackdrop } from "../components/store/SiteBackdrop";
+import { FloatingWhatsApp } from "../components/store/FloatingWhatsApp";
 
 function NotFoundComponent() {
   return (
@@ -135,6 +136,8 @@ function RootComponent() {
       <SiteBackdrop />
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
+      {/* Botão flutuante de WhatsApp — global. Ver src/components/store/FloatingWhatsApp.tsx */}
+      <FloatingWhatsApp />
     </QueryClientProvider>
   );
 }
