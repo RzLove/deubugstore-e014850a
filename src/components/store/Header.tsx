@@ -1,4 +1,4 @@
-import { ShoppingCart, User, BadgeCheck, Youtube } from "lucide-react";
+import { BadgeCheck, Youtube } from "lucide-react";
 import { SearchAutocomplete } from "@/components/store/SearchAutocomplete";
 import { TikTokIcon } from "@/components/store/SocialIcons";
 import logo from "@/assets/deu-bug-logo.png.asset.json";
