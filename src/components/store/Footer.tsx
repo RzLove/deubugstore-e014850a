@@ -61,18 +61,46 @@ export function Footer() {
           </div>
         </div>
 
-        {[
-          { title: "Navegação", links: ["Início", "Jogos Populares", "Lançamentos", "Categorias"] },
-          { title: "Suporte", links: ["FAQ / Dúvidas", "Central de Ajuda", "Discord Oficial", "Contato Direto"] },
-          { title: "Legal", links: ["Termos de Uso", "Privacidade", "Políticas", "Reembolso"] },
-        ].map((g) => (
+        {([
+          {
+            title: "Navegação",
+            links: [
+              { label: "Início", href: "/", external: false },
+              { label: "Buscar Jogos", href: "/busca", external: false },
+              { label: "WhatsApp", href: WHATSAPP_LINK, external: true },
+              { label: "Discord", href: DISCORD_URL, external: true },
+            ],
+          },
+          {
+            title: "Suporte",
+            links: [
+              { label: "Fale no WhatsApp", href: WHATSAPP_LINK, external: true },
+              { label: "Discord Oficial", href: DISCORD_URL, external: true },
+              { label: "TikTok", href: "https://www.tiktok.com/@deu.bug.aqui", external: true },
+              { label: "YouTube", href: "https://youtube.com/@deubugaqui", external: true },
+            ],
+          },
+          {
+            title: "Legal",
+            links: [
+              { label: "Termos de Uso", href: WHATSAPP_LINK, external: true },
+              { label: "Privacidade", href: WHATSAPP_LINK, external: true },
+              { label: "Políticas", href: WHATSAPP_LINK, external: true },
+              { label: "Reembolso", href: WHATSAPP_LINK, external: true },
+            ],
+          },
+        ]).map((g) => (
           <div key={g.title} className="space-y-6">
             <h4 className="font-display text-xs font-black uppercase tracking-[0.2em] text-neon-green">{g.title}</h4>
             <ul className="space-y-4 text-sm font-bold text-white/30">
               {g.links.map((l) => (
-                <li key={l}>
-                  <a className="transition-colors hover:text-white" href="#">
-                    {l}
+                <li key={l.label}>
+                  <a
+                    className="transition-colors hover:text-white"
+                    href={l.href}
+                    {...(l.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  >
+                    {l.label}
                   </a>
                 </li>
               ))}
