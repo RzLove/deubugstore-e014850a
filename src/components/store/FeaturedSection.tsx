@@ -1,19 +1,43 @@
 import { ShoppingCart, ChevronLeft, ChevronRight } from "lucide-react";
+import { useNavigate } from "@tanstack/react-router";
+import { useCatalog } from "@/lib/use-catalog";
 
-import { games as allGames } from "@/lib/games";
+const featuredSlugs = [
+  "007-first-light-deluxe-lies-of-p-overture",
+  "resident-evil-requiem-conta-offline",
+  "forza-horizon-6",
+  "crimson-desert-conta-offline",
+  "baldur-s-gate-3",
+];
 
-const featuredGameIds = [1, 2, 3, 4, 5];
-const games = allGames.filter(g => featuredGameIds.includes(Number(g.id))).map(g => ({
-  id: g.id,
-  name: g.name,
-  price: g.discountedPrice,
-  oldPrice: g.originalPrice,
-  discount: g.discount,
-  tag: Number(g.id) === 1 ? "Lançamento" : Number(g.id) === 2 || Number(g.id) === 5 ? "MAIS VENDIDO" : Number(g.id) === 3 ? "PROMOÇÃO" : "CLÁSSICO",
-  cover: g.cover
-}));
+function tagFor(index: number): string {
+  if (index === 0) return "Lançamento";
+  if (index === 1 || index === 4) return "MAIS VENDIDO";
+  if (index === 2) return "PROMOÇÃO";
+  return "CLÁSSICO";
+}
 
 export function FeaturedSection() {
+  const navigate = useNavigate();
+  const { games: catalogGames } = useCatalog();
+  const games = featuredSlugs
+    .map((slug, i) => {
+      const g = catalogGames.find((cg) => cg.slug === slug);
+      if (!g) return null;
+      return {
+        slug: g.slug,
+        name: g.name,
+        price: g.discountedPrice,
+        oldPrice: g.originalPrice,
+        discount: g.discount,
+        cover: g.cover,
+        tag: tagFor(i),
+      };
+    })
+    .filter((g): g is NonNullable<typeof g> => g !== null);
+
+  const go = (slug: string) => navigate({ to: "/game/$id", params: { id: slug } });
+
   return (
     <section className="py-20 px-4 relative">
       <div className="mx-auto max-w-[1280px] relative z-10">
@@ -38,10 +62,9 @@ export function FeaturedSection() {
           <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6">
             {games.map((game) => (
               <div 
-                key={game.id} 
+                key={game.slug} 
                 className="group bg-[#0c0c0e] border border-white/5 rounded-2xl overflow-hidden hover:border-primary/50 transition-all hover:shadow-[0_0_40px_rgba(123,46,255,0.1)] hover:-translate-y-2 cursor-pointer"
-                onClick={() => window.location.href = `/game/${game.id}`}
-
+                onClick={() => go(game.slug)}
               >
                 <div className="relative aspect-[3/4] overflow-hidden">
                   <img 
@@ -76,8 +99,7 @@ export function FeaturedSection() {
                      <button 
                         onClick={(e) => {
                           e.stopPropagation();
-                          // Simulação de clique no botão de compra
-                          window.location.href = `/game/${game.id}`;
+                          go(game.slug);
                         }}
                         className="h-10 w-full flex items-center justify-center gap-2 bg-primary text-[10px] font-black uppercase tracking-widest text-white rounded-xl border border-primary/20 hover:bg-primary-glow hover:shadow-[0_0_20px_rgba(123,46,255,0.6)] transition-all active:scale-95"
                      >
