@@ -1,4 +1,5 @@
 import { BadgeCheck, Youtube, MessageCircle } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { SearchAutocomplete } from "@/components/store/SearchAutocomplete";
 import { TikTokIcon } from "@/components/store/SocialIcons";
 import { WHATSAPP_LINK } from "@/lib/constants";
@@ -8,7 +9,7 @@ export function Header({ cartCount = 0 }: { cartCount?: number }) {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border/60 bg-background/80 backdrop-blur-xl">
       <div className="mx-auto flex h-20 max-w-[1280px] items-center gap-6 px-4 sm:px-6">
-        <a href="/" className="group flex shrink-0 items-center gap-3">
+        <Link to="/" className="group flex shrink-0 items-center gap-3">
           <div className="relative grid h-10 w-10 shrink-0 place-items-center overflow-hidden rounded-full border border-primary/60 bg-black shadow-[0_0_12px_rgba(123,46,255,0.55)] transition-shadow group-hover:shadow-[0_0_18px_rgba(123,46,255,0.85)] sm:h-12 sm:w-12">
             <img
               src={logo.url}
@@ -26,7 +27,7 @@ export function Header({ cartCount = 0 }: { cartCount?: number }) {
             </span>
             <BadgeCheck className="h-4 w-4 text-primary" />
           </div>
-        </a>
+        </Link>
 
         <SearchAutocomplete className="mx-auto flex-1 max-w-xl" />
 
