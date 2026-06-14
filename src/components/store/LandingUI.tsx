@@ -75,17 +75,6 @@ export function Header() {
               <Youtube className="h-[18px] w-[18px]" />
             </a>
           </div>
-          <button className="hidden h-11 items-center gap-2 rounded-full px-4 text-sm font-semibold text-white/90 transition hover:text-white sm:inline-flex">
-            <User className="h-4 w-4" />
-            Entrar
-          </button>
-          <button className="inline-flex h-11 items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 text-sm font-bold text-white shadow-[0_0_24px_-6px_rgba(139,92,246,0.8)] backdrop-blur transition hover:bg-primary/20">
-            <ShoppingCart className="h-4 w-4 text-primary-glow" />
-            <span className="hidden sm:inline">Carrinho</span>
-            <span className="grid h-6 min-w-6 place-items-center rounded-full bg-white px-1.5 text-xs font-black text-primary">
-              0
-            </span>
-          </button>
         </div>
       </div>
     </header>
