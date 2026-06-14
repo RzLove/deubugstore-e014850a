@@ -3,7 +3,6 @@
   "buildCommand": "vite build",
   "framework": "vite",
   "installCommand": "bun install",
-  "outputDirectory": ".output",
   "rewrites": [
     { "source": "/((?!api/).*)", "destination": "/" }
   ],
