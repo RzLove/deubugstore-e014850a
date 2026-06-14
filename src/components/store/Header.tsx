@@ -51,7 +51,6 @@ export function Header({ cartCount = 0 }: { cartCount?: number }) {
               <Youtube className="h-[18px] w-[18px]" />
             </a>
           </div>
-          </div>
           {/* CTA WhatsApp — número configurado em src/lib/constants.ts */}
           <a
             href={WHATSAPP_LINK}
