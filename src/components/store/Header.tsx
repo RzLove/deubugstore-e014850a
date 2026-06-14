@@ -1,4 +1,4 @@
-import { ShoppingCart, User, BadgeCheck, Youtube } from "lucide-react";
+import { BadgeCheck, Youtube } from "lucide-react";
 import { SearchAutocomplete } from "@/components/store/SearchAutocomplete";
 import { TikTokIcon } from "@/components/store/SocialIcons";
 import logo from "@/assets/deu-bug-logo.png.asset.json";
@@ -50,18 +50,7 @@ export function Header({ cartCount = 0 }: { cartCount?: number }) {
               <Youtube className="h-[18px] w-[18px]" />
             </a>
           </div>
-          <button className="hidden h-11 items-center gap-2 rounded-full border border-border bg-secondary/40 px-4 text-sm font-semibold text-foreground transition hover:border-primary/60 hover:bg-secondary sm:inline-flex">
-            <User className="h-4 w-4" />
-            Entrar
-          </button>
-          <button className="inline-flex h-11 items-center gap-2 rounded-full bg-primary px-4 text-sm font-bold text-primary-foreground glow-primary transition hover:bg-primary-glow">
-            <ShoppingCart className="h-4 w-4" />
-            <span className="hidden sm:inline">Carrinho</span>
-            <span className="grid h-6 min-w-6 place-items-center rounded-full bg-white px-1.5 text-xs font-bold text-primary">
-              {cartCount}
-            </span>
-          </button>
-        </div>
+
       </div>
     </header>
   );
