@@ -1,6 +1,5 @@
 import {
   ShoppingCart,
-  User,
   BadgeCheck,
   Award,
   Tag,
