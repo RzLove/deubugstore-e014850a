@@ -75,7 +75,7 @@ function SearchPage() {
               <button
                 key={g.id}
                 onClick={() =>
-                  navigate({ to: "/game/$id", params: { id: g.id.toString() } })
+                  navigate({ to: "/game/$id", params: { id: g.slug } })
                 }
                 className="group relative overflow-hidden rounded-xl border border-white/5 bg-[#0A0A0C] text-left transition hover:border-primary/40 hover:shadow-[0_0_30px_rgba(123,46,255,0.25)]"
               >
