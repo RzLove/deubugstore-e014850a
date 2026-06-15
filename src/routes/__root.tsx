@@ -141,6 +141,7 @@ function RootComponent() {
       <SiteBackdrop />
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
+      <SpeedInsights />
       {/* Botão flutuante de WhatsApp — global. Ver src/components/store/FloatingWhatsApp.tsx */}
       <FloatingWhatsApp />
     </QueryClientProvider>
