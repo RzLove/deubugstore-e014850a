@@ -1,14 +1,49 @@
-import { BadgeCheck, Youtube, MessageCircle } from "lucide-react";
-import { Link } from "@tanstack/react-router";
+import { BadgeCheck, Youtube, MessageCircle, MoreVertical, Gamepad2, Play, Rocket, Package, HelpCircle, FileQuestion, MessageSquare, Star } from "lucide-react";
+import { Link, useNavigate } from "@tanstack/react-router";
 import { SearchAutocomplete } from "@/components/store/SearchAutocomplete";
-import { TikTokIcon } from "@/components/store/SocialIcons";
-import { WHATSAPP_LINK } from "@/lib/constants";
+import { TikTokIcon, DiscordIcon } from "@/components/store/SocialIcons";
+import { WHATSAPP_LINK, DISCORD_URL } from "@/lib/constants";
 import logo from "@/assets/deu-bug-logo.png.asset.json";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
+const menuItems = [
+  { label: "Jogos Steam", href: "#games", icon: Gamepad2 },
+  { label: "Streaming", href: "#streaming", icon: Play },
+  { label: "Lançamentos", href: "#lancamentos", icon: Rocket },
+  { label: "Combos", href: "#combos", icon: Package },
+  { label: "Como Funciona", href: "#como-funciona", icon: HelpCircle },
+  { label: "FAQ", href: "#faq", icon: FileQuestion },
+  { label: "Suporte Discord", href: DISCORD_URL, icon: MessageSquare, external: true },
+  { label: "Feedbacks", href: "#feedbacks", icon: Star },
+];
 
 export function Header({ cartCount = 0 }: { cartCount?: number }) {
+  const navigate = useNavigate();
+
+  const handleMenuClick = (item: typeof menuItems[number]) => {
+    if (item.external) {
+      window.open(item.href, "_blank", "noopener,noreferrer");
+      return;
+    }
+    if (item.href.startsWith("#")) {
+      const el = document.querySelector(item.href);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      } else {
+        navigate({ to: "/", hash: item.href.slice(1) });
+      }
+    }
+  };
+
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border/60 bg-background/80 backdrop-blur-xl">
-      <div className="mx-auto flex h-20 max-w-[1280px] items-center gap-6 px-4 sm:px-6">
+      <div className="mx-auto flex h-20 max-w-[1280px] items-center gap-4 px-4 sm:px-6">
+        {/* 1. Logo */}
         <Link to="/" className="group flex shrink-0 items-center gap-3">
           <div className="relative grid h-10 w-10 shrink-0 place-items-center overflow-hidden rounded-full border border-primary/60 bg-black shadow-[0_0_12px_rgba(123,46,255,0.55)] transition-shadow group-hover:shadow-[0_0_18px_rgba(123,46,255,0.85)] sm:h-12 sm:w-12">
             <img
@@ -21,7 +56,7 @@ export function Header({ cartCount = 0 }: { cartCount?: number }) {
               decoding="async"
             />
           </div>
-          <div className="hidden items-center gap-1.5 sm:flex">
+          <div className="hidden items-center gap-1.5 lg:flex">
             <span className="font-display text-lg font-extrabold tracking-tight text-white">
               Deu Bug <span className="text-primary italic">Store</span>
             </span>
@@ -29,15 +64,27 @@ export function Header({ cartCount = 0 }: { cartCount?: number }) {
           </div>
         </Link>
 
+        {/* 2. Search bar — central, flex-1 */}
         <SearchAutocomplete className="mx-auto flex-1 max-w-xl" />
 
-        <div className="flex items-center gap-2 sm:gap-3">
-          <div className="hidden sm:flex items-center gap-2 mr-1">
+        {/* 3–7. Right side icons + menu + CTA */}
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+          {/* Social icons */}
+          <div className="hidden md:flex items-center gap-2">
+            <a
+              href={DISCORD_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="grid h-9 w-9 place-items-center rounded-lg border border-white/10 bg-white/5 text-white/60 transition hover:border-[#5865F2]/50 hover:text-[#5865F2] hover:shadow-[0_0_12px_rgba(88,101,242,0.35)]"
+              aria-label="Discord"
+            >
+              <DiscordIcon className="h-[18px] w-[18px]" />
+            </a>
             <a
               href="https://www.tiktok.com/@deu.bug.aqui"
               target="_blank"
               rel="noopener noreferrer"
-              className="grid h-9 w-9 place-items-center rounded-lg border border-white/10 bg-white/5 text-white/60 transition hover:border-cyan-400/50 hover:text-cyan-400"
+              className="grid h-9 w-9 place-items-center rounded-lg border border-white/10 bg-white/5 text-white/60 transition hover:border-cyan-400/50 hover:text-cyan-400 hover:shadow-[0_0_12px_rgba(34,211,238,0.35)]"
               aria-label="TikTok"
             >
               <TikTokIcon className="h-[18px] w-[18px]" />
@@ -46,13 +93,45 @@ export function Header({ cartCount = 0 }: { cartCount?: number }) {
               href="https://youtube.com/@deubugaqui"
               target="_blank"
               rel="noopener noreferrer"
-              className="grid h-9 w-9 place-items-center rounded-lg border border-white/10 bg-white/5 text-white/60 transition hover:border-red-500/50 hover:text-red-500"
+              className="grid h-9 w-9 place-items-center rounded-lg border border-white/10 bg-white/5 text-white/60 transition hover:border-red-500/50 hover:text-red-500 hover:shadow-[0_0_12px_rgba(239,68,68,0.35)]"
               aria-label="YouTube"
             >
               <Youtube className="h-[18px] w-[18px]" />
             </a>
           </div>
-          {/* CTA WhatsApp — número configurado em src/lib/constants.ts */}
+
+          {/* Divider */}
+          <div className="hidden lg:block h-6 w-px bg-white/10" />
+
+          {/* 6. Kebab menu */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button
+                className="grid h-9 w-9 place-items-center rounded-lg border border-white/10 bg-white/5 text-white/60 transition hover:border-primary/50 hover:text-primary hover:shadow-[0_0_16px_rgba(139,92,246,0.4)]"
+                aria-label="Menu"
+              >
+                <MoreVertical className="h-[18px] w-[18px]" />
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent
+              align="end"
+              sideOffset={8}
+              className="w-56 rounded-xl border border-white/10 bg-[#0A0A0C]/95 backdrop-blur-xl shadow-[0_0_40px_rgba(139,92,246,0.2)] p-1.5"
+            >
+              {menuItems.map((item) => (
+                <DropdownMenuItem
+                  key={item.label}
+                  onClick={() => handleMenuClick(item)}
+                  className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-white/80 cursor-pointer transition hover:bg-white/5 hover:text-white focus:bg-white/5 focus:text-white"
+                >
+                  <item.icon className="h-4 w-4 text-primary shrink-0" />
+                  <span className="font-medium">{item.label}</span>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          {/* 7. WhatsApp CTA */}
           <a
             href={WHATSAPP_LINK}
             target="_blank"
@@ -67,6 +146,5 @@ export function Header({ cartCount = 0 }: { cartCount?: number }) {
         </div>
       </div>
     </header>
-
   );
 }
