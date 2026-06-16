@@ -6,6 +6,7 @@ import { FeaturedSection } from "@/components/store/FeaturedSection";
 import { PopularGames } from "@/components/store/PopularGames";
 import { GameGrid } from "@/components/store/GameGrid";
 import { ReleasesSection } from "@/components/store/ReleasesSection";
+import { MinecraftSection } from "@/components/store/MinecraftSection";
 import { StreamingGrid } from "@/components/store/StreamingGrid";
 import { SocialSection } from "@/components/store/SocialSection";
 import { Footer } from "@/components/store/Footer";
@@ -95,6 +96,7 @@ function Index() {
         {(activeCategory === "todos" || activeCategory === "jogos") && (
           <div id="catalogo">
             <GameGrid />
+            <MinecraftSection />
           </div>
         )}
         {(activeCategory === "todos" || activeCategory === "streaming") && <StreamingGrid />}
