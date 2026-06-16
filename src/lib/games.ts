@@ -1471,6 +1471,48 @@ const raw: RawGame[] = [
         "Pragmata é o novo IP de ficção científica da Capcom. Em uma base lunar abandonada, um astronauta e uma misteriosa garota androide precisam unir forças para sobreviver. O jogo combina combate hacking em tempo real com exploração atmosférica.\n\nA Edição Deluxe acompanha conteúdos cosméticos exclusivos, artbook digital e trilha sonora.",
       tags: ["Ação", "Sci-Fi", "Aventura"],
       rating: "16",
+      bundle: [
+        {
+          name: "Pragmata",
+          cover: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3357650/e32e168b25ed68a0cf6264c220c07e96c2abfb56/header.jpg?t=1777351016",
+          minReq: {
+            os: "Windows 10 64-bit",
+            cpu: "Intel Core i5-8400 / AMD Ryzen 5 2600",
+            ram: "12 GB",
+            gpu: "GTX 1060 6GB / RX 580 8GB",
+            directx: "12",
+            storage: "70 GB SSD",
+          },
+          recReq: {
+            os: "Windows 11 64-bit",
+            cpu: "Intel Core i7-10700K / AMD Ryzen 7 5800X",
+            ram: "16 GB",
+            gpu: "RTX 3070 / RX 6800",
+            directx: "12",
+            storage: "70 GB SSD",
+          },
+        },
+        {
+          name: "Deluxe Content Pack",
+          cover: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3357650/e32e168b25ed68a0cf6264c220c07e96c2abfb56/header.jpg?t=1777351016",
+          minReq: {
+            os: "Windows 10 64-bit",
+            cpu: "Intel Core i5-8400 / AMD Ryzen 5 2600",
+            ram: "4 GB",
+            gpu: "GTX 1060 6GB / RX 580 8GB",
+            directx: "12",
+            storage: "10 GB SSD",
+          },
+          recReq: {
+            os: "Windows 11 64-bit",
+            cpu: "Intel Core i7-10700K / AMD Ryzen 7 5800X",
+            ram: "8 GB",
+            gpu: "RTX 3070 / RX 6800",
+            directx: "12",
+            storage: "10 GB SSD",
+          },
+        },
+      ],
     },
     {
       id: 46,
