@@ -42,7 +42,7 @@ export function GameCard({
           src={game.cover}
           alt={game.name}
           className={`h-full w-full object-cover transition-transform duration-700 ${
-            soldOut ? "" : "group-hover:scale-110"
+            soldOut ? "grayscale" : "group-hover:scale-110"
           }`}
         />
         {soldOut ? (
