@@ -23,6 +23,8 @@ export function GameCard({
 
   return (
     <div
+      itemScope
+      itemType="https://schema.org/Product"
       onClick={() => {
         if (!soldOut) navigate({ to: "/game/$id", params: { id: game.slug } });
       }}
@@ -32,6 +34,8 @@ export function GameCard({
           : "hover:-translate-y-2 hover:bg-[#0E0E12] hover:shadow-[0_30px_60px_-15px_rgba(139,92,246,0.35)] hover:border-primary/40 cursor-pointer shadow-2xl shadow-black/40"
       }`}
     >
+      <meta itemProp="sku" content={String(game.id)} />
+      <link itemProp="url" href={`/game/${game.slug}`} />
       {/* Sold-out overlay */}
       {soldOut && (
         <div className="absolute inset-0 z-20 bg-black/60 rounded-2xl pointer-events-none" />
@@ -41,6 +45,7 @@ export function GameCard({
         <img
           src={game.cover}
           alt={game.name}
+          itemProp="image"
           className={`h-full w-full object-cover transition-transform duration-700 ${
             soldOut ? "grayscale" : "group-hover:scale-110"
           }`}
