@@ -6,14 +6,12 @@ import { TestimonialsSection } from "@/components/store/TestimonialsSection";
 import { HeroBlock } from "@/components/store/HeroBlock";
 import { FeaturedSection } from "@/components/store/FeaturedSection";
 import { PopularGames } from "@/components/store/PopularGames";
-import { GameGrid } from "@/components/store/GameGrid";
 import { ReleasesSection } from "@/components/store/ReleasesSection";
 import { MinecraftSection } from "@/components/store/MinecraftSection";
-import { StreamingGrid } from "@/components/store/StreamingGrid";
 import { SocialSection } from "@/components/store/SocialSection";
 import { Footer } from "@/components/store/Footer";
 import { WelcomeModal } from "@/components/store/WelcomeModal";
-import { CategoryFilter, type CategoryKey } from "@/components/store/CategoryFilter";
+import { CatalogBrowser } from "@/components/store/CatalogBrowser";
 
 const SITE_URL = "https://deubugstore.lovable.app";
 const HOME_TITLE = "Deu Bug Store - Os Melhores Jogos Steam e Streaming";
