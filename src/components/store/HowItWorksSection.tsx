@@ -25,7 +25,7 @@ const steps = [
   {
     icon: CalendarCheck,
     title: "Jogue por vários dias na sua conta",
-    description: "Acesso garantido por dias na sua conta. Aproveite sem limites.",
+    description: "Acesso garantido na sua conta. Aproveite sem limites.",
     accent: "text-primary",
     glow: "shadow-[0_0_30px_-8px_rgba(139,92,246,0.4)]",
   },
