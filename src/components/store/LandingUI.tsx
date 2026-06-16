@@ -26,7 +26,7 @@ import { DISCORD_URL, WHATSAPP_LINK } from "@/lib/constants";
 export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-white/5 bg-black/90 backdrop-blur-xl">
-      <div className="mx-auto grid h-20 max-w-[1280px] grid-cols-[auto_auto] items-center gap-2 px-3 sm:grid-cols-[auto_1fr_auto] sm:gap-6 sm:px-6">
+      <div className="mx-auto grid max-w-[1280px] grid-cols-[auto_auto] items-center gap-2 px-3 py-3 sm:h-20 sm:grid-cols-[auto_1fr_auto] sm:gap-6 sm:px-6 sm:py-0">
         {/* Logo + name */}
         <a href="/" className="flex shrink-0 items-center gap-2 sm:gap-3">
           <div className="relative grid h-10 w-10 shrink-0 place-items-center overflow-hidden rounded-xl border border-primary/40 bg-black shadow-[0_0_18px_-2px_rgba(139,92,246,0.7)] sm:h-14 sm:w-14">
