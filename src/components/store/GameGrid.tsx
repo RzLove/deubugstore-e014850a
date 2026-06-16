@@ -1,4 +1,4 @@
-import { ShoppingCart, ArrowRight } from "lucide-react";
+import { ShoppingCart, ArrowRight, Ban } from "lucide-react";
 import { useState, useMemo } from "react";
 import { PurchaseModal } from "./PurchaseModal";
 import { useCatalog } from "@/lib/use-catalog";

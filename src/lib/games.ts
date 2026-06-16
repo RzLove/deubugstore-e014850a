@@ -1397,6 +1397,40 @@ const raw: RawGame[] = [
       storage: "80 GB SSD",
     } as SysReq,
   })) as RawGame[]),
+  // ===== ESGOTADO =====
+  {
+    id: 48,
+    name: "Battlefield 6",
+    appId: 2807960,
+    coverUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/2807960/header.jpg",
+    origNumber: 299,
+    newNumber: 299,
+    stock: 0,
+    categories: ["tiro", "acao"] as GameCategory[],
+    short:
+      "O próximo capítulo da franquia de tiro em primeira pessoa da EA. Combates em larga escala e destruição total.",
+    about:
+      "Battlefield 6 traz de volta a guerra em larga escala que a franquia é conhecida. Com batalhas de até 128 jogadores, destruição ambiental avançada e cenários globais cinematográficos, o jogo redefine o multiplayer de tiro em primeira pessoa.\n\nInclui veículos terrestres, aéreos e marítimos, classes personalizáveis e um novo sistema de clima dinâmico que altera o campo de batalha em tempo real.",
+    tags: ["Tiro", "FPS", "Multiplayer", "Ação"],
+    rating: "18",
+    minReq: {
+      os: "Windows 10 64-bit",
+      cpu: "Intel Core i5-8400 / AMD Ryzen 5 2600",
+      ram: "12 GB",
+      gpu: "GTX 1060 6GB / RX 580 8GB",
+      directx: "12",
+      storage: "80 GB SSD",
+      notes: "*Requisitos estimados — sujeitos a alteração",
+    },
+    recReq: {
+      os: "Windows 11 64-bit",
+      cpu: "Intel Core i7-10700K / AMD Ryzen 7 5800X",
+      ram: "16 GB",
+      gpu: "RTX 3070 / RX 6800",
+      directx: "12",
+      storage: "80 GB SSD",
+    },
+  },
 ];
 
 void lowEnd;
