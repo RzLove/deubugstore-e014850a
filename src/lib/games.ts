@@ -1288,6 +1288,7 @@ const raw: RawGame[] = [
       id: 42,
       name: "LEGO Batman: Legacy of the Dark Knight",
       appId: 2215200,
+      coverUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2215200/a07a9a6c0c9c1225f5b260b4f29fe40e6f099f6b/header.jpg?t=1780591479",
       origNumber: 349.9,
       newNumber: 30,
       stock: 41,
