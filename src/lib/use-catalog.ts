@@ -109,10 +109,9 @@ export function useCatalog() {
         ...rowToGame(r),
         isSoldOut: r.is_sold_out || Number(r.stock ?? 0) === 0,
       })),
-      ...(dbGames.length === 0
-        ? staticGames.map((g) => ({ ...g, isSoldOut: (g.stock ?? 0) === 0 }))
-        : []
-      ).filter((g) => !dbGameSlugs.has(g.slug)),
+      ...staticGames
+        .filter((g) => !dbGameSlugs.has(g.slug))
+        .map((g) => ({ ...g, isSoldOut: (g.stock ?? 0) === 0 })),
     ];
 
     return {
