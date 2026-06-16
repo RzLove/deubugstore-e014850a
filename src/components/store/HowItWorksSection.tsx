@@ -18,7 +18,7 @@ const steps = [
   {
     icon: Zap,
     title: "Receba os dados em até 5 minutos",
-    description: "Entrega automática e super rápida direto no seu e-mail.",
+    description: "Entrega automática e super rápida direto no Discord ou WhatsApp.",
     accent: "text-neon-cyan",
     glow: "shadow-[0_0_30px_-8px_rgba(34,211,238,0.4)]",
   },
