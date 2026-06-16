@@ -9,6 +9,7 @@ import { StreamingGrid } from "@/components/store/StreamingGrid";
 import { SocialSection } from "@/components/store/SocialSection";
 import { Footer } from "@/components/store/Footer";
 import { WelcomeModal } from "@/components/store/WelcomeModal";
+import { CategoryFilter, type CategoryKey } from "@/components/store/CategoryFilter";
 
 export const Route = createFileRoute("/")({
   head: () => ({
