@@ -276,6 +276,15 @@ export function GameGrid() {
         games={sections.jogosSteam}
         onBuy={setSelectedProduct}
       />
+      {sections.esgotados.length > 0 && (
+        <Subsection
+          icon="🚫"
+          title="Produtos"
+          highlight="Esgotados"
+          games={sections.esgotados}
+          onBuy={setSelectedProduct}
+        />
+      )}
 
       <PurchaseModal
         isOpen={!!selectedProduct}
