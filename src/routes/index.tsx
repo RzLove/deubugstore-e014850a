@@ -13,15 +13,21 @@ import { Footer } from "@/components/store/Footer";
 import { WelcomeModal } from "@/components/store/WelcomeModal";
 import { CategoryFilter, type CategoryKey } from "@/components/store/CategoryFilter";
 
+const SITE_URL = "https://deubugstore.lovable.app";
+const HOME_TITLE = "Deu Bug Store - Os Melhores Jogos Steam e Streaming";
+const HOME_DESCRIPTION =
+  "Compre jogos Steam e serviços de streaming com os melhores preços. Entrega rápida, suporte ativo e pagamento via Pix.";
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "DEU BTORE — OS MELHORES JOGOS COM O MELHOR PREÇO!" },
-      {
-        name: "description",
-        content: "DEU BTORE: Aqui o bug é só no preço! Entrega automática, compra 100% segura e suporte 24/7. Os melhores jogos digitais com o visual futurista e descontos insanos.",
-      },
+      { title: HOME_TITLE },
+      { name: "description", content: HOME_DESCRIPTION },
+      { property: "og:title", content: HOME_TITLE },
+      { property: "og:description", content: HOME_DESCRIPTION },
+      { property: "og:url", content: SITE_URL + "/" },
     ],
+    links: [{ rel: "canonical", href: SITE_URL + "/" }],
   }),
   component: Index,
 });
