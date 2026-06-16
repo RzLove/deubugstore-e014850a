@@ -9,6 +9,7 @@ import { StreamingGrid } from "@/components/store/StreamingGrid";
 import { SocialSection } from "@/components/store/SocialSection";
 import { Footer } from "@/components/store/Footer";
 import { WelcomeModal } from "@/components/store/WelcomeModal";
+import { CategoryFilter, type CategoryKey } from "@/components/store/CategoryFilter";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -26,6 +27,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   // Render random particles only on the client to avoid hydration mismatch
   // that breaks event handlers (including the header search) on the home page.
+  const [activeCategory, setActiveCategory] = useState<CategoryKey>("todos");
   const [particles, setParticles] = useState<
     { left: number; delay: number; duration: number; opacity: number }[]
   >([]);
@@ -83,12 +85,29 @@ function Index() {
       
       <main className="relative z-10">
         <HeroBlock />
-        <PopularGames />
-        <FeaturedSection />
-        <div id="catalogo">
-          <GameGrid />
-        </div>
-        <StreamingGrid />
+        <CategoryFilter active={activeCategory} onChange={setActiveCategory} />
+        {(activeCategory === "todos" || activeCategory === "jogos") && <PopularGames />}
+        {activeCategory === "todos" && <FeaturedSection />}
+        {(activeCategory === "todos" || activeCategory === "jogos") && (
+          <div id="catalogo">
+            <GameGrid />
+          </div>
+        )}
+        {(activeCategory === "todos" || activeCategory === "streaming") && <StreamingGrid />}
+        {(activeCategory === "lancamentos" ||
+          activeCategory === "combos" ||
+          activeCategory === "promocoes") && (
+          <section className="mx-auto mt-20 max-w-[1280px] px-4 sm:px-6 relative z-10">
+            <div className="rounded-2xl border border-primary/30 bg-[#0A0A0C]/80 p-12 text-center shadow-[0_0_30px_rgba(139,92,246,0.2)]">
+              <h3 className="text-2xl md:text-3xl font-black uppercase text-white mb-3">
+                Em breve <span className="text-neon-green">novidades</span>
+              </h3>
+              <p className="text-white/60">
+                Estamos preparando esta categoria. Volte em breve para conferir!
+              </p>
+            </div>
+          </section>
+        )}
       </main>
 
       <SocialSection />
