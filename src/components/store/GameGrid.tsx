@@ -17,21 +17,42 @@ function GameCard({
   onBuy: (name: string) => void;
 }) {
   const navigate = useNavigate();
+  const soldOut = game.isSoldOut;
+
   return (
     <div
-      onClick={() => navigate({ to: "/game/$id", params: { id: game.slug } })}
-      className="group relative flex flex-col overflow-hidden rounded-2xl bg-[#0A0A0C]/80 backdrop-blur-sm border border-white/5 transition-all duration-500 hover:-translate-y-2 hover:bg-[#0E0E12] hover:shadow-[0_30px_60px_-15px_rgba(139,92,246,0.35)] hover:border-primary/40 cursor-pointer shadow-2xl shadow-black/40"
+      onClick={() => {
+        if (!soldOut) navigate({ to: "/game/$id", params: { id: game.slug } });
+      }}
+      className={`group relative flex flex-col overflow-hidden rounded-2xl bg-[#0A0A0C]/80 backdrop-blur-sm border border-white/5 transition-all duration-500 ${
+        soldOut
+          ? "opacity-70 cursor-not-allowed"
+          : "hover:-translate-y-2 hover:bg-[#0E0E12] hover:shadow-[0_30px_60px_-15px_rgba(139,92,246,0.35)] hover:border-primary/40 cursor-pointer shadow-2xl shadow-black/40"
+      }`}
     >
+      {/* Sold-out overlay */}
+      {soldOut && (
+        <div className="absolute inset-0 z-20 bg-black/60 rounded-2xl pointer-events-none" />
+      )}
+
       <div className="relative aspect-[16/9] w-full overflow-hidden">
         <img
           src={game.cover}
           alt={game.name}
-          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+          className={`h-full w-full object-cover transition-transform duration-700 ${
+            soldOut ? "" : "group-hover:scale-110"
+          }`}
         />
-        <div className="absolute top-4 left-4 bg-white text-black px-2 py-1 text-[10px] font-black rounded-sm shadow-xl">
-          {game.discount} OFF
-        </div>
-        {game.bundle && game.bundle.length > 0 && (
+        {soldOut ? (
+          <div className="absolute top-4 left-4 bg-red-600 text-white px-2.5 py-1 text-[10px] font-black rounded-sm shadow-xl uppercase tracking-widest z-30">
+            ESGOTADO
+          </div>
+        ) : (
+          <div className="absolute top-4 left-4 bg-white text-black px-2 py-1 text-[10px] font-black rounded-sm shadow-xl">
+            {game.discount} OFF
+          </div>
+        )}
+        {!soldOut && game.bundle && game.bundle.length > 0 && (
           <div className="absolute top-4 right-4 bg-neon-green text-black px-2.5 py-1 text-[10px] font-black rounded-full shadow-[0_0_18px_rgba(168,255,51,0.45)] border border-neon-green/60 uppercase tracking-widest">
             🎁 COMBO 2 EM 1
           </div>
@@ -40,7 +61,13 @@ function GameCard({
 
       <div className="flex flex-col flex-1 p-6 space-y-4">
         <div className="space-y-1">
-          <h3 className="line-clamp-1 font-display text-lg font-bold text-white group-hover:text-neon-cyan transition-colors uppercase tracking-tight">
+          <h3
+            className={`line-clamp-1 font-display text-lg font-bold transition-colors uppercase tracking-tight ${
+              soldOut
+                ? "text-white/50"
+                : "text-white group-hover:text-neon-cyan"
+            }`}
+          >
             {game.name}
           </h3>
           <div className="text-[10px] text-white/30 font-black tracking-widest uppercase">
@@ -50,38 +77,61 @@ function GameCard({
 
         <div className="mt-auto pt-4 flex items-end justify-between border-t border-white/5">
           <div className="flex flex-col">
-            <span className="text-[10px] text-white/30 line-through font-bold tracking-wider leading-none mb-1">
-              {game.originalPrice}
-            </span>
-            <span className="font-display text-2xl font-black text-[#A8FF33] leading-none drop-shadow-[0_0_8px_rgba(168,255,51,0.2)]">
-              {game.discountedPrice}
-            </span>
-            <span className="mt-1 text-[9px] font-bold uppercase tracking-widest text-white/40">
-              À vista no Pix
-            </span>
-            {game.stock < 10 ? (
-              <span className="mt-1 text-[10px] font-black uppercase tracking-wider text-orange-400">
-                Últimas {game.stock} unidades!
+            {soldOut ? (
+              <span className="font-display text-xl font-black text-white/30 leading-none">
+                INDISPONÍVEL
               </span>
             ) : (
-              <span className="mt-1 text-[10px] font-semibold text-white/40">
-                {game.stock} em estoque
-              </span>
+              <>
+                <span className="text-[10px] text-white/30 line-through font-bold tracking-wider leading-none mb-1">
+                  {game.originalPrice}
+                </span>
+                <span className="font-display text-2xl font-black text-[#A8FF33] leading-none drop-shadow-[0_0_8px_rgba(168,255,51,0.2)]">
+                  {game.discountedPrice}
+                </span>
+                <span className="mt-1 text-[9px] font-bold uppercase tracking-widest text-white/40">
+                  À vista no Pix
+                </span>
+                {game.stock < 10 ? (
+                  <span className="mt-1 text-[10px] font-black uppercase tracking-wider text-orange-400">
+                    Últimas {game.stock} unidades!
+                  </span>
+                ) : (
+                  <span className="mt-1 text-[10px] font-semibold text-white/40">
+                    {game.stock} em estoque
+                  </span>
+                )}
+              </>
             )}
           </div>
 
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onBuy(game.name);
-            }}
-            className="flex h-10 px-4 items-center justify-center gap-2 rounded-lg bg-primary text-[10px] font-black text-white transition-all duration-300 hover:bg-primary-glow hover:scale-105 shadow-[0_0_15px_rgba(123,46,255,0.3)] uppercase tracking-widest border border-primary/20"
-          >
-            <ShoppingCart className="h-4 w-4" /> COMPRAR
-          </button>
+          {soldOut ? (
+            <button
+              disabled
+              className="flex h-10 px-4 items-center justify-center gap-2 rounded-lg bg-white/5 text-[10px] font-black text-white/30 uppercase tracking-widest border border-white/5 cursor-not-allowed"
+            >
+              <Ban className="h-4 w-4" /> ESGOTADO
+            </button>
+          ) : (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onBuy(game.name);
+              }}
+              className="flex h-10 px-4 items-center justify-center gap-2 rounded-lg bg-primary text-[10px] font-black text-white transition-all duration-300 hover:bg-primary-glow hover:scale-105 shadow-[0_0_15px_rgba(123,46,255,0.3)] uppercase tracking-widest border border-primary/20"
+            >
+              <ShoppingCart className="h-4 w-4" /> COMPRAR
+            </button>
+          )}
         </div>
       </div>
-      <div className="absolute inset-0 border-2 border-primary/0 group-hover:border-primary/30 rounded-2xl transition-all duration-500 pointer-events-none" />
+      <div
+        className={`absolute inset-0 border-2 rounded-2xl transition-all duration-500 pointer-events-none ${
+          soldOut
+            ? "border-white/5"
+            : "border-primary/0 group-hover:border-primary/30"
+        }`}
+      />
     </div>
   );
 }
