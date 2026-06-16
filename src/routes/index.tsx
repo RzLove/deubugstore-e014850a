@@ -5,6 +5,7 @@ import { HeroBlock } from "@/components/store/HeroBlock";
 import { FeaturedSection } from "@/components/store/FeaturedSection";
 import { PopularGames } from "@/components/store/PopularGames";
 import { GameGrid } from "@/components/store/GameGrid";
+import { ReleasesSection } from "@/components/store/ReleasesSection";
 import { StreamingGrid } from "@/components/store/StreamingGrid";
 import { SocialSection } from "@/components/store/SocialSection";
 import { Footer } from "@/components/store/Footer";
@@ -88,6 +89,9 @@ function Index() {
         <CategoryFilter active={activeCategory} onChange={setActiveCategory} />
         {(activeCategory === "todos" || activeCategory === "jogos") && <PopularGames />}
         {activeCategory === "todos" && <FeaturedSection />}
+        {(activeCategory === "todos" || activeCategory === "jogos") && (
+          <ReleasesSection />
+        )}
         {(activeCategory === "todos" || activeCategory === "jogos") && (
           <div id="catalogo">
             <GameGrid />
