@@ -110,7 +110,7 @@ export function StreamingGrid() {
               )}
             </div>
             {isSoldOut ? (
-              <span className="flex h-10 px-5 items-center justify-center rounded-xl bg-white/5 text-[10px] font-black text-white/30 uppercase tracking-[0.15em] border border-white/10 cursor-not-allowed">
+              <span className="flex min-h-[44px] h-11 px-5 items-center justify-center rounded-xl bg-white/5 text-[10px] font-black text-white/30 uppercase tracking-[0.15em] border border-white/10 cursor-not-allowed">
                 ESGOTADO
               </span>
             ) : (
@@ -119,7 +119,7 @@ export function StreamingGrid() {
                   e.stopPropagation();
                   setSelectedProduct(p.name);
                 }}
-                className="flex h-10 px-5 items-center justify-center gap-2 rounded-xl bg-[#39FF14] text-[10px] font-black text-[#020203] transition-all duration-300 hover:bg-[#7CFC00] hover:scale-105 hover:shadow-[0_0_25px_rgba(57,255,20,0.45)] uppercase tracking-[0.15em]"
+                className="flex min-h-[44px] h-11 px-5 items-center justify-center gap-2 rounded-xl bg-[#39FF14] text-[10px] font-black text-[#020203] transition-all duration-300 hover:bg-[#7CFC00] hover:scale-105 hover:shadow-[0_0_25px_rgba(57,255,20,0.45)] uppercase tracking-[0.15em]"
               >
                 <ShoppingCart className="h-4 w-4" /> COMPRAR
               </button>

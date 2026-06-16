@@ -14,10 +14,10 @@ export function FloatingWhatsApp() {
       rel="noopener noreferrer"
       aria-label="Atendimento via WhatsApp"
       title="Atendimento via WhatsApp"
-      className="fixed bottom-5 right-5 z-[90] group inline-flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_8px_30px_rgba(37,211,102,0.55)] transition-all hover:scale-110 hover:shadow-[0_8px_40px_rgba(37,211,102,0.75)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366]/70 sm:h-16 sm:w-16"
+      className="fixed bottom-4 right-4 z-[90] group inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_8px_30px_rgba(37,211,102,0.55)] transition-all hover:scale-110 hover:shadow-[0_8px_40px_rgba(37,211,102,0.75)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366]/70 sm:bottom-5 sm:right-5 sm:h-16 sm:w-16"
     >
       <span className="absolute inset-0 rounded-full bg-[#25D366]/60 animate-ping" aria-hidden="true" />
-      <MessageCircle className="relative h-7 w-7 sm:h-8 sm:w-8" strokeWidth={2.2} />
+      <MessageCircle className="relative h-6 w-6 sm:h-8 sm:w-8" strokeWidth={2.2} />
     </a>
   );
 }

@@ -114,7 +114,7 @@ export function GameCard({
           {soldOut ? (
             <button
               disabled
-              className="flex h-10 px-4 items-center justify-center gap-2 rounded-lg bg-white/5 text-[10px] font-black text-white/30 uppercase tracking-widest border border-white/5 cursor-not-allowed"
+              className="flex min-h-[44px] h-11 px-4 items-center justify-center gap-2 rounded-lg bg-white/5 text-[10px] font-black text-white/30 uppercase tracking-widest border border-white/5 cursor-not-allowed"
             >
               <Ban className="h-4 w-4" /> ESGOTADO
             </button>
@@ -124,7 +124,7 @@ export function GameCard({
                 e.stopPropagation();
                 onBuy(game.name);
               }}
-              className="flex h-10 px-4 items-center justify-center gap-2 rounded-lg bg-primary text-[10px] font-black text-white transition-all duration-300 hover:bg-primary-glow hover:scale-105 shadow-[0_0_15px_rgba(123,46,255,0.3)] uppercase tracking-widest border border-primary/20"
+              className="flex min-h-[44px] h-11 px-4 items-center justify-center gap-2 rounded-lg bg-primary text-[10px] font-black text-white transition-all duration-300 hover:bg-primary-glow hover:scale-105 shadow-[0_0_15px_rgba(123,46,255,0.3)] uppercase tracking-widest border border-primary/20"
             >
               <ShoppingCart className="h-4 w-4" /> COMPRAR
             </button>
@@ -173,7 +173,7 @@ function Subsection({
         </span>
       </div>
 
-      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3 xl:grid-cols-4">
         {visible.map((g) => (
           <GameCard key={g.id} game={g} onBuy={onBuy} />
         ))}
