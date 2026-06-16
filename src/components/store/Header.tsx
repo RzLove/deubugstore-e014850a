@@ -1,4 +1,4 @@
-import { BadgeCheck, Youtube, MessageCircle, MoreVertical, Gamepad2, Play, Rocket, Package, HelpCircle, MessageSquareQuestion, MessageSquare, Star } from "lucide-react";
+import { BadgeCheck, Youtube, MessageCircle, MoreVertical, Gamepad2, Play, Rocket, Package, HelpCircle, FileQuestion, MessageSquare, Star } from "lucide-react";
 import { Link, useNavigate } from "@tanstack/react-router";
 import { SearchAutocomplete } from "@/components/store/SearchAutocomplete";
 import { TikTokIcon, DiscordIcon } from "@/components/store/SocialIcons";
