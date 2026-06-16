@@ -17,7 +17,7 @@ const menuItems = [
   { label: "Lançamentos", href: "#lancamentos", icon: Rocket },
   { label: "Combos", href: "#combos", icon: Package },
   { label: "Como Funciona", href: "#como-funciona", icon: HelpCircle },
-  { label: "FAQ", href: "#faq", icon: MessageSquareQuestion },
+  { label: "FAQ", href: "#faq", icon: FileQuestion },
   { label: "Suporte Discord", href: DISCORD_URL, icon: MessageSquare, external: true },
   { label: "Feedbacks", href: "#feedbacks", icon: Star },
 ];
