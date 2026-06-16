@@ -101,7 +101,7 @@ function MinecraftCard({
 
           <button
             onClick={() => onBuy(product.name)}
-            className="flex h-10 px-4 items-center justify-center gap-2 rounded-lg bg-neon-green text-black text-[10px] font-black transition-all duration-300 hover:scale-105 shadow-[0_0_15px_rgba(168,255,51,0.4)] uppercase tracking-widest border border-neon-green/40"
+            className="flex min-h-[44px] h-11 px-4 items-center justify-center gap-2 rounded-lg bg-neon-green text-black text-[10px] font-black transition-all duration-300 hover:scale-105 shadow-[0_0_15px_rgba(168,255,51,0.4)] uppercase tracking-widest border border-neon-green/40"
           >
             <ShoppingCart className="h-4 w-4" /> COMPRAR
           </button>

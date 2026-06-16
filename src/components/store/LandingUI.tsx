@@ -26,10 +26,10 @@ import { DISCORD_URL, WHATSAPP_LINK } from "@/lib/constants";
 export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-white/5 bg-black/90 backdrop-blur-xl">
-      <div className="mx-auto grid h-20 max-w-[1280px] grid-cols-[auto_1fr_auto] items-center gap-4 px-4 sm:gap-6 sm:px-6">
+      <div className="mx-auto grid h-20 max-w-[1280px] grid-cols-[auto_auto] items-center gap-2 px-3 sm:grid-cols-[auto_1fr_auto] sm:gap-6 sm:px-6">
         {/* Logo + name */}
-        <a href="/" className="flex shrink-0 items-center gap-3">
-          <div className="relative grid h-12 w-12 shrink-0 place-items-center overflow-hidden rounded-xl border border-primary/40 bg-black shadow-[0_0_18px_-2px_rgba(139,92,246,0.7)] sm:h-14 sm:w-14">
+        <a href="/" className="flex shrink-0 items-center gap-2 sm:gap-3">
+          <div className="relative grid h-10 w-10 shrink-0 place-items-center overflow-hidden rounded-xl border border-primary/40 bg-black shadow-[0_0_18px_-2px_rgba(139,92,246,0.7)] sm:h-14 sm:w-14">
             <img
               src={logo.url}
               alt="Deu Bug Store"
@@ -51,11 +51,11 @@ export function Header() {
           </div>
         </a>
 
-        {/* Search */}
-        <SearchAutocomplete className="mx-auto w-full max-w-xl" />
+        {/* Search — full width below on mobile */}
+        <SearchAutocomplete className="order-3 col-span-2 w-full max-w-xl pb-3 sm:order-none sm:col-span-1 sm:mx-auto sm:pb-0" />
 
         {/* Actions */}
-        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+        <div className="flex shrink-0 items-center gap-2 justify-self-end sm:gap-3">
           <div className="hidden sm:flex items-center gap-2 mr-1">
             <a
               href="https://www.tiktok.com/@deu.bug.aqui"
@@ -82,7 +82,7 @@ export function Header() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Fale no WhatsApp"
-            className="inline-flex h-10 items-center gap-2 rounded-lg bg-[#25D366] px-3 sm:px-4 text-xs sm:text-sm font-bold text-white shadow-[0_0_18px_rgba(37,211,102,0.35)] transition hover:bg-[#1FB855] hover:scale-[1.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366]/70"
+            className="inline-flex h-11 shrink-0 items-center gap-2 whitespace-nowrap rounded-lg bg-[#25D366] px-3 sm:px-4 text-xs sm:text-sm font-bold text-white shadow-[0_0_18px_rgba(37,211,102,0.35)] transition hover:bg-[#1FB855] hover:scale-[1.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366]/70"
           >
             <MessageCircle className="h-4 w-4" />
             <span className="hidden sm:inline">Fale no WhatsApp</span>
