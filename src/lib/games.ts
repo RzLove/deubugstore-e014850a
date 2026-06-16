@@ -1252,6 +1252,148 @@ const raw: RawGame[] = [
       },
     ],
   },
+  // ===== Novos lançamentos (aparecem primeiro em "Lançamentos") =====
+  ...([
+    {
+      id: 40,
+      name: "Indiana Jones and the Great Circle",
+      appId: 2677660,
+      origNumber: 349,
+      newNumber: 25,
+      stock: 32,
+      categories: ["popular", "acao"] as GameCategory[],
+      short:
+        "Aventura de ação em primeira pessoa protagonizada pelo lendário Indiana Jones.",
+      about:
+        "Indiana Jones and the Great Circle é uma aventura cinematográfica em primeira pessoa da MachineGames (Wolfenstein) em parceria com a Bethesda e Lucasfilm Games. Viaje pelo mundo nos anos 1930 — Vaticano, Egito, Himalaia e mais — desvendando um mistério antigo ligado ao Grande Círculo.\n\nO jogo mistura exploração, puzzles, combate corpo a corpo com o icônico chicote e momentos de ação cinematográfica fiéis ao espírito da franquia.",
+      tags: ["Ação", "Aventura", "Mundo Aberto"],
+      rating: "16",
+    },
+    {
+      id: 41,
+      name: "Monster Hunter Wilds",
+      appId: 2246340,
+      origNumber: 279,
+      newNumber: 20,
+      stock: 28,
+      categories: ["popular", "acao", "rpg"] as GameCategory[],
+      short:
+        "Caça monstros colossais em um mundo aberto dinâmico cheio de desafios épicos.",
+      about:
+        "Monster Hunter Wilds é a nova geração da consagrada franquia da Capcom. Explore ecossistemas vivos e dinâmicos com clima em constante mudança, monte sua arma favorita entre 14 classes e enfrente criaturas gigantes sozinho ou em cooperativo de até 4 jogadores.\n\nA nova montaria Seikret, cenários massivos e batalhas cinematográficas elevam o gênero a outro patamar.",
+      tags: ["Ação", "RPG", "Cooperativo"],
+      rating: "16",
+    },
+    {
+      id: 42,
+      name: "LEGO Batman: Legacy of the Dark Knight",
+      appId: 2215200,
+      origNumber: 349.9,
+      newNumber: 30,
+      stock: 41,
+      categories: ["popular", "acao"] as GameCategory[],
+      short:
+        "Aventura LEGO pelo universo DC com Batman, vilões icônicos e Gotham aberta.",
+      about:
+        "LEGO Batman: Legacy of the Dark Knight é a maior aventura LEGO do Cavaleiro das Trevas. Explore uma Gotham aberta, enfrente toda a galeria de vilões clássica e desbloqueie dezenas de personagens jogáveis do universo DC.\n\nO jogo combina humor característico da TT Games com combate fluido, puzzles e cooperativo local — diversão para toda família.",
+      tags: ["Ação", "Aventura", "Cooperativo"],
+      rating: "Livre",
+    },
+    {
+      id: 43,
+      name: "Black Myth: Wukong DELUXE",
+      appId: 2358720,
+      origNumber: 229.9,
+      newNumber: 30,
+      stock: 35,
+      categories: ["popular", "acao", "rpg"] as GameCategory[],
+      short:
+        "RPG de ação inspirado na Jornada para o Oeste, com combates épicos e visuais impressionantes.",
+      about:
+        "Black Myth: Wukong é um RPG de ação em terceira pessoa baseado no clássico chinês Jornada para o Oeste. Você assume o papel do Destinado, um macaco com poderes lendários, em uma jornada épica recheada de criaturas mitológicas e chefes colossais.\n\nA Edição Deluxe inclui itens cosméticos, trilha sonora oficial e arte digital.",
+      tags: ["Ação", "RPG", "Soulslike"],
+      rating: "16",
+    },
+    {
+      id: 44,
+      name: "Cyberpunk 2077 + DLC Phantom Liberty",
+      appId: 1091500,
+      origNumber: 299.89,
+      newNumber: 28,
+      stock: 29,
+      categories: ["popular", "acao", "rpg"] as GameCategory[],
+      short:
+        "Mundo aberto futurista de Night City incluindo a expansão Phantom Liberty.",
+      about:
+        "Cyberpunk 2077 é o RPG de mundo aberto da CD Projekt Red ambientado em Night City. Crie seu V, modifique seu corpo com cibernética e mergulhe em uma narrativa cinematográfica com Keanu Reeves como Johnny Silverhand.\n\nEste pacote inclui o jogo base + a aclamada expansão Phantom Liberty, com Idris Elba em uma nova região e arco completo de espionagem.",
+      tags: ["RPG", "Mundo Aberto", "Ação"],
+      rating: "18",
+    },
+    {
+      id: 45,
+      name: "Pragmata DELUXE",
+      appId: 3357650,
+      origNumber: 299,
+      newNumber: 25,
+      stock: 33,
+      categories: ["popular", "acao"] as GameCategory[],
+      short:
+        "Ação e aventura sci-fi na Lua da Capcom, com uma parceria improvável entre humano e androide.",
+      about:
+        "Pragmata é o novo IP de ficção científica da Capcom. Em uma base lunar abandonada, um astronauta e uma misteriosa garota androide precisam unir forças para sobreviver. O jogo combina combate hacking em tempo real com exploração atmosférica.\n\nA Edição Deluxe acompanha conteúdos cosméticos exclusivos, artbook digital e trilha sonora.",
+      tags: ["Ação", "Sci-Fi", "Aventura"],
+      rating: "16",
+    },
+    {
+      id: 46,
+      name: "DEATH STRANDING 2 DELUXE",
+      appId: 3280350,
+      origNumber: 449.9,
+      newNumber: 30,
+      stock: 27,
+      categories: ["popular", "acao"] as GameCategory[],
+      short:
+        "Sequência épica de Kojima Productions sobre conexão, entregas e sobrevivência pós-apocalíptica.",
+      about:
+        "DEATH STRANDING 2: On the Beach é a continuação da obra-prima de Hideo Kojima. Acompanhe Sam Porter Bridges em uma nova jornada por paisagens devastadas, reconectando a humanidade enquanto enfrenta novas ameaças sobrenaturais.\n\nA Edição Deluxe inclui itens cosméticos exclusivos, esqueleto digital, óculos e bônus de história.",
+      tags: ["Ação", "Aventura", "Mundo Aberto"],
+      rating: "16",
+    },
+    {
+      id: 47,
+      name: "ARK: Survival Evolved + DLC",
+      appId: 346110,
+      origNumber: 99.9,
+      newNumber: 22,
+      stock: 38,
+      categories: ["popular", "acao"] as GameCategory[],
+      short:
+        "Sobrevivência em um mundo pré-histórico cheio de dinossauros, crafting e exploração.",
+      about:
+        "ARK: Survival Evolved coloca você em uma ilha misteriosa repleta de dinossauros e criaturas pré-históricas. Cace, colete recursos, construa abrigos, dome bestas selvagens e forme tribos para dominar o ecossistema.\n\nEsta versão inclui as principais DLCs (Scorched Earth, Aberration, Extinction, Genesis) com mapas e criaturas adicionais.",
+      tags: ["Sobrevivência", "Mundo Aberto", "Multiplayer"],
+      rating: "16",
+    },
+  ].map((g) => ({
+    ...g,
+    minReq: {
+      os: "Windows 10 64-bit",
+      cpu: "Intel Core i5-8400 / AMD Ryzen 5 2600",
+      ram: "12 GB",
+      gpu: "GTX 1060 6GB / RX 580 8GB",
+      directx: "12",
+      storage: "80 GB SSD",
+      notes: "*Requisitos podem variar conforme atualizações da Steam",
+    } as SysReq,
+    recReq: {
+      os: "Windows 11 64-bit",
+      cpu: "Intel Core i7-10700K / AMD Ryzen 7 5800X",
+      ram: "16 GB",
+      gpu: "RTX 3070 / RX 6800",
+      directx: "12",
+      storage: "80 GB SSD",
+    } as SysReq,
+  })) as RawGame[]),
 ];
 
 void lowEnd;
