@@ -27,6 +27,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   // Render random particles only on the client to avoid hydration mismatch
   // that breaks event handlers (including the header search) on the home page.
+  const [activeCategory, setActiveCategory] = useState<CategoryKey>("todos");
   const [particles, setParticles] = useState<
     { left: number; delay: number; duration: number; opacity: number }[]
   >([]);
