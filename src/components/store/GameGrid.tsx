@@ -208,7 +208,7 @@ export function GameGrid() {
     // Lançamentos: últimos adicionados (final do array). Excluir combos para não duplicar.
     const lancamentos = [...games]
       .reverse()
-      .filter((g) => !comboIds.has(g.id))
+      .filter((g) => !comboIds.has(g.id) && !g.isSoldOut)
       .slice(0, 6);
     const lancIds = new Set(lancamentos.map((g) => g.id));
 
@@ -218,15 +218,21 @@ export function GameGrid() {
         (g) =>
           g.categories?.includes("popular") &&
           !comboIds.has(g.id) &&
-          !lancIds.has(g.id),
+          !lancIds.has(g.id) &&
+          !g.isSoldOut,
       )
       .slice(0, 8);
     const vendidosIds = new Set(maisVendidos.map((g) => g.id));
 
     const usados = new Set([...comboIds, ...lancIds, ...vendidosIds]);
-    const jogosSteam = games.filter((g) => !usados.has(g.id));
+    const jogosSteam = games.filter(
+      (g) => !usados.has(g.id) && !g.isSoldOut,
+    );
 
-    return { lancamentos, maisVendidos, combos, jogosSteam };
+    // Esgotados: sempre no final, separados
+    const esgotados = games.filter((g) => g.isSoldOut);
+
+    return { lancamentos, maisVendidos, combos, jogosSteam, esgotados };
   }, [games]);
 
   return (
