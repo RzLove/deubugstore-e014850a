@@ -1572,6 +1572,8 @@ const raw: RawGame[] = [
         },
       ],
     },
+    {
+      id: 47,
       name: "ARK: Survival Evolved + DLC",
       appId: 346110,
       origNumber: 99.9,
