@@ -90,6 +90,9 @@ function Index() {
         {(activeCategory === "todos" || activeCategory === "jogos") && <PopularGames />}
         {activeCategory === "todos" && <FeaturedSection />}
         {(activeCategory === "todos" || activeCategory === "jogos") && (
+          <ReleasesSection />
+        )}
+        {(activeCategory === "todos" || activeCategory === "jogos") && (
           <div id="catalogo">
             <GameGrid />
           </div>
