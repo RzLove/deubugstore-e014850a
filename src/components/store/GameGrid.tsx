@@ -49,6 +49,10 @@ export function GameCard({
           <div className="absolute top-4 left-4 bg-red-600 text-white px-2.5 py-1 text-[10px] font-black rounded-sm shadow-xl uppercase tracking-widest z-30">
             ESGOTADO
           </div>
+        ) : launchBadge ? (
+          <div className="absolute top-4 left-4 bg-neon-cyan text-black px-2.5 py-1 text-[10px] font-black rounded-sm shadow-[0_0_18px_rgba(0,255,255,0.45)] uppercase tracking-widest z-10">
+            LANÇAMENTO
+          </div>
         ) : (
           <div className="absolute top-4 left-4 bg-white text-black px-2 py-1 text-[10px] font-black rounded-sm shadow-xl">
             {game.discount} OFF
