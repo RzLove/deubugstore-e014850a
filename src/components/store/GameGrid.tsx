@@ -9,12 +9,14 @@ type GameWithStatus = Game & { isSoldOut: boolean };
 
 const PREVIEW_COUNT = 6;
 
-function GameCard({
+export function GameCard({
   game,
   onBuy,
+  launchBadge,
 }: {
   game: GameWithStatus;
   onBuy: (name: string) => void;
+  launchBadge?: boolean;
 }) {
   const navigate = useNavigate();
   const soldOut = game.isSoldOut;
