@@ -1299,6 +1299,48 @@ const raw: RawGame[] = [
         "LEGO Batman: Legacy of the Dark Knight é a maior aventura LEGO do Cavaleiro das Trevas. Explore uma Gotham aberta, enfrente toda a galeria de vilões clássica e desbloqueie dezenas de personagens jogáveis do universo DC.\n\nO jogo combina humor característico da TT Games com combate fluido, puzzles e cooperativo local — diversão para toda família.",
       tags: ["Ação", "Aventura", "Cooperativo"],
       rating: "Livre",
+      bundle: [
+        {
+          name: "LEGO Batman: Legacy of the Dark Knight",
+          cover: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2215200/a07a9a6c0c9c1225f5b260b4f29fe40e6f099f6b/header.jpg?t=1780591479",
+          minReq: {
+            os: "Windows 10 64-bit",
+            cpu: "Intel Core i5-8400 / AMD Ryzen 5 2600",
+            ram: "8 GB",
+            gpu: "GTX 1060 6GB / RX 580 8GB",
+            directx: "12",
+            storage: "40 GB SSD",
+          },
+          recReq: {
+            os: "Windows 11 64-bit",
+            cpu: "Intel Core i7-10700K / AMD Ryzen 7 5800X",
+            ram: "16 GB",
+            gpu: "RTX 3070 / RX 6800",
+            directx: "12",
+            storage: "40 GB SSD",
+          },
+        },
+        {
+          name: "Conteúdo Deluxe Edition",
+          cover: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2215200/a07a9a6c0c9c1225f5b260b4f29fe40e6f099f6b/header.jpg?t=1780591479",
+          minReq: {
+            os: "Windows 10 64-bit",
+            cpu: "Intel Core i5-8400 / AMD Ryzen 5 2600",
+            ram: "8 GB",
+            gpu: "GTX 1060 6GB / RX 580 8GB",
+            directx: "12",
+            storage: "10 GB SSD",
+          },
+          recReq: {
+            os: "Windows 11 64-bit",
+            cpu: "Intel Core i7-10700K / AMD Ryzen 7 5800X",
+            ram: "16 GB",
+            gpu: "RTX 3070 / RX 6800",
+            directx: "12",
+            storage: "10 GB SSD",
+          },
+        },
+      ],
     },
     {
       id: 43,
