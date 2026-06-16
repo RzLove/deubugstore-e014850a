@@ -1356,6 +1356,48 @@ const raw: RawGame[] = [
         "Black Myth: Wukong é um RPG de ação em terceira pessoa baseado no clássico chinês Jornada para o Oeste. Você assume o papel do Destinado, um macaco com poderes lendários, em uma jornada épica recheada de criaturas mitológicas e chefes colossais.\n\nA Edição Deluxe inclui itens cosméticos, trilha sonora oficial e arte digital.",
       tags: ["Ação", "RPG", "Soulslike"],
       rating: "16",
+      bundle: [
+        {
+          name: "Black Myth: Wukong",
+          cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
+          minReq: {
+            os: "Windows 10 64-bit",
+            cpu: "Intel Core i5-8400 / AMD Ryzen 5 2600",
+            ram: "16 GB",
+            gpu: "GTX 1060 6GB / RX 580 8GB",
+            directx: "11",
+            storage: "130 GB SSD",
+          },
+          recReq: {
+            os: "Windows 11 64-bit",
+            cpu: "Intel Core i7-10700K / AMD Ryzen 7 5800X",
+            ram: "16 GB",
+            gpu: "RTX 3070 / RX 6800",
+            directx: "12",
+            storage: "130 GB SSD",
+          },
+        },
+        {
+          name: "Deluxe Content Pack",
+          cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
+          minReq: {
+            os: "Windows 10 64-bit",
+            cpu: "Intel Core i5-8400 / AMD Ryzen 5 2600",
+            ram: "4 GB",
+            gpu: "GTX 1060 6GB / RX 580 8GB",
+            directx: "11",
+            storage: "5 GB SSD",
+          },
+          recReq: {
+            os: "Windows 11 64-bit",
+            cpu: "Intel Core i7-10700K / AMD Ryzen 7 5800X",
+            ram: "8 GB",
+            gpu: "RTX 3070 / RX 6800",
+            directx: "12",
+            storage: "5 GB SSD",
+          },
+        },
+      ],
     },
     {
       id: 44,
