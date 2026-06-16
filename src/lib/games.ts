@@ -1350,6 +1350,7 @@ const raw: RawGame[] = [
       id: 46,
       name: "DEATH STRANDING 2 DELUXE",
       appId: 3280350,
+      coverUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3280350/6270c77b0729e2df0a17d660286eeddfd9169386/header.jpg?t=1774022345",
       origNumber: 449.9,
       newNumber: 30,
       stock: 27,
