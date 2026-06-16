@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Header, Banner } from "@/components/store/LandingUI";
 import { HowItWorksSection } from "@/components/store/HowItWorksSection";
+import { TestimonialsSection } from "@/components/store/TestimonialsSection";
 import { HeroBlock } from "@/components/store/HeroBlock";
 import { FeaturedSection } from "@/components/store/FeaturedSection";
 import { PopularGames } from "@/components/store/PopularGames";
@@ -98,6 +99,7 @@ function Index() {
         <CategoryFilter active={activeCategory} onChange={setActiveCategory} />
         {(activeCategory === "todos" || activeCategory === "jogos") && <PopularGames />}
         {activeCategory === "todos" && <FeaturedSection />}
+        {activeCategory === "todos" && <TestimonialsSection />}
         {(activeCategory === "todos" || activeCategory === "jogos") && (
           <ReleasesSection />
         )}
