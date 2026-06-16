@@ -1,5 +1,5 @@
-import { ShoppingCart, Zap } from "lucide-react";
-import { useState } from "react";
+import { ShoppingCart, Zap, Package } from "lucide-react";
+import { useState, useMemo } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { PurchaseModal } from "./PurchaseModal";
 import { toBRL } from "@/lib/streaming";
@@ -10,116 +10,165 @@ export function StreamingGrid() {
   const navigate = useNavigate();
   const { streaming } = useCatalog();
 
+  const { available, soldOut } = useMemo(() => {
+    const avail = streaming.filter((p) => !p.isSoldOut);
+    const out = streaming.filter((p) => p.isSoldOut);
+    return { available: avail, soldOut: out };
+  }, [streaming]);
+
+  const renderCard = (p: typeof streaming[number], index: number) => {
+    const activeVars = p.variations.length > 0 ? p.variations : [{ price: 0, stock: 0 } as any];
+    const cheapest = activeVars.reduce((a, b) => (a.price < b.price ? a : b));
+    const isSoldOut = p.isSoldOut;
+    const discount = Math.round((1 - cheapest.price / Math.max(p.originalPrice, 0.01)) * 100);
+    const variationCount = p.variations.length;
+    const totalStock = p.variations.reduce((sum, v) => sum + (v.stock || 0), 0);
+
+    return (
+      <div
+        key={p.id}
+        onClick={() =>
+          !isSoldOut && navigate({ to: "/streaming/$id", params: { id: p.id } })
+        }
+        className={`group relative flex flex-col overflow-hidden rounded-2xl bg-[#0A0A0C]/80 backdrop-blur-sm border border-white/5 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_-10px_rgba(139,92,246,0.35)] hover:border-[#8B5CF6]/40 shadow-2xl shadow-black/40 ${isSoldOut ? "opacity-60 cursor-not-allowed" : "cursor-pointer"}`}
+      >
+        {/* Glow overlay on hover */}
+        <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ boxShadow: 'inset 0 0 60px -20px rgba(139,92,246,0.15)' }} />
+
+        {/* Logo / Brand area */}
+        <div
+          className="relative aspect-[16/10] w-full overflow-hidden flex items-center justify-center"
+          style={{ background: `linear-gradient(135deg, ${p.brand}22, ${p.brand}44)` }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0A0A0C]" />
+          <img
+            src={p.cover}
+            alt={p.name}
+            className="h-16 w-auto object-contain transition-transform duration-700 group-hover:scale-110 drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
+          />
+          {isSoldOut ? (
+            <div className="absolute inset-0 flex items-center justify-center bg-black/70 backdrop-blur-sm">
+              <span className="bg-[#FF2E5B]/90 text-white px-5 py-2.5 text-xs font-black uppercase tracking-[0.2em] rounded-lg shadow-[0_0_20px_rgba(255,46,91,0.4)] border border-[#FF2E5B]/50">
+                ESGOTADO
+              </span>
+            </div>
+          ) : (
+            <>
+              {/* Discount badge */}
+              <div className="absolute top-3 left-3 bg-[#8B5CF6] text-white px-2.5 py-1 text-[10px] font-black rounded-md shadow-[0_0_12px_rgba(139,92,246,0.5)]">
+                {discount}% OFF
+              </div>
+              {/* Auto delivery badge */}
+              <div className="absolute top-3 right-3 bg-[#39FF14]/15 text-[#39FF14] border border-[#39FF14]/30 px-2.5 py-1 text-[10px] font-black rounded-full uppercase tracking-widest flex items-center gap-1 backdrop-blur-sm">
+                <Zap className="h-3 w-3" /> AUTO
+              </div>
+            </>
+          )}
+        </div>
+
+        {/* Content */}
+        <div className="flex flex-col flex-1 p-5 space-y-3 relative z-10">
+          {/* Name & Variations */}
+          <div className="space-y-1.5">
+            <h3 className="font-display text-lg font-bold text-white group-hover:text-[#A78BFA] transition-colors uppercase tracking-tight">
+              {p.name}
+            </h3>
+            <div className="flex items-center gap-2 text-[10px] text-white/40 font-bold tracking-widest uppercase">
+              <Package className="h-3 w-3 text-[#8B5CF6]" />
+              <span>
+                {variationCount} {variationCount > 1 ? "variações" : "variação"}
+              </span>
+              <span className="w-1 h-1 rounded-full bg-white/20" />
+              <span className="text-[#39FF14]/70">Entrega automática</span>
+            </div>
+            {!isSoldOut && totalStock > 0 && (
+              <div className="text-[10px] text-white/30 font-bold tracking-wider">
+                {totalStock} em estoque
+              </div>
+            )}
+          </div>
+
+          {/* Price & CTA */}
+          <div className="mt-auto pt-3 flex items-end justify-between border-t border-white/5">
+            <div className="flex flex-col">
+              {isSoldOut ? (
+                <span className="font-display text-lg font-black text-[#FF2E5B] leading-none">
+                  INDISPONÍVEL
+                </span>
+              ) : (
+                <>
+                  <span className="text-[11px] text-white/30 line-through font-bold tracking-wider leading-none mb-1">
+                    {toBRL(p.originalPrice)}
+                  </span>
+                  <span className="font-display text-2xl font-black text-[#39FF14] leading-none drop-shadow-[0_0_10px_rgba(57,255,20,0.35)]">
+                    {toBRL(cheapest.price)}
+                  </span>
+                  <span className="mt-1 text-[9px] font-bold uppercase tracking-[0.15em] text-white/30">
+                    À vista no Pix
+                  </span>
+                </>
+              )}
+            </div>
+            {isSoldOut ? (
+              <span className="flex h-10 px-5 items-center justify-center rounded-xl bg-white/5 text-[10px] font-black text-white/30 uppercase tracking-[0.15em] border border-white/10 cursor-not-allowed">
+                ESGOTADO
+              </span>
+            ) : (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedProduct(p.name);
+                }}
+                className="flex h-10 px-5 items-center justify-center gap-2 rounded-xl bg-[#39FF14] text-[10px] font-black text-[#020203] transition-all duration-300 hover:bg-[#7CFC00] hover:scale-105 hover:shadow-[0_0_25px_rgba(57,255,20,0.45)] uppercase tracking-[0.15em]"
+              >
+                <ShoppingCart className="h-4 w-4" /> COMPRAR
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <section
       id="streaming"
       className="mx-auto mt-24 max-w-[1280px] px-4 sm:px-6 relative z-10"
     >
+      {/* Header */}
       <div className="flex flex-col gap-3 mb-10 sm:flex-row sm:items-center">
         <h2 className="text-2xl md:text-4xl font-black uppercase tracking-tight text-white">
-          CATÁLOGO DE <span className="text-neon-green">STREAMING</span>
+          CATÁLOGO DE <span className="text-[#8B5CF6]">STREAMING</span>
         </h2>
         <div className="h-px flex-1 mx-8 bg-gradient-to-r from-transparent via-white/10 to-transparent hidden md:block" />
         <div className="flex items-center gap-2 text-[10px] font-black text-white/40 uppercase tracking-[0.2em]">
-          <span className="w-2 h-2 rounded-full bg-neon-green animate-pulse" />
+          <span className="w-2 h-2 rounded-full bg-[#39FF14] animate-pulse" />
           ENTREGA AUTOMÁTICA
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {streaming.map((p) => {
-          const activeVars = p.variations.length > 0 ? p.variations : [{ price: 0, stock: 0 } as any];
-          const cheapest = activeVars.reduce((a, b) => (a.price < b.price ? a : b));
-          const isSoldOut = p.isSoldOut;
-          const discount = Math.round((1 - cheapest.price / Math.max(p.originalPrice, 0.01)) * 100);
-          return (
-            <div
-              key={p.id}
-              onClick={() =>
-                !isSoldOut && navigate({ to: "/streaming/$id", params: { id: p.id } })
-              }
-              className={`group relative flex flex-col overflow-hidden rounded-2xl bg-[#0A0A0C] border border-white/5 transition-all duration-500 hover:-translate-y-2 hover:bg-[#0E0E12] hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)] hover:border-white/10 shadow-2xl shadow-black/40 ${isSoldOut ? "opacity-60 cursor-not-allowed" : "cursor-pointer"}`}
-            >
-              <div
-                className="relative aspect-[16/9] w-full overflow-hidden"
-                style={{ background: p.brand }}
-              >
-                <img
-                  src={p.cover}
-                  alt={p.name}
-                  className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-105"
-                />
-                {isSoldOut ? (
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/60">
-                    <span className="bg-red-600 text-white px-4 py-2 text-sm font-black uppercase tracking-widest rounded-lg shadow-lg">
-                      ESGOTADO
-                    </span>
-                  </div>
-                ) : (
-                  <>
-                    <div className="absolute top-4 left-4 bg-white text-black px-2 py-1 text-[10px] font-black rounded-sm shadow-xl">
-                      {discount}% OFF
-                    </div>
-                    <div className="absolute top-4 right-4 bg-neon-green text-black px-2.5 py-1 text-[10px] font-black rounded-full shadow-[0_0_18px_rgba(168,255,51,0.45)] border border-neon-green/60 uppercase tracking-widest flex items-center gap-1">
-                      <Zap className="h-3 w-3" /> Auto
-                    </div>
-                  </>
-                )}
-              </div>
+      {/* Available products */}
+      {available.length > 0 && (
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {available.map((p, i) => renderCard(p, i))}
+        </div>
+      )}
 
-              <div className="flex flex-col flex-1 p-6 space-y-4">
-                <div className="space-y-1">
-                  <h3 className="line-clamp-1 font-display text-lg font-bold text-white group-hover:text-neon-cyan transition-colors uppercase tracking-tight">
-                    {p.name}
-                  </h3>
-                  <div className="text-[10px] text-white/30 font-black tracking-widest uppercase">
-                    {p.variations.length} varia{p.variations.length > 1 ? 'ções' : 'ção'} · A partir de
-                  </div>
-                </div>
-
-                <div className="mt-auto pt-4 flex items-end justify-between border-t border-white/5">
-                  <div className="flex flex-col">
-                    {isSoldOut ? (
-                      <span className="font-display text-xl font-black text-red-500 leading-none">
-                        INDISPONÍVEL
-                      </span>
-                    ) : (
-                      <>
-                        <span className="text-[10px] text-white/30 line-through font-bold tracking-wider leading-none mb-1">
-                          {toBRL(p.originalPrice)}
-                        </span>
-                        <span className="font-display text-2xl font-black text-[#A8FF33] leading-none drop-shadow-[0_0_8px_rgba(168,255,51,0.2)]">
-                          {toBRL(cheapest.price)}
-                        </span>
-                        <span className="mt-1 text-[9px] font-bold uppercase tracking-widest text-white/40">
-                          À vista no Pix
-                        </span>
-                      </>
-                    )}
-                  </div>
-                  {isSoldOut ? (
-                    <span className="flex h-10 px-4 items-center justify-center rounded-lg bg-white/10 text-[10px] font-black text-white/50 uppercase tracking-widest border border-white/10">
-                      ESGOTADO
-                    </span>
-                  ) : (
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setSelectedProduct(p.name);
-                      }}
-                      className="flex h-10 px-4 items-center justify-center gap-2 rounded-lg bg-primary text-[10px] font-black text-white transition-all duration-300 hover:bg-primary-glow hover:scale-105 shadow-[0_0_15px_rgba(123,46,255,0.3)] uppercase tracking-widest border border-primary/20"
-                    >
-                      <ShoppingCart className="h-4 w-4" /> COMPRAR
-                    </button>
-                  )}
-                </div>
-              </div>
-
-              <div className="absolute inset-0 border-2 border-primary/0 group-hover:border-primary/30 rounded-xl transition-all duration-500 pointer-events-none" />
-            </div>
-          );
-        })}
-      </div>
+      {/* Sold out products */}
+      {soldOut.length > 0 && (
+        <>
+          <div className="mt-14 mb-8 flex items-center gap-4">
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent to-white/10" />
+            <span className="text-xs font-black text-white/20 uppercase tracking-[0.2em]">
+              ESGOTADOS
+            </span>
+            <div className="h-px flex-1 bg-gradient-to-l from-transparent to-white/10" />
+          </div>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {soldOut.map((p, i) => renderCard(p, i))}
+          </div>
+        </>
+      )}
 
       <PurchaseModal
         isOpen={!!selectedProduct}
