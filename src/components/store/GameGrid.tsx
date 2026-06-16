@@ -23,6 +23,8 @@ export function GameCard({
 
   return (
     <div
+      itemScope
+      itemType="https://schema.org/Product"
       onClick={() => {
         if (!soldOut) navigate({ to: "/game/$id", params: { id: game.slug } });
       }}
@@ -32,6 +34,8 @@ export function GameCard({
           : "hover:-translate-y-2 hover:bg-[#0E0E12] hover:shadow-[0_30px_60px_-15px_rgba(139,92,246,0.35)] hover:border-primary/40 cursor-pointer shadow-2xl shadow-black/40"
       }`}
     >
+      <meta itemProp="sku" content={String(game.id)} />
+      <link itemProp="url" href={`/game/${game.slug}`} />
       {/* Sold-out overlay */}
       {soldOut && (
         <div className="absolute inset-0 z-20 bg-black/60 rounded-2xl pointer-events-none" />
@@ -41,6 +45,7 @@ export function GameCard({
         <img
           src={game.cover}
           alt={game.name}
+          itemProp="image"
           className={`h-full w-full object-cover transition-transform duration-700 ${
             soldOut ? "grayscale" : "group-hover:scale-110"
           }`}
@@ -68,6 +73,7 @@ export function GameCard({
       <div className="flex flex-col flex-1 p-6 space-y-4">
         <div className="space-y-1">
           <h3
+            itemProp="name"
             className={`line-clamp-1 font-display text-lg font-bold transition-colors uppercase tracking-tight ${
               soldOut
                 ? "text-white/50"
@@ -88,26 +94,35 @@ export function GameCard({
                 INDISPONÍVEL
               </span>
             ) : (
-              <>
-                <span className="text-[10px] text-white/30 line-through font-bold tracking-wider leading-none mb-1">
+              <div itemProp="offers" itemScope itemType="https://schema.org/Offer">
+                <meta itemProp="priceCurrency" content="BRL" />
+                <meta
+                  itemProp="price"
+                  content={game.discountedPrice.replace(/[^\d,.-]/g, "").replace(/\./g, "").replace(",", ".")}
+                />
+                <link
+                  itemProp="availability"
+                  href={game.stock > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock"}
+                />
+                <span className="text-[10px] text-white/30 line-through font-bold tracking-wider leading-none mb-1 block">
                   {game.originalPrice}
                 </span>
-                <span className="font-display text-2xl font-black text-[#A8FF33] leading-none drop-shadow-[0_0_8px_rgba(168,255,51,0.2)]">
+                <span className="font-display text-2xl font-black text-[#A8FF33] leading-none drop-shadow-[0_0_8px_rgba(168,255,51,0.2)] block">
                   {game.discountedPrice}
                 </span>
-                <span className="mt-1 text-[9px] font-bold uppercase tracking-widest text-white/40">
+                <span className="mt-1 text-[9px] font-bold uppercase tracking-widest text-white/40 block">
                   À vista no Pix
                 </span>
                 {game.stock < 10 ? (
-                  <span className="mt-1 text-[10px] font-black uppercase tracking-wider text-orange-400">
+                  <span className="mt-1 text-[10px] font-black uppercase tracking-wider text-orange-400 block">
                     Últimas {game.stock} unidades!
                   </span>
                 ) : (
-                  <span className="mt-1 text-[10px] font-semibold text-white/40">
+                  <span className="mt-1 text-[10px] font-semibold text-white/40 block">
                     {game.stock} em estoque
                   </span>
                 )}
-              </>
+              </div>
             )}
           </div>
 

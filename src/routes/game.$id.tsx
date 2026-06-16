@@ -57,8 +57,34 @@ function GameDetailPage() {
     );
   }
 
+  const productJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: game.name,
+    image: game.cover,
+    description: game.description || game.about?.slice(0, 200),
+    sku: String(game.id),
+    brand: { "@type": "Brand", name: "Deu Bug Store" },
+    offers: {
+      "@type": "Offer",
+      url: `https://deubugstore.lovable.app/game/${game.slug}`,
+      priceCurrency: "BRL",
+      price: game.discountedPrice.replace(/[^\d,.-]/g, "").replace(/\./g, "").replace(",", "."),
+      availability:
+        game.stock > 0
+          ? "https://schema.org/InStock"
+          : "https://schema.org/OutOfStock",
+    },
+  };
+
   return (
     <div className="relative min-h-screen bg-[#020203] text-white selection:bg-primary overflow-x-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
+      <link rel="canonical" href={`https://deubugstore.lovable.app/game/${game.slug}`} />
+      <title>{`${game.name} — Deu Bug Store`}</title>
       {/* Glitch Background (Sync with Store Aesthetics) */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.03]"></div>

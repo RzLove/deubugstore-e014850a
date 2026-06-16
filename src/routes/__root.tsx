@@ -89,21 +89,20 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Deu Bug Store — Keys digitais com preço quebrado" },
-      { name: "description", content: "Deu Bug Store: jogos digitais e keys de PC com entrega instantânea." },
-      { property: "og:title", content: "Deu Bug Store — Keys digitais com preço quebrado" },
-      { property: "og:description", content: "Deu Bug Store: jogos digitais e keys de PC com entrega instantânea." },
+      { title: "Deu Bug Store - Os Melhores Jogos Steam e Streaming" },
+      {
+        name: "description",
+        content:
+          "Compre jogos Steam e serviços de streaming com os melhores preços. Entrega rápida, suporte ativo e pagamento via Pix.",
+      },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: logo.url },
+      { property: "og:site_name", content: "Deu Bug Store" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:image", content: logo.url },
-      { name: "twitter:title", content: "Deu Bug Store — Keys digitais com preço quebrado" },
-      { name: "twitter:description", content: "Deu Bug Store: jogos digitais e keys de PC com entrega instantânea." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/2frHIKaoobbSByVVSvnEru3d0lN2/social-images/social-1781467514099-Bug1.webp" },
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/2frHIKaoobbSByVVSvnEru3d0lN2/social-images/social-1781467514099-Bug1.webp" },
     ],
     links: [
       { rel: "icon", type: "image/png", href: logo.url },
+      { rel: "shortcut icon", type: "image/png", href: logo.url },
       { rel: "apple-touch-icon", href: logo.url },
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -111,6 +110,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "Deu Bug Store",
+          url: "https://deubugstore.lovable.app",
+          logo: logo.url,
+        }),
       },
     ],
   }),
