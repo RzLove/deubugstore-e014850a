@@ -99,6 +99,7 @@ function Index() {
         <CategoryFilter active={activeCategory} onChange={setActiveCategory} />
         {(activeCategory === "todos" || activeCategory === "jogos") && <PopularGames />}
         {activeCategory === "todos" && <FeaturedSection />}
+        {activeCategory === "todos" && <TestimonialsSection />}
         {(activeCategory === "todos" || activeCategory === "jogos") && (
           <ReleasesSection />
         )}
