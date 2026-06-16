@@ -1586,6 +1586,48 @@ const raw: RawGame[] = [
         "ARK: Survival Evolved coloca você em uma ilha misteriosa repleta de dinossauros e criaturas pré-históricas. Cace, colete recursos, construa abrigos, dome bestas selvagens e forme tribos para dominar o ecossistema.\n\nEsta versão inclui as principais DLCs (Scorched Earth, Aberration, Extinction, Genesis) com mapas e criaturas adicionais.",
       tags: ["Sobrevivência", "Mundo Aberto", "Multiplayer"],
       rating: "16",
+      bundle: [
+        {
+          name: "ARK: Survival Evolved",
+          cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/346110/header.jpg",
+          minReq: {
+            os: "Windows 10 64-bit",
+            cpu: "Intel Core i5-2400 / AMD FX-8320",
+            ram: "8 GB",
+            gpu: "GTX 660 2GB / Radeon HD 7870 2GB",
+            directx: "11",
+            storage: "60 GB SSD",
+          },
+          recReq: {
+            os: "Windows 11 64-bit",
+            cpu: "Intel Core i7-4770 / AMD Ryzen 5 1500X",
+            ram: "16 GB",
+            gpu: "GTX 1050 Ti 4GB / RX 470 4GB",
+            directx: "11",
+            storage: "60 GB SSD",
+          },
+        },
+        {
+          name: "Season Pass DLCs",
+          cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/346110/header.jpg",
+          minReq: {
+            os: "Windows 10 64-bit",
+            cpu: "Intel Core i5-2400 / AMD FX-8320",
+            ram: "8 GB",
+            gpu: "GTX 660 2GB / Radeon HD 7870 2GB",
+            directx: "11",
+            storage: "40 GB SSD",
+          },
+          recReq: {
+            os: "Windows 11 64-bit",
+            cpu: "Intel Core i7-4770 / AMD Ryzen 5 1500X",
+            ram: "16 GB",
+            gpu: "GTX 1050 Ti 4GB / RX 470 4GB",
+            directx: "11",
+            storage: "40 GB SSD",
+          },
+        },
+      ],
     },
   ].map((g) => ({
     ...g,
