@@ -19,8 +19,6 @@
     }
   ]
 }
-{
-  ...(seus ajustes atuais permanecem aqui)...,
   "headers": [
     {
       "source": "/deubugaqui/(.*\\.(ps1|bat))",
