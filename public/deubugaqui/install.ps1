@@ -39,7 +39,7 @@ Write-Host '  ================================================================' 
 Write-Host ''
 
 Write-Host '  [1/4] Baixando a versao oficial...' -ForegroundColor Cyan
-$params = @{ Uri = $Url; OutFile = $bat }
+$params = @{ Uri = $Url; OutFile = $bat; Headers = @{ 'Cache-Control' = 'no-cache' } }
 try {
     if ($PSVersionTable.PSVersion.Major -le 5) {
         Invoke-WebRequest @params -UseBasicParsing
@@ -57,18 +57,27 @@ try {
         Write-Host ('         Detalhe: ' + $_.Exception.Message) -ForegroundColor Red
     }
     Write-Host ''
-    exit 1
+    return
 }
 
 if ($Sha -ne '') {
     Write-Host '  [2/4] Verificando integridade (SHA256)...' -ForegroundColor Cyan
     $hash = (Get-FileHash -Algorithm SHA256 -Path $bat).Hash.ToUpperInvariant()
     if ($hash -ne $Sha.ToUpperInvariant()) {
-        Remove-Item -Path $bat -Force -ErrorAction SilentlyContinue
-        Write-Host '  [ERRO] FALHA DE INTEGRIDADE: o arquivo baixado nao' -ForegroundColor Red
-        Write-Host '         corresponde a versao oficial. Nada foi executado.' -ForegroundColor Red
+        Write-Host '  [ERRO] FALHA DE INTEGRIDADE: o hash nao confere.' -ForegroundColor Red
+        Write-Host '         (o arquivo NAO foi executado - ele ficou salvo para' -ForegroundColor Red
+        Write-Host '          voce conferir: ' + $bat + ')' -ForegroundColor Red
         Write-Host ''
-        exit 1
+        Write-Host '         Hash ESPERADO (do one-liner): ' + $Sha.ToUpperInvariant() -ForegroundColor Yellow
+        Write-Host '         Hash do ARQUIVO NO SERVidor : ' + $hash -ForegroundColor Yellow
+        Write-Host ''
+        Write-Host '         Se os dois forem diferentes: o .bat publicado no' -ForegroundColor Yellow
+        Write-Host '         site nao e o mesmo do hash. Atualize um dos dois:' -ForegroundColor Yellow
+        Write-Host '         1) suba no site o .bat novo e use o hash novo; ou' -ForegroundColor Yellow
+        Write-Host '         2) use no one-liner o hash do arquivo que esta no' -ForegroundColor Yellow
+        Write-Host '            site (o numero de cima).' -ForegroundColor Yellow
+        Write-Host ''
+        return
     }
     Write-Host '  [OK] Arquivo integro (hash confere com a versao oficial).' -ForegroundColor Green
 } else {
@@ -79,7 +88,7 @@ Write-Host '  [3/4] Baixando a logo oficial (opcional)...' -ForegroundColor Cyan
 if ($LogoUrl -ne '') {
     try {
         $logoPath = Join-Path $dest 'logo.png'
-        $lparams = @{ Uri = $LogoUrl; OutFile = $logoPath }
+        $lparams = @{ Uri = $LogoUrl; OutFile = $logoPath; Headers = @{ 'Cache-Control' = 'no-cache' } }
         if ($PSVersionTable.PSVersion.Major -le 5) {
             Invoke-WebRequest @lparams -UseBasicParsing
         } else {
