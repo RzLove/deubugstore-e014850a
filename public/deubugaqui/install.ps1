@@ -35,7 +35,7 @@ function Get-Elevated {
 
 Write-Host ''
 Write-Host '  ================================================================' -ForegroundColor Magenta
-Write-Host '   DEU BUG AQUI OPTIMIZER - INSTALADOR OFICIAL v4.2' -ForegroundColor Cyan
+Write-Host '   DEU BUG AQUI OPTIMIZER - INSTALADOR OFICIAL v4.3' -ForegroundColor Cyan
 Write-Host '   Gaming Performance Suite | Developed by RZ' -ForegroundColor Green
 Write-Host '  ================================================================' -ForegroundColor Magenta
 Write-Host ''
@@ -111,7 +111,8 @@ try {
             # AUTOCURA (2 marcadores): principal OU Scripts ausentes ->
             # apaga e re-extrai (corrige "unable to find required files")
             $w11dOk = (Test-Path (Join-Path $w11dDir 'Win11Debloat.ps1')) -and
-                      (Test-Path (Join-Path $w11dDir 'Scripts/CLI/Show-CliMenuOptions.ps1'))
+                      (Test-Path (Join-Path $w11dDir 'Scripts/CLI/Show-CliMenuOptions.ps1')) -and
+                      (Test-Path (Join-Path $w11dDir 'Assets'))
             if ((Test-Path $w11dDir) -and -not $w11dOk) {
                 Remove-Item $w11dDir -Recurse -Force -ErrorAction SilentlyContinue
             }
