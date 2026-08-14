@@ -35,7 +35,7 @@ function Get-Elevated {
 
 Write-Host ''
 Write-Host '  ================================================================' -ForegroundColor Magenta
-Write-Host '   DEU BUG AQUI OPTIMIZER - INSTALADOR OFICIAL v4.1' -ForegroundColor Cyan
+Write-Host '   DEU BUG AQUI OPTIMIZER - INSTALADOR OFICIAL v4.2' -ForegroundColor Cyan
 Write-Host '   Gaming Performance Suite | Developed by RZ' -ForegroundColor Green
 Write-Host '  ================================================================' -ForegroundColor Magenta
 Write-Host ''
@@ -108,9 +108,11 @@ try {
             $zipTmp = Join-Path $dir 'w11d.zip'
             [IO.File]::WriteAllBytes($zipTmp, [Convert]::FromBase64String($m3.Groups[1].Value))
             $w11dDir = Join-Path $dir 'Win11Debloat'
-            # AUTOCURA: pasta criada pela metade em execucoes anteriores e
-            # apagada e re-extraida (corrige "unable to find required files")
-            if ((Test-Path $w11dDir) -and -not (Test-Path (Join-Path $w11dDir 'Win11Debloat.ps1'))) {
+            # AUTOCURA (2 marcadores): principal OU Scripts ausentes ->
+            # apaga e re-extrai (corrige "unable to find required files")
+            $w11dOk = (Test-Path (Join-Path $w11dDir 'Win11Debloat.ps1')) -and
+                      (Test-Path (Join-Path $w11dDir 'Scripts/CLI/Show-CliMenuOptions.ps1'))
+            if ((Test-Path $w11dDir) -and -not $w11dOk) {
                 Remove-Item $w11dDir -Recurse -Force -ErrorAction SilentlyContinue
             }
             if (-not (Test-Path $w11dDir)) {
