@@ -372,7 +372,7 @@ const raw: RawGame[] = [
     name: "Red Dead Redemption 1",
     appId: 2668510,
     origNumber: 250,
-    newNumber: 18.75,
+    newNumber: 15,
     trailer: "Quz0I5NgolY",
     categories: ["popular", "tiro"],
     short:
@@ -403,7 +403,7 @@ const raw: RawGame[] = [
     name: "Grand Theft Auto V Enhanced",
     appId: 3240220,
     origNumber: 150,
-    newNumber: 18.75,
+    newNumber: 18,
     trailer: "QkkoHAzjnUs",
     categories: ["popular", "tiro"],
     short:
@@ -434,7 +434,7 @@ const raw: RawGame[] = [
     name: "Grand Theft Auto V Legacy",
     appId: 271590,
     origNumber: 150,
-    newNumber: 18.75,
+    newNumber: 18,
     trailer: "QkkoHAzjnUs",
     categories: ["popular", "tiro"],
     short:
@@ -465,7 +465,7 @@ const raw: RawGame[] = [
     name: "The Last Of Us Parte 2",
     appId: 2531310,
     origNumber: 200,
-    newNumber: 18.75,
+    newNumber: 20,
     trailer: "II-ZHaA_t9Q",
     categories: ["popular", "tiro"],
     short:
@@ -620,7 +620,7 @@ const raw: RawGame[] = [
     name: "God of War Ragnarök",
     appId: 2322010,
     origNumber: 250,
-    newNumber: 18.75,
+    newNumber: 18,
     trailer: "EE-4GvjKcfs",
     categories: ["acao"],
     short:
@@ -651,7 +651,7 @@ const raw: RawGame[] = [
     name: "God of War",
     appId: 1593500,
     origNumber: 200,
-    newNumber: 18.75,
+    newNumber: 18,
     trailer: "FXz-IY-7-Lk",
     categories: ["acao"],
     short:
@@ -682,7 +682,7 @@ const raw: RawGame[] = [
     name: "Ghost of Tsushima",
     appId: 2215430,
     origNumber: 250,
-    newNumber: 18.75,
+    newNumber: 20,
     trailer: "iwROgK94zcM",
     categories: ["acao"],
     short:
@@ -931,7 +931,7 @@ const raw: RawGame[] = [
     name: "Cyberpunk 2077",
     appId: 1091500,
     origNumber: 200,
-    newNumber: 18.75,
+    newNumber: 18,
     trailer: "8X2kIfS6fb8",
     categories: ["rpg"],
     short:
@@ -1259,7 +1259,7 @@ const raw: RawGame[] = [
       name: "Indiana Jones and the Great Circle",
       appId: 2677660,
       origNumber: 349,
-      newNumber: 31.25,
+      newNumber: 30,
       stock: 32,
       categories: ["popular", "acao"] as GameCategory[],
       short:
@@ -1290,7 +1290,7 @@ const raw: RawGame[] = [
       appId: 2215200,
       coverUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2215200/a07a9a6c0c9c1225f5b260b4f29fe40e6f099f6b/header.jpg?t=1780591479",
       origNumber: 349.9,
-      newNumber: 30,
+      newNumber: 25,
       stock: 41,
       categories: ["popular", "acao"] as GameCategory[],
       short:
@@ -1637,7 +1637,7 @@ const raw: RawGame[] = [
       coverUrl:
         "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2584270/0a4c23b70ced29fac344186ea564dae67c80cfd6/header.jpg?t=1788251111",
       origNumber: 159,
-      newNumber: 20,
+      newNumber: 40,
       stock: 25,
       categories: ["acao", "rpg"] as GameCategory[],
       short:
@@ -1654,7 +1654,7 @@ const raw: RawGame[] = [
       coverUrl:
         "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3751260/a7062f3b59d491c2678e3fd7ce2672858e480641/header.jpg?t=1788197681",
       origNumber: 303.5,
-      newNumber: 25,
+      newNumber: 35,
       stock: 22,
       categories: ["rpg", "acao"] as GameCategory[],
       short:
@@ -1671,7 +1671,7 @@ const raw: RawGame[] = [
       coverUrl:
         "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3751950/9b046115b1663a4be2b252712328e4f6c162da68/header.jpg?t=1787915122",
       origNumber: 299.99,
-      newNumber: 25,
+      newNumber: 35,
       stock: 30,
       categories: ["acao", "popular"] as GameCategory[],
       short:
@@ -1688,7 +1688,7 @@ const raw: RawGame[] = [
       coverUrl:
         "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2417610/05c97cbcd0cfc27c8ed6c7fc6d81e0995aa2a7d4/header.jpg?t=1762249119",
       origNumber: 339.9,
-      newNumber: 25,
+      newNumber: 35,
       stock: 26,
       categories: ["acao", "tiro"] as GameCategory[],
       short:
@@ -1705,7 +1705,7 @@ const raw: RawGame[] = [
       coverUrl:
         "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4356430/9152438fde7de9f4c20b4fd9072ba69f844dacab/header.jpg?t=1787958027",
       origNumber: 349,
-      newNumber: 25,
+      newNumber: 40,
       stock: 35,
       categories: ["popular", "acao"] as GameCategory[],
       short:
