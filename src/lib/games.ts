@@ -310,7 +310,7 @@ const raw: RawGame[] = [
     name: "Baldur's Gate 3",
     appId: 1086940,
     origNumber: 199,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "OcP0WdH7rTs",
     categories: ["popular", "rpg"],
     short:
@@ -341,7 +341,7 @@ const raw: RawGame[] = [
     name: "Red Dead Redemption 2",
     appId: 1174180,
     origNumber: 299,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "eaW0tYpxyp0",
     categories: ["popular", "tiro"],
     short:
@@ -372,7 +372,7 @@ const raw: RawGame[] = [
     name: "Red Dead Redemption 1",
     appId: 2668510,
     origNumber: 250,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "Quz0I5NgolY",
     categories: ["popular", "tiro"],
     short:
@@ -403,7 +403,7 @@ const raw: RawGame[] = [
     name: "Grand Theft Auto V Enhanced",
     appId: 3240220,
     origNumber: 150,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "QkkoHAzjnUs",
     categories: ["popular", "tiro"],
     short:
@@ -434,7 +434,7 @@ const raw: RawGame[] = [
     name: "Grand Theft Auto V Legacy",
     appId: 271590,
     origNumber: 150,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "QkkoHAzjnUs",
     categories: ["popular", "tiro"],
     short:
@@ -465,7 +465,7 @@ const raw: RawGame[] = [
     name: "The Last Of Us Parte 2",
     appId: 2531310,
     origNumber: 200,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "II-ZHaA_t9Q",
     categories: ["popular", "tiro"],
     short:
@@ -558,7 +558,7 @@ const raw: RawGame[] = [
     name: "Marvel's Spider-Man: Miles Morales",
     appId: 1817190,
     origNumber: 200,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "5b4xhKkn58E",
     categories: ["acao"],
     short:
@@ -589,7 +589,7 @@ const raw: RawGame[] = [
     name: "Marvel's Spider-Man Remastered",
     appId: 1817070,
     origNumber: 250,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "q4GgI7vNyo4",
     categories: ["acao"],
     short:
@@ -620,7 +620,7 @@ const raw: RawGame[] = [
     name: "God of War Ragnarök",
     appId: 2322010,
     origNumber: 250,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "EE-4GvjKcfs",
     categories: ["acao"],
     short:
@@ -651,7 +651,7 @@ const raw: RawGame[] = [
     name: "God of War",
     appId: 1593500,
     origNumber: 200,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "FXz-IY-7-Lk",
     categories: ["acao"],
     short:
@@ -682,7 +682,7 @@ const raw: RawGame[] = [
     name: "Ghost of Tsushima",
     appId: 2215430,
     origNumber: 250,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "iwROgK94zcM",
     categories: ["acao"],
     short:
@@ -713,7 +713,7 @@ const raw: RawGame[] = [
     name: "SILENT HILL 2",
     appId: 2124490,
     origNumber: 350,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "ttMOK5BPVqI",
     categories: ["terror"],
     short:
@@ -744,7 +744,7 @@ const raw: RawGame[] = [
     name: "Resident Evil 4",
     appId: 2050650,
     origNumber: 200,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "Z8RKZ-EsvKM",
     categories: ["terror"],
     short:
@@ -775,7 +775,7 @@ const raw: RawGame[] = [
     name: "DRAGON BALL SPARKING ZERO",
     appId: 1790600,
     origNumber: 290,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "5_xRDhSP0CY",
     categories: ["luta"],
     short:
@@ -806,7 +806,7 @@ const raw: RawGame[] = [
     name: "Hogwarts Legacy",
     appId: 990080,
     origNumber: 299.9,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "1O6Qstncpnc",
     categories: ["rpg"],
     short:
@@ -837,7 +837,7 @@ const raw: RawGame[] = [
     name: "Horizon Zero Dawn Complete Edition",
     appId: 1151640,
     origNumber: 249,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "u4-FCsiF5x4",
     categories: ["acao"],
     short:
@@ -868,7 +868,7 @@ const raw: RawGame[] = [
     name: "Detroit: Become Human",
     appId: 1222140,
     origNumber: 199,
-    newNumber: 15.0,
+    newNumber: 18.75,
     stock: 18,
     trailer: "Ka4yhoZSXgU",
     categories: ["acao"],
@@ -900,7 +900,7 @@ const raw: RawGame[] = [
     name: "Mortal Kombat 11",
     appId: 976310,
     origNumber: 229.99,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "TGUEqbcs8r4",
     categories: ["luta"],
     short:
@@ -931,7 +931,7 @@ const raw: RawGame[] = [
     name: "Cyberpunk 2077",
     appId: 1091500,
     origNumber: 200,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "8X2kIfS6fb8",
     categories: ["rpg"],
     short:
@@ -962,7 +962,7 @@ const raw: RawGame[] = [
     name: "UNCHARTED: Coleção Legado dos Ladrões",
     appId: 1659420,
     origNumber: 260,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "RvCFW7XPwBs",
     categories: ["acao"],
     short:
@@ -1024,7 +1024,7 @@ const raw: RawGame[] = [
     name: "Elden Ring",
     appId: 1245620,
     origNumber: 275,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "E3Huy2cdih0",
     categories: ["rpg"],
     short:
@@ -1087,7 +1087,7 @@ const raw: RawGame[] = [
     name: "Hollow Knight: Silksong",
     appId: 1030300,
     origNumber: 60,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "pFAknD_9U7c",
     categories: ["rpg"],
     short:
@@ -1118,7 +1118,7 @@ const raw: RawGame[] = [
     name: "Dying Light The Beast",
     appId: 3008130,
     origNumber: 250,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "1JfdJ_BKQjE",
     categories: ["terror"],
     short:
@@ -1259,7 +1259,7 @@ const raw: RawGame[] = [
       name: "Indiana Jones and the Great Circle",
       appId: 2677660,
       origNumber: 349,
-      newNumber: 25,
+      newNumber: 31.25,
       stock: 32,
       categories: ["popular", "acao"] as GameCategory[],
       short:
@@ -1628,6 +1628,92 @@ const raw: RawGame[] = [
           },
         },
       ],
+    },
+    // ===== Novos títulos adicionados (banners oficiais Steam) =====
+    {
+      id: 49,
+      name: "Mortal Shell II",
+      appId: 2584270,
+      coverUrl:
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2584270/0a4c23b70ced29fac344186ea564dae67c80cfd6/header.jpg?t=1788251111",
+      origNumber: 159,
+      newNumber: 20,
+      stock: 25,
+      categories: ["acao", "rpg"] as GameCategory[],
+      short:
+        "Sequência do aclamado soulslike da Cold Symmetry, com combate brutal e mundo sombrio.",
+      about:
+        "Mortal Shell II é a continuação do soulslike da Cold Symmetry. Assuma o controle de cascas de guerreiros caídos, cada uma com habilidades e estilos de combate próprios, e enfrente chefes monumentais em um mundo em ruínas.\n\nO sistema de endurecimento retorna ao lado de novas armas, magias e um mundo mais amplo para explorar.",
+      tags: ["Soulslike", "Ação", "RPG"],
+      rating: "16",
+    },
+    {
+      id: 50,
+      name: "The Blood of Dawnwalker",
+      appId: 3751260,
+      coverUrl:
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3751260/a7062f3b59d491c2678e3fd7ce2672858e480641/header.jpg?t=1788197681",
+      origNumber: 303.5,
+      newNumber: 25,
+      stock: 22,
+      categories: ["rpg", "acao"] as GameCategory[],
+      short:
+        "RPG dark fantasy de mundo aberto criado por veteranos de The Witcher 3.",
+      about:
+        "The Blood of Dawnwalker é um RPG de ação dark fantasy do estúdio Rebel Wolves, formado por veteranos de The Witcher 3. Você é meio-humano, meio-vampiro, e o ciclo de dia e noite muda drasticamente suas habilidades e o mundo ao seu redor.\n\nNarrativa ramificada, combate visceral e escolhas com consequências reais em uma Europa do século XIV tomada por vampiros.",
+      tags: ["RPG", "Mundo Aberto", "Dark Fantasy"],
+      rating: "18",
+    },
+    {
+      id: 51,
+      name: "Assassin's Creed Black Flag Resynced",
+      appId: 3751950,
+      coverUrl:
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3751950/9b046115b1663a4be2b252712328e4f6c162da68/header.jpg?t=1787915122",
+      origNumber: 299.99,
+      newNumber: 25,
+      stock: 30,
+      categories: ["acao", "popular"] as GameCategory[],
+      short:
+        "O clássico pirata de Assassin's Creed remasterizado com visual e jogabilidade modernizados.",
+      about:
+        "Assassin's Creed Black Flag Resynced traz de volta a saga de Edward Kenway pelo Caribe com gráficos reconstruídos, navegação aprimorada e combate naval modernizado.\n\nExplore ilhas, cace navios de guerra, monte sua tripulação e viva a era dourada da pirataria com um dos capítulos mais amados da franquia.",
+      tags: ["Ação", "Aventura", "Mundo Aberto"],
+      rating: "18",
+    },
+    {
+      id: 52,
+      name: "METAL GEAR SOLID Δ: SNAKE EATER",
+      appId: 2417610,
+      coverUrl:
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2417610/05c97cbcd0cfc27c8ed6c7fc6d81e0995aa2a7d4/header.jpg?t=1762249119",
+      origNumber: 339.9,
+      newNumber: 25,
+      stock: 26,
+      categories: ["acao", "tiro"] as GameCategory[],
+      short:
+        "Remake completo de Snake Eater com gráficos de nova geração e a história original intacta.",
+      about:
+        "METAL GEAR SOLID Δ: SNAKE EATER é o remake fiel do clássico da Konami. A história, os personagens e a narrativa permanecem intactos, agora com visual reconstruído na Unreal Engine 5, controles modernos e câmera atualizada.\n\nInfiltre-se na selva soviética dos anos 60 como Naked Snake em uma das campanhas mais icônicas da história dos games.",
+      tags: ["Ação", "Stealth", "Aventura"],
+      rating: "16",
+    },
+    {
+      id: 53,
+      name: "NBA 2K27",
+      appId: 4356430,
+      coverUrl:
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4356430/9152438fde7de9f4c20b4fd9072ba69f844dacab/header.jpg?t=1787958027",
+      origNumber: 349,
+      newNumber: 25,
+      stock: 35,
+      categories: ["popular", "acao"] as GameCategory[],
+      short:
+        "A nova temporada do maior simulador de basquete, com elencos e modos atualizados.",
+      about:
+        "NBA 2K27 traz a experiência definitiva de basquete com jogabilidade refinada, elencos atualizados da NBA e WNBA e os modos consagrados MinhaCARREIRA, MinhaEQUIPE e MinhaLIGA.\n\nGráficos aprimorados, animações mais realistas e uma cidade repleta de atividades para evoluir seu jogador.",
+      tags: ["Esporte", "Basquete", "Simulação"],
+      rating: "Livre",
     },
   ].map((g) => ({
     ...g,

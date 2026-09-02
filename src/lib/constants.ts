@@ -6,14 +6,12 @@ export const DISCORD_URL = "https://discord.gg/ZmUDcCCtNx";
 
 // ============================================================
 // WhatsApp — contato oficial
-// ALTERE AQUI para trocar o número em todo o site.
+// ALTERE AQUI para trocar o link/número em todo o site.
 // ============================================================
-/** Número no formato internacional, somente dígitos (usado em links wa.me). */
-export const WHATSAPP_PHONE = "5575988927020";
+/** Link curto oficial "clique para conversar" do WhatsApp. */
+export const WHATSAPP_LINK = "https://wa.me/message/MNQIDQ62KZQ2D1";
 /** Formato legível mostrado para o usuário. */
 export const WHATSAPP_PHONE_DISPLAY = "+55 (75) 9889-27020";
-/** Link "clique para conversar" oficial do WhatsApp. */
-export const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_PHONE}`;
 
 // Mantido por compatibilidade — prefira WHATSAPP_LINK em código novo.
 export const WHATSAPP_URL = WHATSAPP_LINK;
