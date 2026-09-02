@@ -310,7 +310,7 @@ const raw: RawGame[] = [
     name: "Baldur's Gate 3",
     appId: 1086940,
     origNumber: 199,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "OcP0WdH7rTs",
     categories: ["popular", "rpg"],
     short:
@@ -341,7 +341,7 @@ const raw: RawGame[] = [
     name: "Red Dead Redemption 2",
     appId: 1174180,
     origNumber: 299,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "eaW0tYpxyp0",
     categories: ["popular", "tiro"],
     short:
@@ -372,7 +372,7 @@ const raw: RawGame[] = [
     name: "Red Dead Redemption 1",
     appId: 2668510,
     origNumber: 250,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "Quz0I5NgolY",
     categories: ["popular", "tiro"],
     short:
@@ -403,7 +403,7 @@ const raw: RawGame[] = [
     name: "Grand Theft Auto V Enhanced",
     appId: 3240220,
     origNumber: 150,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "QkkoHAzjnUs",
     categories: ["popular", "tiro"],
     short:
@@ -434,7 +434,7 @@ const raw: RawGame[] = [
     name: "Grand Theft Auto V Legacy",
     appId: 271590,
     origNumber: 150,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "QkkoHAzjnUs",
     categories: ["popular", "tiro"],
     short:
@@ -465,7 +465,7 @@ const raw: RawGame[] = [
     name: "The Last Of Us Parte 2",
     appId: 2531310,
     origNumber: 200,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "II-ZHaA_t9Q",
     categories: ["popular", "tiro"],
     short:
@@ -558,7 +558,7 @@ const raw: RawGame[] = [
     name: "Marvel's Spider-Man: Miles Morales",
     appId: 1817190,
     origNumber: 200,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "5b4xhKkn58E",
     categories: ["acao"],
     short:
@@ -589,7 +589,7 @@ const raw: RawGame[] = [
     name: "Marvel's Spider-Man Remastered",
     appId: 1817070,
     origNumber: 250,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "q4GgI7vNyo4",
     categories: ["acao"],
     short:
@@ -620,7 +620,7 @@ const raw: RawGame[] = [
     name: "God of War Ragnarök",
     appId: 2322010,
     origNumber: 250,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "EE-4GvjKcfs",
     categories: ["acao"],
     short:
@@ -651,7 +651,7 @@ const raw: RawGame[] = [
     name: "God of War",
     appId: 1593500,
     origNumber: 200,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "FXz-IY-7-Lk",
     categories: ["acao"],
     short:
@@ -682,7 +682,7 @@ const raw: RawGame[] = [
     name: "Ghost of Tsushima",
     appId: 2215430,
     origNumber: 250,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "iwROgK94zcM",
     categories: ["acao"],
     short:
@@ -713,7 +713,7 @@ const raw: RawGame[] = [
     name: "SILENT HILL 2",
     appId: 2124490,
     origNumber: 350,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "ttMOK5BPVqI",
     categories: ["terror"],
     short:
@@ -744,7 +744,7 @@ const raw: RawGame[] = [
     name: "Resident Evil 4",
     appId: 2050650,
     origNumber: 200,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "Z8RKZ-EsvKM",
     categories: ["terror"],
     short:
@@ -775,7 +775,7 @@ const raw: RawGame[] = [
     name: "DRAGON BALL SPARKING ZERO",
     appId: 1790600,
     origNumber: 290,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "5_xRDhSP0CY",
     categories: ["luta"],
     short:
@@ -806,7 +806,7 @@ const raw: RawGame[] = [
     name: "Hogwarts Legacy",
     appId: 990080,
     origNumber: 299.9,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "1O6Qstncpnc",
     categories: ["rpg"],
     short:
@@ -837,7 +837,7 @@ const raw: RawGame[] = [
     name: "Horizon Zero Dawn Complete Edition",
     appId: 1151640,
     origNumber: 249,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "u4-FCsiF5x4",
     categories: ["acao"],
     short:
@@ -868,7 +868,7 @@ const raw: RawGame[] = [
     name: "Detroit: Become Human",
     appId: 1222140,
     origNumber: 199,
-    newNumber: 15.0,
+    newNumber: 18.75,
     stock: 18,
     trailer: "Ka4yhoZSXgU",
     categories: ["acao"],
@@ -900,7 +900,7 @@ const raw: RawGame[] = [
     name: "Mortal Kombat 11",
     appId: 976310,
     origNumber: 229.99,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "TGUEqbcs8r4",
     categories: ["luta"],
     short:
@@ -931,7 +931,7 @@ const raw: RawGame[] = [
     name: "Cyberpunk 2077",
     appId: 1091500,
     origNumber: 200,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "8X2kIfS6fb8",
     categories: ["rpg"],
     short:
@@ -962,7 +962,7 @@ const raw: RawGame[] = [
     name: "UNCHARTED: Coleção Legado dos Ladrões",
     appId: 1659420,
     origNumber: 260,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "RvCFW7XPwBs",
     categories: ["acao"],
     short:
@@ -1024,7 +1024,7 @@ const raw: RawGame[] = [
     name: "Elden Ring",
     appId: 1245620,
     origNumber: 275,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "E3Huy2cdih0",
     categories: ["rpg"],
     short:
@@ -1087,7 +1087,7 @@ const raw: RawGame[] = [
     name: "Hollow Knight: Silksong",
     appId: 1030300,
     origNumber: 60,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "pFAknD_9U7c",
     categories: ["rpg"],
     short:
@@ -1118,7 +1118,7 @@ const raw: RawGame[] = [
     name: "Dying Light The Beast",
     appId: 3008130,
     origNumber: 250,
-    newNumber: 15,
+    newNumber: 18.75,
     trailer: "1JfdJ_BKQjE",
     categories: ["terror"],
     short:
@@ -1259,7 +1259,7 @@ const raw: RawGame[] = [
       name: "Indiana Jones and the Great Circle",
       appId: 2677660,
       origNumber: 349,
-      newNumber: 25,
+      newNumber: 31.25,
       stock: 32,
       categories: ["popular", "acao"] as GameCategory[],
       short:
