@@ -16,7 +16,69 @@ import logo from "../assets/deu-bug-logo.png.asset.json";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteBackdrop } from "../components/store/SiteBackdrop";
 import { FloatingWhatsApp } from "../components/store/FloatingWhatsApp";
+const META_PIXEL_ID = "1323139189897318";
 
+declare global {
+  interface Window {
+    fbq?: any;
+    _fbq?: any;
+    __metaPixelInitialized?: boolean;
+  }
+}
+
+function initializeMetaPixel() {
+  if (typeof window === "undefined" || typeof document === "undefined") {
+    return;
+  }
+
+  // Impede que o Pixel seja instalado mais de uma vez
+  if (window.__metaPixelInitialized) {
+    return;
+  }
+
+  window.__metaPixelInitialized = true;
+
+  // Código-base oficial da Meta
+  if (!window.fbq) {
+    const fbq = function (...args: any[]) {
+      if (fbq.callMethod) {
+        fbq.callMethod.apply(fbq, args);
+      } else {
+        fbq.queue.push(args);
+      }
+    } as any;
+
+    fbq.push = fbq;
+    fbq.loaded = true;
+    fbq.version = "2.0";
+    fbq.queue = [];
+
+    window.fbq = fbq;
+    window._fbq = fbq;
+  }
+
+  const scriptAlreadyExists = document.querySelector(
+    'script[src="https://connect.facebook.net/en_US/fbevents.js"]'
+  );
+
+  if (!scriptAlreadyExists) {
+    const script = document.createElement("script");
+
+    script.async = true;
+    script.src = "https://connect.facebook.net/en_US/fbevents.js";
+
+    const firstScript = document.getElementsByTagName("script")[0];
+
+    if (firstScript?.parentNode) {
+      firstScript.parentNode.insertBefore(script, firstScript);
+    } else {
+      document.head.appendChild(script);
+    }
+  }
+
+  window.fbq("init", META_PIXEL_ID);
+  window.fbq("track", "PageView");
+}
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -148,14 +210,16 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
+  useEffect(() => {
+    initializeMetaPixel();
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <SiteBackdrop />
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
       <SpeedInsights />
       <Analytics />
-      {/* Botão flutuante de WhatsApp — global. Ver src/components/store/FloatingWhatsApp.tsx */}
       <FloatingWhatsApp />
     </QueryClientProvider>
   );
