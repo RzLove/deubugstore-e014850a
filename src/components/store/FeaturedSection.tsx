@@ -3,11 +3,11 @@ import { useNavigate } from "@tanstack/react-router";
 import { useCatalog } from "@/lib/use-catalog";
 
 const featuredSlugs = [
+  "nba-2k27",
   "007-first-light-deluxe-lies-of-p-overture",
   "resident-evil-requiem-conta-offline",
   "forza-horizon-6",
   "crimson-desert-conta-offline",
-  "baldur-s-gate-3",
 ];
 
 function tagFor(index: number): string {
