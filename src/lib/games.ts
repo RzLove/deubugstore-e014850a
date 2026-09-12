@@ -11,7 +11,8 @@ export type GameCategory =
   | "terror"
   | "luta"
   | "tiro"
-  | "simulacao";
+  | "simulacao"
+  | "otimizacao";
 
 export interface BundleItem {
   name: string;
@@ -66,6 +67,12 @@ export interface Game {
   stock: number;
   /** Se presente, marca o produto como bundle/combo e descreve os jogos inclusos */
   bundle?: BundleItem[];
+  /** Selo opcional exibido no card, como FPS BOOST. */
+  badge?: string;
+  /** Texto curto de acesso ou execução exibido nos cards. */
+  accessLabel?: string;
+  /** Diferencia serviços de produtos de jogos na página de detalhes. */
+  isService?: boolean;
 }
 
 const steamHeader = (appId: number) =>
@@ -86,8 +93,9 @@ const pct = (orig: number, now: number) => `${Math.round((1 - now / orig) * 100)
 
 interface RawGame {
   id: number;
+  slug?: string;
   name: string;
-  appId: number;
+  appId?: number;
   /** Sobrescreve a URL de capa quando definido (caso o appId não exista na Steam) */
   coverUrl?: string;
   origNumber: number;
@@ -104,6 +112,10 @@ interface RawGame {
   recReq: SysReq;
   stock?: number;
   bundle?: BundleItem[];
+  badge?: string;
+  accessLabel?: string;
+  delivery?: string;
+  isService?: boolean;
 }
 
 const toBRL = (n: number) =>
@@ -1769,6 +1781,42 @@ const raw: RawGame[] = [
       storage: "80 GB SSD",
     },
   },
+  // Serviço de otimização — imagem pública fornecida pela loja.
+  {
+    id: 54,
+    slug: "otimizacao-pc-fps-boost",
+    name: "Otimização de PC para Jogos — FPS Boost + Debloat Windows",
+    coverUrl: "/otimizacao-banner.png",
+    origNumber: 100,
+    newNumber: 35,
+    stock: 30,
+    categories: ["otimizacao"],
+    short:
+      "Script premium de otimização aplicado remotamente: ganho real de FPS, menos input lag e travamentos, e remoção de bloatware do Windows. Suporte incluso via Discord e WhatsApp.",
+    about:
+      "Script premium de otimização aplicado remotamente: ganho real de FPS, menos input lag e travamentos, e remoção de bloatware do Windows. Suporte incluso via Discord e WhatsApp.",
+    tags: ["FPS Boost", "Menos Lag", "Debloat Windows"],
+    rating: "Livre",
+    badge: "FPS BOOST",
+    accessLabel: "Serviço remoto — aplicação em até 5 minutos",
+    delivery:
+      "Serviço aplicado remotamente em até 5 minutos após a confirmação do pagamento, com suporte via Discord e WhatsApp.",
+    isService: true,
+    minReq: {
+      os: "Windows 10 ou Windows 11",
+      cpu: "Processadores Intel ou AMD compatíveis",
+      ram: "4 GB ou mais",
+      gpu: "Placas NVIDIA, AMD ou Intel",
+      storage: "Espaço temporário para a aplicação",
+    },
+    recReq: {
+      os: "Windows 11 atualizado",
+      cpu: "Processadores Intel ou AMD modernos",
+      ram: "8 GB ou mais",
+      gpu: "Drivers de vídeo atualizados",
+      storage: "Espaço livre para limpeza e otimização",
+    },
+  },
 ];
 
 void lowEnd;
@@ -1782,12 +1830,12 @@ export const games: Game[] = raw.map((g) => {
   const discount = pct(g.origNumber, g.newNumber);
   return {
     id: g.id,
-    slug: slugify(g.name),
+    slug: g.slug ?? slugify(g.name),
     name: g.name,
     originalPrice: oldPrice,
     discountedPrice: newPrice,
     discount,
-    cover: g.coverUrl ?? steamHeader(g.appId),
+    cover: g.coverUrl ?? steamHeader(g.appId ?? 0),
     description: g.short,
     about: g.about,
     tags: g.tags,
@@ -1797,13 +1845,16 @@ export const games: Game[] = raw.map((g) => {
     recommendedRequirements: flat(g.recReq),
     minReq: g.minReq,
     recReq: g.recReq,
-    delivery: defaultDelivery,
+    delivery: g.delivery ?? defaultDelivery,
     trailer: g.trailer,
     trailerVideo: g.trailerVideo,
     trailerIframe: g.trailerIframe,
     categories: g.categories,
     stock: g.stock ?? defaultStock(g.id),
     bundle: g.bundle,
+    badge: g.badge,
+    accessLabel: g.accessLabel,
+    isService: g.isService,
   };
 });
 
@@ -1819,6 +1870,7 @@ const categoryLabel: Record<GameCategory, string[]> = {
   luta: ["luta", "fight", "fighting"],
   tiro: ["tiro", "shooter", "fps", "tps"],
   simulacao: ["simulacao", "simulação", "simulator", "simulation"],
+  otimizacao: ["otimizacao", "otimização", "fps boost", "debloat", "windows"],
 };
 
 export function searchGames(query: string, limit = 30): Game[] {
