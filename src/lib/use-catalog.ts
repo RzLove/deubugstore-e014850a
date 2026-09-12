@@ -68,6 +68,9 @@ function rowToGame(r: any): Game {
     categories: seed.categories ?? ["popular"],
     stock: Number(r.stock ?? 0),
     bundle: seed.bundle,
+    badge: seed.badge,
+    accessLabel: seed.accessLabel,
+    isService: seed.isService ?? r.category === "otimizacao",
   } as Game;
 }
 
@@ -83,7 +86,9 @@ export function useCatalog() {
   return useMemo(() => {
     const rows: any[] = (q.data as any)?.products ?? [];
     const dbStreaming = rows.filter((r) => r.category === "streaming");
-    const dbGames = rows.filter((r) => r.category === "games");
+    const dbGames = rows.filter(
+      (r) => r.category === "games" || r.category === "otimizacao",
+    );
 
     // STREAMING merge
     const dbStreamingSlugs = new Set(dbStreaming.map((r) => r.slug));

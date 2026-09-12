@@ -128,7 +128,7 @@ function GameDetailPage() {
 
               <h2 className="flex items-center gap-2 font-display text-2xl font-bold text-white mb-6">
                 <Gamepad2 className="h-5 w-5 text-primary-glow" />
-                Sobre o Jogo
+                {game.isService ? "Sobre o Serviço" : "Sobre o Jogo"}
               </h2>
               <div className="space-y-4 text-sm sm:text-base text-muted-foreground leading-relaxed">
                 {game.about.split("\n\n").map((para, i) => (
@@ -150,33 +150,38 @@ function GameDetailPage() {
                 </span>
               </div>
 
-              {/* Como funciona o acesso */}
+              {/* Como funciona o acesso ou a aplicação do serviço */}
               <div className="mt-6 flex items-start gap-3 rounded-xl border border-primary/30 bg-primary/[0.06] p-4">
                 <div className="grid h-8 w-8 flex-shrink-0 place-items-center rounded-lg bg-primary/20 text-primary-glow">
                   <Info className="h-4 w-4" />
                 </div>
                 <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                  <span className="font-bold text-white">ℹ️ Como funciona o acesso:</span> ao comprar, você recebe acesso ao jogo válido por <span className="font-bold text-primary-glow">30 dias</span>, jogando diretamente na sua conta pessoal. Durante todo esse período, nossa equipe oferece suporte completo via <a href={DISCORD_URL} target="_blank" rel="noopener noreferrer" className="font-bold text-primary-glow underline-offset-2 hover:underline">Discord</a> para qualquer dúvida ou problema.
+                  {game.isService ? (
+                    <><span className="font-bold text-white">ℹ️ Como funciona o serviço:</span> a otimização é aplicada remotamente em seu PC, com foco em mais FPS, menos input lag e remoção de bloatware. A aplicação ocorre em até 5 minutos e inclui suporte via <a href={DISCORD_URL} target="_blank" rel="noopener noreferrer" className="font-bold text-primary-glow underline-offset-2 hover:underline">Discord</a> e WhatsApp.</>
+                  ) : (
+                    <><span className="font-bold text-white">ℹ️ Como funciona o acesso:</span> ao comprar, você recebe acesso ao jogo válido por <span className="font-bold text-primary-glow">30 dias</span>, jogando diretamente na sua conta pessoal. Durante todo esse período, nossa equipe oferece suporte completo via <a href={DISCORD_URL} target="_blank" rel="noopener noreferrer" className="font-bold text-primary-glow underline-offset-2 hover:underline">Discord</a> para qualquer dúvida ou problema.</>
+                  )}
                 </p>
               </div>
             </div>
 
-            {/* Sobre as Keys */}
-            <div className="relative bg-[#0A0A0C] border border-white/5 rounded-2xl p-6 sm:p-8 shadow-2xl">
-              <h2 className="flex items-center gap-2 font-display text-2xl font-bold text-white mb-4">
-                <KeyRound className="h-5 w-5 text-primary-glow" />
-                Sobre as Keys
-              </h2>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Você receberá um acesso e um programa da Deu Bug para ativar a licença diretamente na sua conta pessoal da Steam. <span className="font-bold text-white">Acesso e suporte válidos por 30 dias.</span>
-              </p>
-            </div>
+            {!game.isService && (
+              <div className="relative bg-[#0A0A0C] border border-white/5 rounded-2xl p-6 sm:p-8 shadow-2xl">
+                <h2 className="flex items-center gap-2 font-display text-2xl font-bold text-white mb-4">
+                  <KeyRound className="h-5 w-5 text-primary-glow" />
+                  Sobre as Keys
+                </h2>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Você receberá um acesso e um programa da Deu Bug para ativar a licença diretamente na sua conta pessoal da Steam. <span className="font-bold text-white">Acesso e suporte válidos por 30 dias.</span>
+                </p>
+              </div>
+            )}
 
             {/* Requisitos */}
             <div className="relative bg-[#0A0A0C] border border-white/5 rounded-2xl p-6 sm:p-8 shadow-2xl">
               <h2 className="flex items-center gap-2 font-display text-2xl font-bold text-white mb-6">
                 <Monitor className="h-5 w-5 text-primary-glow" />
-                Requisitos do Sistema
+                {game.isService ? "Compatibilidade" : "Requisitos do Sistema"}
               </h2>
               <div className="grid gap-6 sm:grid-cols-2">
                 {[
@@ -358,8 +363,8 @@ function GameDetailPage() {
                     <Calendar className="h-5 w-5" />
                   </div>
                   <div>
-                    <div className="text-sm font-bold text-white">📅 Acesso por 30 dias</div>
-                    <div className="text-xs text-muted-foreground">Jogue à vontade durante todo o período</div>
+                    <div className="text-sm font-bold text-white">{game.isService ? "⚡ Aplicação em até 5 minutos" : "📅 Acesso por 30 dias"}</div>
+                    <div className="text-xs text-muted-foreground">{game.isService ? "Serviço remoto rápido e acompanhado" : "Jogue à vontade durante todo o período"}</div>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
@@ -367,8 +372,8 @@ function GameDetailPage() {
                     <Headphones className="h-5 w-5" />
                   </div>
                   <div>
-                    <div className="text-sm font-bold text-white">🎧 Suporte por 30 dias</div>
-                    <div className="text-xs text-muted-foreground">Atendimento completo durante todo o acesso</div>
+                    <div className="text-sm font-bold text-white">{game.isService ? "🎧 Suporte incluso" : "🎧 Suporte por 30 dias"}</div>
+                    <div className="text-xs text-muted-foreground">{game.isService ? "Atendimento via Discord e WhatsApp" : "Atendimento completo durante todo o acesso"}</div>
                   </div>
                 </div>
               </div>

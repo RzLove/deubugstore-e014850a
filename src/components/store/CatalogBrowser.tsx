@@ -7,6 +7,7 @@ import {
   Tag,
   LayoutGrid,
   ArrowUpDown,
+  Gauge,
 } from "lucide-react";
 import { useCatalog } from "@/lib/use-catalog";
 import { GameCard } from "./GameGrid";
@@ -19,6 +20,7 @@ export type CatalogCategory =
   | "jogos"
   | "combos"
   | "streaming"
+  | "otimizacao"
   | "promocoes";
 
 export type CatalogSort =
@@ -34,6 +36,7 @@ const TABS: { key: CatalogCategory; label: string; icon: typeof Gamepad2 }[] = [
   { key: "jogos", label: "Jogos Steam", icon: Gamepad2 },
   { key: "combos", label: "Combos 2 em 1", icon: Package },
   { key: "streaming", label: "Streaming", icon: Play },
+  { key: "otimizacao", label: "Otimização", icon: Gauge },
   { key: "promocoes", label: "Promoções", icon: Tag },
 ];
 
@@ -77,7 +80,14 @@ export function CatalogBrowser() {
           .sort((a, b) => discountNumber(b.discount) - discountNumber(a.discount));
         break;
       case "jogos":
-        list = list.filter((g) => !g.bundle || g.bundle.length === 0);
+        list = list.filter(
+          (g) =>
+            !g.categories?.includes("otimizacao") &&
+            (!g.bundle || g.bundle.length === 0),
+        );
+        break;
+      case "otimizacao":
+        list = list.filter((g) => g.categories?.includes("otimizacao"));
         break;
       case "todos":
       default:

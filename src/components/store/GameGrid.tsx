@@ -63,7 +63,12 @@ export function GameCard({
             {game.discount} OFF
           </div>
         )}
-        {!soldOut && game.bundle && game.bundle.length > 0 && (
+        {!soldOut && game.badge && (
+          <div className="absolute top-4 right-4 bg-neon-cyan text-black px-2.5 py-1 text-[10px] font-black rounded-full shadow-[0_0_18px_rgba(34,211,238,0.45)] border border-neon-cyan/60 uppercase tracking-widest">
+            {game.badge}
+          </div>
+        )}
+        {!soldOut && !game.badge && game.bundle && game.bundle.length > 0 && (
           <div className="absolute top-4 right-4 bg-neon-green text-black px-2.5 py-1 text-[10px] font-black rounded-full shadow-[0_0_18px_rgba(168,255,51,0.45)] border border-neon-green/60 uppercase tracking-widest">
             🎁 COMBO 2 EM 1
           </div>
@@ -83,7 +88,7 @@ export function GameCard({
             {game.name}
           </h3>
           <div className="text-[10px] text-white/30 font-black tracking-widest uppercase">
-            Acesso por 30 dias
+            {game.accessLabel ?? "Acesso por 30 dias"}
           </div>
         </div>
 
@@ -217,13 +222,16 @@ export function GameGrid() {
   const { games } = useCatalog();
 
   const sections = useMemo(() => {
+    const serviceIds = new Set(
+      games.filter((g) => g.categories?.includes("otimizacao")).map((g) => g.id),
+    );
     const combos = games.filter((g) => g.bundle && g.bundle.length > 0);
     const comboIds = new Set(combos.map((g) => g.id));
 
     // Lançamentos: últimos adicionados (final do array). Excluir combos para não duplicar.
     const lancamentos = [...games]
       .reverse()
-      .filter((g) => !comboIds.has(g.id) && !g.isSoldOut)
+      .filter((g) => !comboIds.has(g.id) && !serviceIds.has(g.id) && !g.isSoldOut)
       .slice(0, 6);
     const lancIds = new Set(lancamentos.map((g) => g.id));
 
@@ -241,7 +249,7 @@ export function GameGrid() {
 
     const usados = new Set([...comboIds, ...lancIds, ...vendidosIds]);
     const jogosSteam = games.filter(
-      (g) => !usados.has(g.id) && !g.isSoldOut,
+      (g) => !usados.has(g.id) && !serviceIds.has(g.id) && !g.isSoldOut,
     );
 
     // Esgotados: sempre no final, separados

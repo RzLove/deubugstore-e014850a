@@ -3,7 +3,7 @@ import { useState } from "react";
 import { PurchaseModal } from "./PurchaseModal";
 import minecraftBanner from "@/assets/minecraft-banner.png.asset.json";
 
-interface MinecraftProduct {
+export interface ShowcaseProduct {
   id: string;
   name: string;
   description: string;
@@ -50,32 +50,37 @@ const products: MinecraftProduct[] = [
   },
 ];
 
-function MinecraftCard({
+export function ShowcaseProductCard({
   product,
   onBuy,
+  tone = "green",
+  image = minecraftBanner.url,
 }: {
-  product: MinecraftProduct;
+  product: ShowcaseProduct;
   onBuy: (name: string) => void;
+  tone?: "green" | "cyan";
+  image?: string;
 }) {
+  const cyan = tone === "cyan";
   return (
-    <div className="group relative flex flex-col overflow-hidden rounded-2xl bg-[#0A0A0C]/80 backdrop-blur-sm border border-white/5 transition-all duration-500 hover:-translate-y-2 hover:bg-[#0E0E12] hover:shadow-[0_30px_60px_-15px_rgba(34,197,94,0.45)] hover:border-neon-green/50 shadow-2xl shadow-black/40">
+    <div className={`group relative flex flex-col overflow-hidden rounded-2xl bg-[#0A0A0C]/80 backdrop-blur-sm border border-white/5 transition-all duration-500 hover:-translate-y-2 hover:bg-[#0E0E12] shadow-2xl shadow-black/40 ${cyan ? "hover:shadow-[0_30px_60px_-15px_rgba(34,211,238,0.45)] hover:border-neon-cyan/50" : "hover:shadow-[0_30px_60px_-15px_rgba(34,197,94,0.45)] hover:border-neon-green/50"}`}>
       <div className="relative aspect-[16/9] w-full overflow-hidden">
         <img
-          src={minecraftBanner.url}
+          src={image}
           alt={product.name}
           className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
         <div className="absolute top-4 left-4 bg-white text-black px-2 py-1 text-[10px] font-black rounded-sm shadow-xl">
           {product.discount} OFF
         </div>
-        <div className="absolute top-4 right-4 bg-neon-green text-black px-2.5 py-1 text-[10px] font-black rounded-full shadow-[0_0_18px_rgba(168,255,51,0.45)] border border-neon-green/60 uppercase tracking-widest">
+        <div className={`absolute top-4 right-4 text-black px-2.5 py-1 text-[10px] font-black rounded-full uppercase tracking-widest ${cyan ? "bg-neon-cyan border border-neon-cyan/60 shadow-[0_0_18px_rgba(34,211,238,0.45)]" : "bg-neon-green border border-neon-green/60 shadow-[0_0_18px_rgba(168,255,51,0.45)]"}`}>
           {product.badge}
         </div>
       </div>
 
       <div className="flex flex-col flex-1 p-6 space-y-4">
         <div className="space-y-2">
-          <h3 className="line-clamp-2 font-display text-lg font-bold uppercase tracking-tight text-white group-hover:text-neon-green transition-colors">
+          <h3 className={`line-clamp-2 font-display text-lg font-bold uppercase tracking-tight text-white transition-colors ${cyan ? "group-hover:text-neon-cyan" : "group-hover:text-neon-green"}`}>
             {product.name}
           </h3>
           <p className="text-xs text-white/50 line-clamp-2">
@@ -101,13 +106,13 @@ function MinecraftCard({
 
           <button
             onClick={() => onBuy(product.name)}
-            className="flex min-h-[44px] h-11 px-4 items-center justify-center gap-2 rounded-lg bg-neon-green text-black text-[10px] font-black transition-all duration-300 hover:scale-105 shadow-[0_0_15px_rgba(168,255,51,0.4)] uppercase tracking-widest border border-neon-green/40"
+            className={`flex min-h-[44px] h-11 px-4 items-center justify-center gap-2 rounded-lg text-black text-[10px] font-black transition-all duration-300 hover:scale-105 uppercase tracking-widest ${cyan ? "bg-neon-cyan border border-neon-cyan/40 shadow-[0_0_15px_rgba(34,211,238,0.4)]" : "bg-neon-green border border-neon-green/40 shadow-[0_0_15px_rgba(168,255,51,0.4)]"}`}
           >
             <ShoppingCart className="h-4 w-4" /> COMPRAR
           </button>
         </div>
       </div>
-      <div className="absolute inset-0 border-2 rounded-2xl transition-all duration-500 pointer-events-none border-neon-green/0 group-hover:border-neon-green/30" />
+      <div className={`absolute inset-0 border-2 rounded-2xl transition-all duration-500 pointer-events-none ${cyan ? "border-neon-cyan/0 group-hover:border-neon-cyan/30" : "border-neon-green/0 group-hover:border-neon-green/30"}`} />
     </div>
   );
 }
@@ -135,7 +140,7 @@ export function MinecraftSection() {
 
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {products.map((p) => (
-          <MinecraftCard key={p.id} product={p} onBuy={setSelectedProduct} />
+          <ShowcaseProductCard key={p.id} product={p} onBuy={setSelectedProduct} />
         ))}
       </div>
 
