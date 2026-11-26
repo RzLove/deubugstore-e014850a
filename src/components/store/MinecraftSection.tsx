@@ -14,7 +14,7 @@ export interface ShowcaseProduct {
   badge: string;
 }
 
-const products: MinecraftProduct[] = [
+const products: ShowcaseProduct[] = [
   {
     id: "mc-perm",
     name: "Minecraft Java e Bedrock – Acesso Total e Permanente",

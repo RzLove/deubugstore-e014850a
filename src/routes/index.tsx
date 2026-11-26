@@ -8,6 +8,7 @@ import { FeaturedSection } from "@/components/store/FeaturedSection";
 import { PopularGames } from "@/components/store/PopularGames";
 import { ReleasesSection } from "@/components/store/ReleasesSection";
 import { MinecraftSection } from "@/components/store/MinecraftSection";
+import { OptimizationSection } from "@/components/store/OptimizationSection";
 import { SocialSection } from "@/components/store/SocialSection";
 import { Footer } from "@/components/store/Footer";
 import { WelcomeModal } from "@/components/store/WelcomeModal";
@@ -99,6 +100,7 @@ function Index() {
         <ReleasesSection />
         <CatalogBrowser />
         <MinecraftSection />
+        <OptimizationSection />
       </main>
 
       <SocialSection />
